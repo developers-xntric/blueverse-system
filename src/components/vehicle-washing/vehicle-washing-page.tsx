@@ -39,6 +39,7 @@ const regionalCards = [
     "blueverseindia.com",
     "Automated 2-wheeler and 4-wheeler wash solutions for OEMs, dealerships, fuel stations, and independent wash centres across India.",
     "Visit BlueVerse India",
+    "https://blueverseindia.com/",
   ],
   [
     "uae.svg",
@@ -46,6 +47,7 @@ const regionalCards = [
     "blueverse.ae",
     "Eco-friendly, high-performance vehicle washing services and solutions tailored for the Gulf market and regional partners.",
     "Visit BlueVerse UAE",
+    "https://blueverse.ae/",
   ],
 ] as const;
 
@@ -85,10 +87,20 @@ function ArrowIcon() {
   );
 }
 
-function CtaButton({ children, className = "" }: { children: ReactNode; className?: string }) {
+function CtaButton({
+  children,
+  className = "",
+  href = "#contact",
+}: {
+  children: ReactNode;
+  className?: string;
+  href?: string;
+}) {
   return (
     <motion.a
-      href="#contact"
+      href={href}
+      target={href.startsWith("http") ? "_blank" : undefined}
+      rel={href.startsWith("http") ? "noreferrer" : undefined}
       whileHover={{ y: -1 }}
       whileTap={{ scale: 0.98 }}
       className={`inline-flex h-[50px] items-center justify-center gap-[5px] rounded-[5px] border border-white px-[30px] font-heading text-[20.734px] font-medium leading-[30.186px] text-white ${className}`}
@@ -135,7 +147,7 @@ function Hero() {
           <p className="font-sans text-[14px] font-bold uppercase leading-[24.227px] tracking-[1.6959px] md:text-[16.959px]">
             Automated Vehicle Washing
           </p>
-          <h1 className="mt-[15px] font-heading text-[44px] font-bold leading-[0.98] md:text-[72.681px] md:leading-[72.681px]">
+          <h1 className="mt-[15px] font-heading text-[44px] font-bold leading-normal md:text-[65px] md:leading-[72.681px]">
             Sustainable Vehicle Washing Solutions
           </h1>
           <p className="mt-[15px] max-w-[708px] text-[15.5px] leading-[24.227px] md:text-[16.959px]">
@@ -151,7 +163,7 @@ function Hero() {
 
 function SectionTitle({ children }: { children: ReactNode }) {
   return (
-    <h2 className="w-full text-center font-heading text-[38px] font-bold leading-[1.06] md:text-[55px] md:leading-[58.145px]">
+    <h2 className="w-full text-center font-heading text-[38px] font-bold leading-[1.06] md:text-[40px] md:leading-normal">
       {children}
     </h2>
   );
@@ -161,7 +173,7 @@ function SystemFeatures() {
   return (
     <MotionSection
       id="vehicle-washing"
-      className="border-b border-[#dfdfdf]  py-16 md:py-[80px]"
+      className="border-b border-[#dfdfdf]  py-16 md:py-[70px]"
     >
       <div className="mx-auto flex 2xl:max-w-[1440px] w-[90%] flex-col gap-[30px]">
         <SectionTitle>System Features</SectionTitle>
@@ -186,7 +198,7 @@ function SystemFeatures() {
 
 function WashTypes() {
   return (
-    <MotionSection id="wash-types" className="border-b border-[#dfdfdf]  py-16  md:py-[80px]">
+    <MotionSection id="wash-types" className="border-b border-[#dfdfdf]  py-16  md:py-[70px]">
       <div className="mx-auto flex 2xl:max-w-[1440px] w-[90%] flex-col gap-[30px]">
         <SectionTitle>Wash Types Available</SectionTitle>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -194,7 +206,7 @@ function WashTypes() {
             <motion.article
               key={title}
               whileHover={{ y: -5, borderColor: "rgba(6,43,79,0.7)" }}
-              className="flex min-h-[273.372px] flex-col items-center gap-[29px] rounded-[19.382px] border-[1.21px] border-[rgba(6,43,79,0.4)] bg-white px-[30px] py-10 text-center"
+              className="flex min-h-[273.372px] flex-col items-center gap-[20px] rounded-[19.382px] border-[1.21px] border-[rgba(6,43,79,0.4)] bg-white px-[30px] py-10 text-center"
             >
               <Image src="/vehicle-assets/wash-type.svg" alt="" width={48.454} height={48.454} className="size-[48.454px]" />
               <div className="flex flex-col items-center gap-[15px]">
@@ -211,7 +223,7 @@ function WashTypes() {
 
 function BusinessModels() {
   return (
-    <MotionSection id="business-models" className="border-b border-[#dfdfdf]  py-16  md:py-[80px]">
+    <MotionSection id="business-models" className="border-b border-[#dfdfdf]  py-16  md:py-[70px]">
       <div className="mx-auto flex 2xl:max-w-[1440px] w-[90%] flex-col gap-[30px]">
         <SectionTitle>Business Models</SectionTitle>
         <div className="grid gap-5 xl:grid-cols-3">
@@ -245,7 +257,7 @@ function RegionalCtas() {
         style={{ backgroundImage: "linear-gradient(164.398deg, rgb(33, 98, 175) 0%, rgb(10, 61, 107) 100%)" }}
       />
       <div className="mx-auto grid 2xl:max-w-[1440px] w-[90%] gap-[30px] lg:grid-cols-2">
-        {regionalCards.map(([icon, region, site, copy, cta]) => (
+        {regionalCards.map(([icon, region, site, copy, cta, href]) => (
           <motion.article
             key={region}
             whileHover={{ y: -5 }}
@@ -258,7 +270,9 @@ function RegionalCtas() {
                 <p className="text-[20px] font-medium italic leading-[24.227px]">{site}</p>
                 <p className="max-w-[729px] text-[16.959px] leading-[24.227px]">{copy}</p>
               </div>
-              <CtaButton className="mt-auto w-full bg-transparent">{cta}</CtaButton>
+              <CtaButton href={href} className="mt-auto w-full bg-transparent">
+                {cta}
+              </CtaButton>
             </div>
           </motion.article>
         ))}
