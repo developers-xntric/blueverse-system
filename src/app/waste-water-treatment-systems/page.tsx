@@ -22,7 +22,8 @@ export default function WasteWaterTreatmentSystemsPage() {
   return (
     <main className="w-full bg-white">
       <HeroOverviewSection />
-      {/* <EpcFocusAreasSection />
+      <EpcFocusAreasSection />
+      {/* 
       <ElectroxSection />
       <BuiltForEveryScaleSection />
       <IndustriesSection />
