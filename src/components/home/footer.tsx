@@ -44,7 +44,7 @@ export function Footer() {
         </div>
         <div className="mt-8 border-t border-white/10 pt-8 md:flex md:items-center md:justify-between">
           <p className="text-[16px] text-white/60 md:text-[19px]">
-            © 2026 BlueVerse CleanTech Pvt. Ltd. All rights reserved.
+            Copyright 2026 BlueVerse CleanTech Pvt. Ltd. All rights reserved.
           </p>
           <div className="mt-4 flex flex-wrap gap-5 text-[16px] text-white/60 md:mt-0 md:gap-6 md:text-[19px]">
             {footerServiceLinks.map((item) => (
