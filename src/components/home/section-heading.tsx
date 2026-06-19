@@ -33,7 +33,7 @@ export function SectionHeading({
       </h2>
       {description ? (
         <p
-          className={`mx-auto mt-3 max-w-[980px] text-[17px] leading-[1.4] md:text-[22px] ${
+          className={`mx-auto mt-3 max-w-245 text-[17px] leading-[1.4] md:text-[22px] ${
             light ? "text-white/75" : "text-[#062B4F]"
           }`}
         >
