@@ -9,7 +9,7 @@ const icons = [WavesIcon, CarIcon, ChartIcon];
 
 export function SolutionsSection() {
   return (
-    <section id="solutions" className="bg-brand-ice py-12 md:py-[50px]">
+    <section id="solutions" className="bg-[#E8F4FD] py-12 ">
       <div className="homepage-shell">
         <SectionHeading
           eyebrow="Our Solutions"
@@ -34,13 +34,13 @@ export function SolutionsSection() {
                   />
                 </div>
                 <div className="relative">
-                  <div className="-mt-7 ml-[6px] flex size-[47px] items-center justify-center rounded-[16px] bg-white text-brand-navy shadow-[0_8px_16px_rgba(6,43,79,0.12)]">
+                  <div className="-mt-7 ml-[6px] flex size-[47px] items-center justify-center rounded-[16px] bg-[#E8F4FD] text-brand-navy shadow-[0_8px_16px_rgba(6,43,79,0.12)]">
                     <Icon className="size-[24px]" />
                   </div>
-                  <h3 className="mt-3 font-heading text-[23px] leading-[1.15] font-bold text-brand-navy">
+                  <h3 className="mt-3 font-heading text-[23px] leading-[1.15] font-bold text-[#062B4F]">
                     {solution.title}
                   </h3>
-                  <p className="mt-3 text-[18px] leading-[1.45] text-brand-muted">
+                  <p className="mt-3 text-[16px] leading-[1.45] text-brand-muted">
                     {solution.description}
                   </p>
                 </div>
@@ -49,9 +49,9 @@ export function SolutionsSection() {
           })}
         </div>
         <div className="mx-auto mt-12 max-w-[1023px] text-center">
-          <p className="font-heading text-[34px] leading-[1.15] font-bold text-brand-navy md:text-[53px]">
+          <p className="font-heading text-[34px] leading-[1.15] font-bold text-brand-navy md:text-[35px]">
             From Water Treatment to Smart Washing and ESG Reporting,
-            <br className="hidden lg:block" /> BlueVerse brings every solution together.
+             BlueVerse brings every solution together.
           </p>
           <div className="mt-6">
             <Button>Let&apos;s Talk Sustainable Growth</Button>
