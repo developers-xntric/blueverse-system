@@ -54,7 +54,9 @@ export function ProblemSection() {
           <p className="max-w-[820px] font-heading text-[28px] leading-[1.05] font-semibold text-white md:text-[29px]">
             Together, we can reduce water waste and build a more sustainable future
           </p>
-          <Button variant="secondary">Let&apos;s Solve Water Challenges Together</Button>
+          <Button variant="secondary" size="compact" className="whitespace-nowrap">
+            Let&apos;s Solve Water Challenges Together
+          </Button>
         </div>
       </div>
     </section>
