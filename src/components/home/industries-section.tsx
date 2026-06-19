@@ -13,7 +13,7 @@ export function IndustriesSection() {
     activeIndustry === null ? null : industries[activeIndustry];
 
   return (
-    <section id="industries" className="bg-white py-12 md:py-[60px]">
+    <section id="industries" className="bg-white py-12">
       <div className="homepage-shell">
         <SectionHeading
           eyebrow="Who We Serve"
@@ -92,15 +92,17 @@ export function IndustriesSection() {
                 key={industry.title}
                 type="button"
                 onClick={() => setActiveIndustry(index)}
-                className="overflow-hidden rounded-[20px] border border-brand-card-line bg-white text-left"
+                className="cursor-pointer overflow-hidden rounded-[20px] border border-brand-card-line bg-white text-left transition-colors duration-200 hover:border-brand-sky"
               >
-                <Image
-                  src={industry.image}
-                  alt={industry.title}
-                  width={531}
-                  height={236}
-                  className="h-auto w-full object-cover"
-                />
+                <div className="h-[236px] overflow-hidden">
+                  <Image
+                    src={industry.image}
+                    alt={industry.title}
+                    width={531}
+                    height={236}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
                 <div className="p-6">
                   <div className="flex items-start justify-between gap-4">
                     <h3 className="font-heading text-[23px] leading-[1.15] font-bold text-brand-navy">
