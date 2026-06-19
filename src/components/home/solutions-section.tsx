@@ -24,13 +24,13 @@ export function SolutionsSection() {
                 key={solution.title}
                 className="rounded-[20px] bg-white p-[24px] shadow-[0_12px_24px_rgba(6,43,79,0.12)]"
               >
-                <div className="relative overflow-hidden rounded-[12px]">
+                <div className="relative h-[295px] overflow-hidden rounded-[12px]">
                   <Image
                     src={solution.image}
                     alt={solution.title}
                     width={471}
                     height={295}
-                    className="h-auto w-full object-cover"
+                    className="h-full w-full object-cover"
                   />
                 </div>
                 <div className="relative">
