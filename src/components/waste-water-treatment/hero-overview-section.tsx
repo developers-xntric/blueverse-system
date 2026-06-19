@@ -6,11 +6,10 @@ export function HeroOverviewSection() {
   return (
     <section className="bg-white py-12 md:py-16">
       <div className="mx-auto max-w-[1650px]">
-        <div className="grid gap-10 xl:grid-cols-[1.05fr_.95fr] xl:items-center">
+        <div className="grid gap-4 xl:grid-cols-[1.05fr_.95fr] xl:items-center pe-10">
           <div className="relative overflow-hidden rounded-[18px] xl:rounded-none">
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-28 bg-linear-to-r from-transparent to-white xl:block" />
             <Image
-              src="/waste-water-treatment-systems/hero-main.png"
+              src="/waste-water-treatment-systems/main-hero.png"
               alt="BlueVerse wastewater treatment plant"
               width={1664}
               height={936}
@@ -18,8 +17,8 @@ export function HeroOverviewSection() {
               className="h-auto w-full"
             />
           </div>
-          <div className="max-w-202.5">
-            <p className="bg-brand-gradient bg-clip-text font-heading text-[14px] leading-[1.1] font-semibold uppercase text-transparent">
+          <div className="">
+            <p className="bg-brand-gradient bg-clip-text font-heading text-[15px] leading-[1.1] font-semibold uppercase text-transparent">
               Waste Water Treatment Systems
             </p>
             <h1 className="mt-2 font-heading text-[42px] leading-[1.05] font-bold text-brand-navy md:text-[50px] xl:text-[40px]">
@@ -27,7 +26,7 @@ export function HeroOverviewSection() {
               <br />
               Decentralised, at Scale
             </h1>
-            <p className="mt-7.5 text-[20px] leading-[1.4] text-brand-muted md:text-[22px] md:leading-[1.405]">
+            <p className="mt-7.5 text-[20px] leading-[1.4] text-brand-muted md:text-[17px] text-balance md:leading-[1.405]">
               BlueVerse Cleantech delivers end-to-end EPC solutions for
               decentralised desalination and wastewater treatment plants powered
               by proprietary ElectroX technology. A non-contact
@@ -37,26 +36,26 @@ export function HeroOverviewSection() {
           </div>
         </div>
 
-        <div className="mt-7.5 flex items-center gap-8">
-          <p className="bg-brand-gradient bg-clip-text font-heading text-[19px] leading-[1.1] font-semibold uppercase text-transparent">
+        <div className="2xl:max-w-360 w-[90%] mx-auto mt-7.5 flex items-center gap-4">
+          <p className="bg-brand-gradient bg-clip-text font-heading text-[15px] leading-[1.1] font-semibold uppercase text-transparent">
             Water Treatment Systems
           </p>
           <div className="h-px flex-1 bg-[#2162af]" />
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-5 xl:gap-[30px]">
+        <div className="2xl:max-w-360 w-[90%] mx-auto mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-5 xl:gap-7.5">
           {wastewaterStats.map((stat) => (
             <article
               key={stat.label}
-              className="rounded-[20px] border border-[#dbdbdb] bg-white px-[30px] py-10 text-center"
+              className="rounded-[20px] border border-[#dbdbdb] bg-white px-7.5 py-7 text-center"
             >
-              <div className="mx-auto flex size-[112px] items-center justify-center rounded-full bg-brand-ice-strong">
-                <Image src={stat.icon} alt="" width={66} height={67} className="h-auto w-[66px]" />
+              <div className="mx-auto flex size-20 items-center justify-center rounded-full bg-brand-ice-strong">
+                <Image src={stat.icon} alt="" width={66} height={67} className="w-12" />
               </div>
-              <p className="mt-[29px] font-heading text-[35px] leading-none font-bold text-brand-navy">
+              <p className="mt-5 font-heading text-[26px] leading-none font-bold text-brand-navy">
                 {stat.value}
               </p>
-              <p className="mt-[15px] text-[22px] leading-[1.1] text-brand-muted">
+              <p className="mt-3.75 text-[16px] leading-[1.1] text-brand-muted">
                 {stat.label}
               </p>
             </article>
