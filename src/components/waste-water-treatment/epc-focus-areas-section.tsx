@@ -40,7 +40,7 @@ export function EpcFocusAreasSection() {
             Delivering end-to-end water infrastructure solutions from design and procurement to construction and deployment.
           </p>
           <button
-            className="w-[330px] rounded-[5px] border border-white bg-[#1191d0]  py-3 font-heading text-[16px] font-medium text-white text-center"
+            className="w-82.5 cursor-pointer hover:bg-[#1191d0]/90 rounded-[5px] border border-white bg-[#1191d0]  py-3 font-heading text-[16px] font-medium text-white text-center"
           >
             Let&apos;s Discuss Your Project
           </button>
