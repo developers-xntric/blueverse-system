@@ -1,0 +1,9 @@
+export { AboutBlueverseSection } from "@/components/waste-water-treatment/about-blueverse-section";
+export { BuiltForEveryScaleSection } from "@/components/waste-water-treatment/built-for-every-scale-section";
+export { ContactSection } from "@/components/waste-water-treatment/contact-section";
+export { DeploymentHighlightsSection } from "@/components/waste-water-treatment/deployment-highlights-section";
+export { ElectroxSection } from "@/components/waste-water-treatment/electrox-section";
+export { EpcFocusAreasSection } from "@/components/waste-water-treatment/epc-focus-areas-section";
+export { HeroOverviewSection } from "@/components/waste-water-treatment/hero-overview-section";
+export { IndustriesSection } from "@/components/waste-water-treatment/industries-section";
+export { PartnershipsSection } from "@/components/waste-water-treatment/partnerships-section";
