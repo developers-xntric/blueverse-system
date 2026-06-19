@@ -1,12 +1,55 @@
-import { Button } from "@/components/home/button";
+"use client";
+
 import { GlobeIcon, MapPinIcon } from "@/components/home/icons";
 import { offices } from "@/components/home/homepage-data";
 import { SectionHeading } from "@/components/home/section-heading";
-import type { ReactNode } from "react";
+import type { FormEvent, ReactNode } from "react";
+import { useState } from "react";
 
 const officeIcons = [GlobeIcon, MapPinIcon];
 
 export function ContactSection() {
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [statusMessage, setStatusMessage] = useState("");
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus("submitting");
+    setStatusMessage("");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const payload = {
+      name: String(formData.get("name") ?? ""),
+      company: String(formData.get("company") ?? ""),
+      email: String(formData.get("email") ?? ""),
+      phone: String(formData.get("phone") ?? ""),
+      service: String(formData.get("service") ?? ""),
+      message: String(formData.get("message") ?? ""),
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const result = (await response.json()) as { message?: string };
+
+      if (!response.ok) {
+        throw new Error(result.message || "Unable to send your message right now.");
+      }
+
+      form.reset();
+      setStatus("success");
+      setStatusMessage(result.message || "Message sent successfully.");
+    } catch (error) {
+      setStatus("error");
+      setStatusMessage(error instanceof Error ? error.message : "Unable to send your message right now.");
+    }
+  }
+
   return (
     <section id="contact" className="bg-brand-ice py-12 md:py-[60px]">
       <div className="homepage-shell">
@@ -39,26 +82,31 @@ export function ContactSection() {
               );
             })}
           </div>
-          <form className="rounded-[29px] bg-white px-6 py-8 shadow-[0_1px_3px_rgba(0,0,0,0.08)] md:px-[60px] md:py-[40px]">
-            <div className="grid gap-[30px] md:grid-cols-2">
+          <form
+            onSubmit={handleSubmit}
+            className="rounded-[29px] bg-white px-6 py-8 shadow-[0_1px_3px_rgba(0,0,0,0.08)] md:px-[30px] md:py-[40px]"
+          >
+            <div className="grid gap-[20px] md:grid-cols-2">
               <Field label="Full Name">
-                <input type="text" placeholder="Your Name" className="form-field" />
+                <input name="name" type="text" placeholder="Your Name" className="form-field" required />
               </Field>
               <Field label="Company">
-                <input type="text" placeholder="Company Name" className="form-field" />
+                <input name="company" type="text" placeholder="Company Name" className="form-field" />
               </Field>
               <Field label="Email Address">
-                <input type="email" placeholder="email@company.com" className="form-field" />
+                <input name="email" type="email" placeholder="email@company.com" className="form-field" required />
               </Field>
               <Field label="Phone Number">
-                <input type="tel" placeholder="+91 XXXX XXX XXX" className="form-field" />
+                <input name="phone" type="tel" placeholder="+91 XXXX XXX XXX" className="form-field" />
               </Field>
             </div>
             <div className="mt-[30px]">
               <Field label="Service Interest">
                 <div className="relative">
-                  <select className="form-field appearance-none pr-12">
-                    <option>Select a service</option>
+                  <select name="service" className="form-field appearance-none pr-12" defaultValue="">
+                    <option value="" disabled>
+                      Select a service
+                    </option>
                     <option>Water Treatment Systems</option>
                     <option>Automated Vehicle Washing</option>
                     <option>ESG Intelligence Platform</option>
@@ -72,15 +120,33 @@ export function ContactSection() {
             <div className="mt-[30px]">
               <Field label="Message">
                 <textarea
+                  name="message"
                   rows={7}
                   placeholder="Tell us about your project requirements..."
                   className="form-field min-h-[182px] resize-y py-3"
+                  required
                 />
               </Field>
             </div>
             <div className="mt-7">
-              <Button className="w-full">Talk To Our Team</Button>
+              <button
+                type="submit"
+                disabled={status === "submitting"}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-[5px] border border-white bg-brand-gradient px-6 py-3 font-heading text-[17px] font-medium leading-none text-white shadow-[0_8px_20px_rgba(17,145,208,0.18)] transition duration-200 hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-70 md:text-[20px]"
+              >
+                <span>{status === "submitting" ? "Sending..." : "Talk To Our Team"}</span>
+              </button>
             </div>
+            {statusMessage ? (
+              <p
+                role="status"
+                className={`mt-4 text-center text-[15px] font-medium ${
+                  status === "success" ? "text-brand-navy" : "text-red-600"
+                }`}
+              >
+                {statusMessage}
+              </p>
+            ) : null}
           </form>
         </div>
       </div>
@@ -98,7 +164,7 @@ function Field({
   return (
     <label className="block">
       <span className="font-sans text-[17px] font-bold text-brand-navy">{label}</span>
-      <div className="mt-1">{children}</div>
+      <div className="mt-2">{children}</div>
     </label>
   );
 }
