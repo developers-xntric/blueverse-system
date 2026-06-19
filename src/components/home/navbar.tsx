@@ -21,7 +21,7 @@ export function Navbar() {
             alt="BlueVerse"
             width={195}
             height={50}
-            className="h-auto w-[150px] md:w-[195px]"
+            className="h-auto w-[150px] md:w-[180px] 2xl:w-[195px]"
             priority
           />
         </a>
@@ -37,7 +37,7 @@ export function Navbar() {
           </ul>
         </nav>
         <div className="hidden shrink-0 xl:block">
-          <Button className="px-4 py-2.5 text-[15px] md:text-[13px]">
+          <Button size="compact">
             Talk To Our Team
           </Button>
         </div>
@@ -91,7 +91,8 @@ export function Navbar() {
               ))}
             </ul>
             <Button
-              className="w-full px-4 py-3 text-[15px] md:text-[15px]"
+              className="w-full"
+              size="compact"
               onClick={closeMenu}
             >
               Talk To Our Team
