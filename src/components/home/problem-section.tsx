@@ -50,8 +50,8 @@ export function ProblemSection() {
             );
           })}
         </div>
-        <div className="mt-10 flex flex-col gap-5 rounded-[18px] bg-brand-blue px-6 py-7 md:mt-[30px] md:flex-row md:items-center md:justify-between md:px-[50px] md:py-[26px]">
-          <p className="max-w-[820px] font-heading text-[28px] leading-[1.05] font-bold text-white md:text-[32px]">
+        <div className="mt-10 flex flex-col gap-5 rounded-[18px] bg-brand-blue px-6 py-7 md:mt-[30px] md:flex-row md:items-center md:justify-between md:px-[30px] md:py-[26px]">
+          <p className="max-w-[820px] font-heading text-[28px] leading-[1.05] font-semibold text-white md:text-[29px]">
             Together, we can reduce water waste and build a more sustainable future
           </p>
           <Button variant="secondary">Let&apos;s Solve Water Challenges Together</Button>
