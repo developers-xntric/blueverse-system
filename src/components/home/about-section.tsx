@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 
 import {
@@ -6,12 +9,17 @@ import {
   ShieldIcon,
   UsersIcon,
 } from "@/components/home/icons";
-import { aboutTabs, aboutValues } from "@/components/home/homepage-data";
+import { aboutPanels, aboutTabs } from "@/components/home/homepage-data";
 import { SectionHeading } from "@/components/home/section-heading";
 
 const icons = [LightbulbIcon, LeafIcon, ShieldIcon, UsersIcon];
 
 export function AboutSection() {
+  const [activeTab, setActiveTab] = useState<(typeof aboutTabs)[number]>(
+    "Our Values",
+  );
+  const activePanel = aboutPanels[activeTab];
+
   return (
     <section id="about" className="bg-brand-ice py-12 md:py-[60px]">
       <div className="homepage-shell">
@@ -21,12 +29,13 @@ export function AboutSection() {
           centered
         />
         <div className="mt-8 grid gap-4 md:grid-cols-3">
-          {aboutTabs.map((tab, index) => (
+          {aboutTabs.map((tab) => (
             <button
               key={tab}
               type="button"
+              onClick={() => setActiveTab(tab)}
               className={`rounded-[8px] border px-6 py-5 font-heading text-[18px] leading-none md:text-[22px] ${
-                index === 0
+                activeTab === tab
                   ? "border-brand-sky bg-brand-sky text-white"
                   : "border-brand-navy/40 bg-transparent text-brand-navy"
               }`}
@@ -38,18 +47,18 @@ export function AboutSection() {
         <div className="mt-6 grid gap-6 xl:grid-cols-[1.07fr_.93fr]">
           <article className="relative overflow-hidden rounded-[10px]">
             <Image
-              src="/figma-assets/about-3.png"
-              alt="Building Tomorrow's Infrastructure, Today"
+              src={activePanel.image}
+              alt={activePanel.overlayTitle}
               width={676}
               height={656}
               className="h-full min-h-[400px] w-full object-cover"
             />
             <div className="absolute inset-x-4 bottom-4 rounded-[10px] bg-[linear-gradient(90deg,rgba(255,255,255,0.45),rgba(255,255,255,0.18))] p-5 backdrop-blur-[6px] md:inset-x-[14px] md:bottom-[14px] md:p-6">
               <h3 className="font-display text-[28px] leading-[1.1] font-bold text-brand-navy md:text-[29px]">
-                Building Tomorrow&apos;s Infrastructure, Today
+                {activePanel.overlayTitle}
               </h3>
               <p className="mt-2 text-[18px] leading-[1.35] text-brand-navy/90 md:text-[19px]">
-                Innovative water solutions for industries and communities.
+                {activePanel.overlayDescription}
               </p>
               <a
                 href="#contact"
@@ -60,7 +69,7 @@ export function AboutSection() {
             </div>
           </article>
           <div className="grid gap-6 md:grid-cols-2">
-            {aboutValues.map((item, index) => {
+            {activePanel.cards.map((item, index) => {
               const Icon = icons[index];
 
               return (

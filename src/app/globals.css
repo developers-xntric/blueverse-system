@@ -90,3 +90,24 @@ textarea {
     0 1px 2px -1px rgba(0, 0, 0, 0.1),
     0 0 0 4px rgba(17, 145, 208, 0.12);
 }
+
+.marquee-track {
+  width: max-content;
+  animation: hero-marquee 28s linear infinite;
+}
+
+@keyframes hero-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 10.5px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}

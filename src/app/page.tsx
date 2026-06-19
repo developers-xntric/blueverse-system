@@ -2,10 +2,8 @@ import {
   AboutSection,
   ContactSection,
   DeploymentSection,
-  Footer,
   HeroSection,
   IndustriesSection,
-  Navbar,
   PartnershipsSection,
   ProblemSection,
   SolutionsSection,
@@ -14,7 +12,6 @@ import {
 export default function Home() {
   return (
     <>
-      <Navbar />
       <HeroSection />
       <main>
         <ProblemSection />
@@ -25,7 +22,6 @@ export default function Home() {
         <DeploymentSection />
         <ContactSection />
       </main>
-      <Footer />
     </>
   );
 }
