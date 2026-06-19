@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #062b4f;
+  --brand-blue: #2162af;
+  --brand-blue-deep: #1d568f;
+  --brand-sky: #1191d0;
+  --brand-sky-deep: #1f62af;
+  --brand-navy: #062b4f;
+  --brand-ice: #d6e8f7;
+  --brand-ice-strong: #e8f4fd;
+  --brand-muted: #4a5565;
+  --brand-soft: #6a7282;
+  --brand-field: #3d5e8f;
+  --brand-line: rgba(6, 43, 79, 0.2);
+  --brand-card-line: rgba(6, 43, 79, 0.32);
+  --brand-green: #5ccb5f;
+  --brand-input: #f9fafb;
+  --brand-input-border: #f3f4f6;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-blue-deep: var(--brand-blue-deep);
+  --color-brand-sky: var(--brand-sky);
+  --color-brand-sky-deep: var(--brand-sky-deep);
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-ice: var(--brand-ice);
+  --color-brand-ice-strong: var(--brand-ice-strong);
+  --color-brand-muted: var(--brand-muted);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-field: var(--brand-field);
+  --color-brand-line: var(--brand-line);
+  --color-brand-card-line: var(--brand-card-line);
+  --color-brand-green: var(--brand-green);
+  --color-brand-input: var(--brand-input);
+  --color-brand-input-border: var(--brand-input-border);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-manrope);
+  --font-display: var(--font-playfair-display);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  transition:
+    color 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 200ms ease;
+}
+
+@utility homepage-shell {
+  @apply mx-auto w-[90%] 2xl:max-w-[1440px];
+}
+
+@utility bg-brand-gradient {
+  background-image: linear-gradient(180deg, var(--brand-sky) 23.381%, var(--brand-sky-deep) 100%);
+}
+
+@utility form-field {
+  @apply w-full rounded-[12px] border border-brand-input-border bg-brand-input px-4 py-[17px] text-[17px] text-brand-field shadow-[0_1px_3px_rgba(0,0,0,0.1),0_1px_2px_-1px_rgba(0,0,0,0.1)] outline-none;
+}
+
+.form-field::placeholder {
+  color: var(--brand-field);
+  opacity: 1;
+}
+
+.form-field:focus {
+  border-color: color-mix(in srgb, var(--brand-sky) 55%, white);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.1),
+    0 1px 2px -1px rgba(0, 0, 0, 0.1),
+    0 0 0 4px rgba(17, 145, 208, 0.12);
+}

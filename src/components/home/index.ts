@@ -1,0 +1,10 @@
+export { AboutSection } from "@/components/home/about-section";
+export { ContactSection } from "@/components/home/contact-section";
+export { DeploymentSection } from "@/components/home/deployment-section";
+export { Footer } from "@/components/home/footer";
+export { HeroSection } from "@/components/home/hero-section";
+export { IndustriesSection } from "@/components/home/industries-section";
+export { Navbar } from "@/components/home/navbar";
+export { PartnershipsSection } from "@/components/home/partnerships-section";
+export { ProblemSection } from "@/components/home/problem-section";
+export { SolutionsSection } from "@/components/home/solutions-section";
