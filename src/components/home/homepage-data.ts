@@ -1,9 +1,9 @@
 export const navLinks = [
   { label: "Home", href: "#top" },
   { label: "About Us", href: "#about" },
-  { label: "Water Treatment", href: "#solutions" },
-  { label: "Vehicle Washing", href: "#solutions" },
-  { label: "ESG Platform", href: "#solutions" },
+  { label: "Water Treatment", href: "/waste-water-treatment-systems" },
+  { label: "Vehicle Washing", href: "/vehicle-washing" },
+  { label: "ESG Platform", href: "/esg-platform" },
   { label: "EPC Solutions", href: "#about" },
   { label: "Contact Us", href: "#contact" },
 ] as const;

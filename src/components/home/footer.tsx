@@ -13,17 +13,17 @@ import {
 
 export function Footer() {
   return (
-    <footer className="bg-brand-blue py-10 text-white md:py-[46px]">
+    <footer className="bg-brand-blue py-8 text-white md:py-[36px]">
       <div className="homepage-shell">
-        <div className="flex flex-col gap-8 xl:flex-row xl:items-center xl:justify-between">
+        <div className="flex flex-col gap-6 md:gap-8 xl:flex-row xl:items-center xl:justify-between">
           <Image
             src="/figma-assets/partner-logo-6.png"
             alt="BlueVerse"
             width={421}
             height={117}
-            className="h-auto w-[210px] md:w-[260px]"
+            className="h-auto w-[170px] md:w-[190px]"
           />
-          <div className="flex flex-wrap gap-6 text-[16px] text-white/60 md:gap-10 md:text-[19px]">
+          <div className="flex flex-col md:flex-row md:flex-wrap gap-3 text-[16px] text-white/60 md:gap-6 md:text-[15px]">
             {navLinks.map((link) => (
               <a key={link.label} href={link.href}>
                 {link.label}
@@ -42,11 +42,11 @@ export function Footer() {
             </SocialLink>
           </div>
         </div>
-        <div className="mt-8 border-t border-white/10 pt-8 md:flex md:items-center md:justify-between">
-          <p className="text-[16px] text-white/60 md:text-[19px]">
+        <div className="mt-8 border-t border-white/10 pt-3 md:pt-8 flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-4 md:gap-0">
+          <p className="text-[16px] text-white/60 md:text-[15px]">
             Copyright 2026 BlueVerse CleanTech Pvt. Ltd. All rights reserved.
           </p>
-          <div className="mt-4 flex flex-wrap gap-5 text-[16px] text-white/60 md:mt-0 md:gap-6 md:text-[19px]">
+          <div className="mt-4 flex flex-col md:flex-row md:flex-wrap gap-3 text-white/60 md:mt-0 md:gap-4 md:text-[15px]">
             {footerServiceLinks.map((item) => (
               <a key={item} href="#solutions">
                 {item}
