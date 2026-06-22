@@ -13,7 +13,7 @@ export function ContactSection() {
           </h2>
           <p className="mx-auto mt-[10px] max-w-[1652px] text-[20px] leading-[1.4] text-brand-muted xl:text-[22px] xl:leading-[1.405]">
             Whether you have a project in mind, a question about our services,
-            or want to explore a partnership — our team is ready to help.
+            or want to explore a partnership our team is ready to help.
           </p>
         </div>
 

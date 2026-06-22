@@ -33,7 +33,7 @@ export function PartnershipsSection() {
               <button
                 type="button"
                 onClick={() => setShowDescriptions((v) => !v)}
-                className="mt-2 inline-flex items-center gap-1 border-b border-white pb-1 font-sans text-[18px] font-medium text-white"
+                className="mt-2 inline-flex items-center cursor-pointer gap-1 border-b border-white pb-1 font-sans text-[18px] font-medium text-white"
               >
                 <span>{showDescriptions ? "Hide" : "Read More"}</span>
                 <span aria-hidden>{showDescriptions ? "↑" : "↓"}</span>

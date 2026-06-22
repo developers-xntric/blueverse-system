@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import type { ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 const featureItems = [
   ["feature-1.svg", "Fully automated washing tunnels and robotic gantry systems"],
@@ -177,7 +177,7 @@ function SystemFeatures() {
     >
       <div className="mx-auto flex 2xl:max-w-360 w-[90%] flex-col gap-7.5">
         <SectionTitle>System Features</SectionTitle>
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 xl:gap-5">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 xl:gap-5">
           {featureItems.map(([icon, label]) => (
             <motion.article
               key={label}
@@ -187,7 +187,7 @@ function SystemFeatures() {
               <span className="relative flex size-12 md:size-[58.145px] items-center justify-center rounded-[19.382px] bg-[#e8f4fd]">
                 <Image src={`/vehicle-assets/${icon}`} alt="" width={30} height={30} className="size-7.5" />
               </span>
-              <p className="max-w-[258.5px] text-[16px] md:text-[18px] font-normal leading-normal tracking-[-0.19px]">{label}</p>
+              <p className="max-w-[258.5px] text-[13px] md:text-[18px] font-normal leading-normal tracking-[-0.19px]">{label}</p>
             </motion.article>
           ))}
         </div>
@@ -197,11 +197,58 @@ function SystemFeatures() {
 }
 
 function WashTypes() {
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [activeDot, setActiveDot] = useState(0);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile) return;
+    const el = carouselRef.current;
+    if (!el) return;
+
+    const updateDot = () => {
+      const cardWidth = el.querySelector("article")?.offsetWidth ?? 280;
+      const gap = 20;
+      const index = Math.round(el.scrollLeft / (cardWidth + gap));
+      setActiveDot(Math.min(index, washTypes.length - 1));
+    };
+
+    el.addEventListener("scroll", updateDot);
+    return () => el.removeEventListener("scroll", updateDot);
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (!isMobile) return;
+    const el = carouselRef.current;
+    if (!el) return;
+
+    const interval = setInterval(() => {
+      const cardWidth = el.querySelector("article")?.offsetWidth ?? 280;
+      const gap = 20;
+      const maxScroll = el.scrollWidth - el.clientWidth;
+
+      if (el.scrollLeft >= maxScroll - 10) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: cardWidth + gap, behavior: "smooth" });
+      }
+    }, 1500);
+
+    return () => clearInterval(interval);
+  }, [isMobile]);
+
   return (
     <MotionSection id="wash-types" className="border-b border-[#dfdfdf] py-8 md:py-17.5">
       <div className="mx-auto flex 2xl:max-w-360 w-[90%] flex-col gap-7.5">
         <SectionTitle>Wash Types Available</SectionTitle>
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div ref={carouselRef} className="flex overflow-x-auto snap-x snap-mandatory gap-5 scrollbar-hide md:grid md:grid-cols-2 xl:grid-cols-4">
           {washTypes.map(([title, description]) => (
             <motion.article
               key={title}
@@ -216,6 +263,25 @@ function WashTypes() {
             </motion.article>
           ))}
         </div>
+        {isMobile && (
+          <div className="flex items-center justify-center gap-2">
+            {washTypes.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => {
+                  const el = carouselRef.current;
+                  if (!el) return;
+                  const cardWidth = el.querySelector("article")?.offsetWidth ?? 280;
+                  el.scrollTo({ left: (cardWidth + 20) * i, behavior: "smooth" });
+                }}
+                className={`size-2.5 rounded-full transition-colors ${
+                  i === activeDot ? "bg-brand-sky" : "bg-brand-navy/30"
+                }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </MotionSection>
   );

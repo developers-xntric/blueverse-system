@@ -259,7 +259,7 @@ export const aboutPanels = {
   },
   "Our Mission": {
     image: "/figma-assets/about-tab2.png",
-   overlayTitle: "Building Tomorrow's Infrastructure, Today",
+    overlayTitle: "Building Tomorrow's Infrastructure, Today",
     overlayDescription:
       "Innovative water solutions for industries and communities.",
     heading: "Our Mission",
@@ -272,7 +272,7 @@ export const aboutPanels = {
   },
   "Our Journey": {
     image: "/figma-assets/about-tab3.png",
-   overlayTitle: "Building Tomorrow's Infrastructure, Today",
+    overlayTitle: "Building Tomorrow's Infrastructure, Today",
     overlayDescription:
       "Innovative water solutions for industries and communities.",
     timeline: [
@@ -293,8 +293,7 @@ export const aboutPanels = {
       },
       {
         year: "2025",
-        description:
-          "Launched UAE B2C car care centre at Al Quoz, Dubai",
+        description: "Launched UAE B2C car care centre at Al Quoz, Dubai",
       },
       {
         year: "2026",
@@ -341,7 +340,7 @@ export const deploymentHighlights = [
   "15+ operational Vehicle Washing centres across India and UAE",
   "8 MLD+ wastewater treatment plants deployed or undergoing deployment",
   "50 MLD+ order pipeline for wastewater treatment capacity",
-  "UAE's first and most sustainable car care centre - Al Quoz, Dubai",
+  "UAE's first and most sustainable car care centre - Al -uoz -Duba",
   "Targeting 100+ BlueVerse centres by 2027",
 ] as const;
 

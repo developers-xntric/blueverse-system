@@ -62,7 +62,7 @@ export function HeroSection() {
               </Button>
               <a
                 href={heroContent.secondaryCta.href}
-                className="inline-flex items-center justify-center gap-2 rounded-[5px] border border-white px-6 py-3 font-heading text-[17px] font-medium text-white hover:bg-white/10 md:text-[20px]"
+                className="inline-flex items-center justify-center gap-2 rounded-[5px] border border-white px-6 py-3 font-heading text-[17px] font-medium text-white hover:text-[#1191D0] hover:bg-white md:text-[20px]"
               >
                 <span>{heroContent.secondaryCta.label}</span>
                 <span aria-hidden>{"->"}</span>
