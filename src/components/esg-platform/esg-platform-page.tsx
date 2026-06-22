@@ -60,7 +60,7 @@ function SectionCard({
 function Hero() {
   return (
     <section className="bg-white">
-      <div className="mx-auto grid w-[90%] 2xl:max-w-360 items-center gap-8 py-15.5 lg:grid-cols-[1fr_810px]">
+      <div className="mx-auto grid w-[90%] 2xl:max-w-360 items-center gap-8 py-8 md:py-15.5 lg:grid-cols-[1fr_810px]">
         <motion.div
           initial={{ opacity: 0, x: -18 }}
           animate={{ opacity: 1, x: 0 }}
@@ -106,7 +106,7 @@ export function EsgPlatformPage() {
     <div className="bg-white text-black">
       <main>
         <Hero />
-        <section className="border-t border-transparent pb-22.5">
+        <section className="border-t border-transparent pb-8 md:pb-22.5">
           <div className="mx-auto grid w-[90%] max-w-360 gap-5 lg:grid-cols-3">
             <SectionCard icon="/esg-assets/card-1.png" title="What It Tracks" items={whatItTracks} />
             <SectionCard icon="/esg-assets/card-2.png" title="Platform Capabilities" items={capabilities} />
