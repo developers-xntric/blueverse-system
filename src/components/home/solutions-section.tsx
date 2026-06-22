@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { Button } from "@/components/home/button";
 import { CarIcon, ChartIcon, WavesIcon } from "@/components/home/icons";
@@ -20,11 +21,12 @@ export function SolutionsSection() {
             const Icon = icons[index];
 
             return (
-              <article
+              <Link
                 key={solution.title}
-                className="rounded-[20px] bg-white p-[24px] shadow-[0_12px_24px_rgba(6,43,79,0.12)]"
+                href={solution.href}
+                className="block rounded-[10px] md:rounded-[20px] bg-white p-3 md:p-[24px] shadow-[0_12px_24px_rgba(6,43,79,0.12)] transition-shadow hover:shadow-[0_16px_32px_rgba(6,43,79,0.18)]"
               >
-                <div className="relative h-[295px] overflow-hidden rounded-[12px]">
+                <div className="relative h-[250px] md:h-[295px] overflow-hidden rounded-[12px]">
                   <Image
                     src={solution.image}
                     alt={solution.title}
@@ -37,19 +39,19 @@ export function SolutionsSection() {
                   <div className="-mt-7 ml-[6px] flex size-[47px] items-center justify-center rounded-[16px] bg-[#E8F4FD] text-brand-navy shadow-[0_8px_16px_rgba(6,43,79,0.12)]">
                     <Icon className="size-[24px]" />
                   </div>
-                  <h3 className="mt-3 font-heading text-[23px] leading-[1.15] font-bold text-[#062B4F]">
+                  <h3 className="mt-3 font-heading text-[18px] md:text-[23px] leading-[1.15] font-bold text-[#062B4F]">
                     {solution.title}
                   </h3>
-                  <p className="mt-3 text-[16px] leading-[1.45] text-brand-muted">
+                  <p className="mt-3 text-[14px] md:text-[16px] leading-[1.45] text-brand-muted">
                     {solution.description}
                   </p>
                 </div>
-              </article>
+              </Link>
             );
           })}
         </div>
         <div className="mx-auto mt-12 max-w-[1023px] text-center">
-          <p className="font-heading text-[34px] leading-[1.15] font-bold text-brand-navy md:text-[35px]">
+          <p className="font-heading text-[22px] leading-[1.15] font-bold text-brand-navy md:text-[35px]">
             From Water Treatment to Smart Washing and ESG Reporting,
              BlueVerse brings every solution together.
           </p>

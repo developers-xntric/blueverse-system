@@ -14,7 +14,7 @@ export function SectionHeading({
   light = false,
 }: SectionHeadingProps) {
   return (
-    <div className={centered ? "text-center" : ""}>
+    <div className={centered ? "md:text-center" : ""}>
       {eyebrow ? (
         <p
           className={`font-sans text-[12px] font-medium uppercase  md:text-[18px] ${
@@ -25,7 +25,7 @@ export function SectionHeading({
         </p>
       ) : null}
       <h2
-        className={`${eyebrow ? "mt-2" : ""} font-heading text-[36px] leading-[1.05] font-bold md:text-[40px] ${
+        className={`${eyebrow ? "mt-2" : ""} font-heading text-[24px] leading-[1.05] font-bold md:text-[40px] ${
           light ? "text-white" : "text-[#062B4F]"
         }`}
       >
@@ -33,7 +33,7 @@ export function SectionHeading({
       </h2>
       {description ? (
         <p
-          className={`mx-auto mt-3 max-w-245 text-[17px] leading-[1.4] md:text-[22px] ${
+          className={`mx-auto mt-3 max-w-245 text-[16px] leading-[1.4] md:text-[22px] ${
             light ? "text-white/75" : "text-[#062B4F]"
           }`}
         >
