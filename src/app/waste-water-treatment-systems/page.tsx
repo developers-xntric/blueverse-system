@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
 
 import {
-  AboutBlueverseSection,
-  BuiltForEveryScaleSection,
-  ContactSection,
-  DeploymentHighlightsSection,
-  ElectroxSection,
-  EpcFocusAreasSection,
-  HeroOverviewSection,
-  IndustriesSection,
-  PartnershipsSection,
+    BuiltForEveryScaleSection,
+    ElectroxSection,
+    EpcFocusAreasSection,
+    HeroOverviewSection
 } from "@/components/waste-water-treatment";
 
 export const metadata: Metadata = {
@@ -25,12 +20,6 @@ export default function WasteWaterTreatmentSystemsPage() {
       <EpcFocusAreasSection />
       <ElectroxSection />
       <BuiltForEveryScaleSection />
-      {/* 
-      <IndustriesSection />
-      <AboutBlueverseSection />
-      <PartnershipsSection />
-      <DeploymentHighlightsSection />
-      <ContactSection /> */}
     </main>
   );
 }
