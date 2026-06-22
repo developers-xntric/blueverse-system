@@ -13,7 +13,7 @@ import {
 
 export function Footer() {
   return (
-    <footer className="bg-brand-blue py-8 text-white md:py-[36px]">
+    <footer className="bg-brand-blue py-8 text-white md:py-9">
       <div className="homepage-shell">
         <div className="flex flex-col gap-6 md:gap-8 xl:flex-row xl:items-center xl:justify-between">
           <Image
@@ -21,7 +21,7 @@ export function Footer() {
             alt="BlueVerse"
             width={421}
             height={117}
-            className="h-auto w-[170px] md:w-[190px]"
+            className="h-auto w-42.5 md:w-47.5"
           />
           <div className="flex flex-col md:flex-row md:flex-wrap gap-3 text-[16px] text-white/60 md:gap-6 md:text-[15px]">
             {navLinks.map((link) => (
@@ -32,13 +32,13 @@ export function Footer() {
           </div>
           <div className="flex gap-4">
             <SocialLink label="LinkedIn">
-              <LinkedinIcon className="size-[24px]" />
+              <LinkedinIcon className="size-6" />
             </SocialLink>
             <SocialLink label="Twitter">
-              <TwitterIcon className="size-[24px]" />
+              <TwitterIcon className="size-6" />
             </SocialLink>
             <SocialLink label="Instagram">
-              <InstagramIcon className="size-[24px]" />
+              <InstagramIcon className="size-6" />
             </SocialLink>
           </div>
         </div>
