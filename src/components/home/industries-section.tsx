@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 import { ArrowUpRightIcon } from "@/components/home/icons";
@@ -12,6 +12,35 @@ export function IndustriesSection() {
   const [activeIndustry, setActiveIndustry] = useState<number | null>(null);
   const selectedIndustry =
     activeIndustry === null ? null : industries[activeIndustry];
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  useEffect(() => {
+    if (activeIndustry !== null || !isMobile) return;
+    const el = carouselRef.current;
+    if (!el) return;
+
+    const interval = setInterval(() => {
+      const cardWidth = el.querySelector("button")?.offsetWidth ?? 280;
+      const gap = 24;
+      const maxScroll = el.scrollWidth - el.clientWidth;
+
+      if (el.scrollLeft >= maxScroll - 10) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: cardWidth + gap, behavior: "smooth" });
+      }
+    }, 1500);
+
+    return () => clearInterval(interval);
+  }, [activeIndustry, isMobile]);
 
   return (
     <section id="industries" className="bg-white py-14">
@@ -23,13 +52,13 @@ export function IndustriesSection() {
         />
         {selectedIndustry ? (
           <div className="mt-10">
-            <div className="md:grid flex flex-wrap gap-2 md:gap-4 md:grid-cols-3 xl:grid-cols-6">
+            <div className="flex overflow-x-auto flex-nowrap gap-2 md:grid md:gap-4 md:grid-cols-3 xl:grid-cols-6">
               {industries.map((industry, index) => (
                 <button
                   key={industry.title}
                   type="button"
                   onClick={() => setActiveIndustry(index)}
-                  className={`rounded-[8px] border px-4 py-4 font-heading text-[13px] md:text-[16px] leading-tight 2xl:text-[19px] ${
+                  className={`rounded-[8px] border px-4 md:px-4 py-4 font-heading text-[13px] md:text-[16px] leading-tight 2xl:text-[19px] ${
                     index === activeIndustry
                       ? "border-brand-sky bg-brand-sky text-white"
                       : "border-brand-navy/40 bg-transparent text-brand-navy"
@@ -39,14 +68,14 @@ export function IndustriesSection() {
                 </button>
               ))}
             </div>
-            <div className="mt-6 grid gap-12 xl:grid-cols-[1.07fr_.93fr]">
+            <div className="mt-6 grid gap-6 md:gap-12 xl:grid-cols-[1.07fr_.93fr]">
               <article className="relative overflow-hidden rounded-[10px] md:rounded-[20px]">
                 <Image
                   src={selectedIndustry.image}
                   alt={selectedIndustry.title}
                   width={676}
                   height={656}
-                  className=" md:min-h-[500px] max-h-[520px] w-full object-cover"
+                  className=" min-h-[250px] md:min-h-[500px] max-h-[520px] w-full object-cover"
                 />
               </article>
               <div className="flex flex-col items-start justify-between bg-transparent ">
@@ -68,13 +97,13 @@ export function IndustriesSection() {
             </div>
           </div>
         ) : (
-          <div className="mt-10 grid gap-[24px] xl:grid-cols-3 xl:gap-[25px]">
+          <div ref={carouselRef} className="mt-10 flex overflow-x-auto snap-x snap-mandatory gap-[24px] md:grid xl:grid-cols-3 xl:gap-[25px] md:gap-[24px]">
             {industries.map((industry, index) => (
               <button
                 key={industry.title}
                 type="button"
                 onClick={() => setActiveIndustry(index)}
-                className="grid grid-rows-2 overflow-hidden rounded-[20px] border border-brand-card-line bg-white text-left transition-colors duration-200 hover:border-brand-sky"
+                className="min-w-[280px] snap-start md:min-w-0 grid grid-rows-2 overflow-hidden rounded-[10px] md:rounded-[20px] border border-brand-card-line bg-white text-left transition-colors duration-200 hover:border-brand-sky"
               >
                 <div className="relative overflow-hidden">
                   <Image

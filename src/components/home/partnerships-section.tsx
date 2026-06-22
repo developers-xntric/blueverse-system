@@ -1,9 +1,14 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 
 import { partners } from "@/components/home/homepage-data";
 import { SectionHeading } from "@/components/home/section-heading";
 
 export function PartnershipsSection() {
+  const [showDescriptions, setShowDescriptions] = useState(false);
+
   return (
     <section className="bg-gradient-to-br from-[#2162AF] to-[#0A3D6B] py-12 md:py-[30px]">
       <div className="homepage-shell">
@@ -25,16 +30,19 @@ export function PartnershipsSection() {
               <p className="font-heading text-[22px] font-bold uppercase tracking-[0.04em] text-white">
                 {partner.name}
               </p>
-              <a
-                href="#contact"
+              <button
+                type="button"
+                onClick={() => setShowDescriptions((v) => !v)}
                 className="mt-2 inline-flex items-center gap-1 border-b border-white pb-1 font-sans text-[18px] font-medium text-white"
               >
-                <span>Read More</span>
-                <span aria-hidden>↓</span>
-              </a>
-              <p className="mt-4 text-[15px] 2xl:text-[16px] leading-[1.35] text-white/80">
-                {partner.description}
-              </p>
+                <span>{showDescriptions ? "Hide" : "Read More"}</span>
+                <span aria-hidden>{showDescriptions ? "↑" : "↓"}</span>
+              </button>
+              {showDescriptions && (
+                <p className="mt-4 text-[15px] 2xl:text-[16px] leading-[1.35] text-white/80">
+                  {partner.description}
+                </p>
+              )}
             </article>
           ))}
         </div>

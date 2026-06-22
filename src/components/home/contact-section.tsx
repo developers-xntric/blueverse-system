@@ -67,7 +67,7 @@ export function ContactSection() {
               return (
                 <article
                   key={office.title}
-                  className="rounded-[19px] bg-white p-4 md:p-8 shadow-[0_1px_3px_rgba(0,0,0,0.08)]"
+                  className="rounded-[10px] md:rounded-[19px] bg-white p-4 md:p-8 shadow-[0_1px_3px_rgba(0,0,0,0.08)]"
                 >
                   <div className="flex size-[48px] items-center justify-center rounded-full bg-brand-ice text-brand-navy">
                     <Icon className="size-[24px]" />
@@ -75,7 +75,7 @@ export function ContactSection() {
                   <h3 className="mt-4 md:mt-8 font-display text-[24px] md:text-[29px] font-bold leading-none text-brand-navy">
                     {office.title}
                   </h3>
-                  <p className="mt-4 text-[17px]  md:text-[19px] leading-[1.5] text-brand-soft">
+                  <p className="mt-4 text-[16px]  md:text-[19px] leading-[1.5] text-brand-soft">
                     {office.address}
                   </p>
                 </article>
@@ -84,7 +84,7 @@ export function ContactSection() {
           </div>
           <form
             onSubmit={handleSubmit}
-            className="rounded-[29px] bg-white px-5 py-6 shadow-[0_1px_3px_rgba(0,0,0,0.08)] sm:px-6 sm:py-8 md:px-[30px] md:py-[40px]"
+            className="rounded-[10px] md:rounded-[29px] bg-white px-5 py-6 shadow-[0_1px_3px_rgba(0,0,0,0.08)] sm:px-6 sm:py-8 md:px-[30px] md:py-[40px]"
           >
             <div className="grid gap-5 sm:grid-cols-2 md:gap-[20px]">
               <Field label="Full Name">
