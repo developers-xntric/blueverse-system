@@ -1,10 +1,17 @@
 import Image from "next/image";
 
-import { electroxProcesses } from "@/components/waste-water-treatment/data";
+import type { ElectroxProcess } from "@/types/cms";
+import { electroxProcesses as fallbackProcesses } from "@/components/waste-water-treatment/data";
 
-export function ElectroxSection() {
+type ElectroxSectionProps = {
+  processes?: readonly ElectroxProcess[] | ElectroxProcess[];
+};
+
+export function ElectroxSection({ processes }: ElectroxSectionProps) {
+  const processList = processes && processes.length > 0 ? processes : fallbackProcesses;
+
   return (
-    <section className="bg-brand-ice-strongpy-12 md:py-15 2xl:max-w-360 w-[90%] mx-auto">
+    <section className="bg-brand-ice-strong py-12 md:py-15 2xl:max-w-360 w-[90%] mx-auto">
       <div className="mx-auto max-w-[1652px]">
         <div className="grid xl:grid-cols-2 xl:items-start">
           <div>
@@ -25,7 +32,7 @@ export function ElectroxSection() {
         </div>
 
         <div className="mt-10 grid gap-8 md:grid-cols-2 xl:grid-cols-6 xl:gap-5">
-          {electroxProcesses.map((process) => (
+          {processList.map((process) => (
             <article key={process.title} className="xl:px-5">
               <div className="flex size-10 items-center justify-center rounded-full bg-white">
                 <Image src={process.icon} alt="" width={30} height={30} />

@@ -5,10 +5,24 @@ import { useState } from "react";
 import Image from "next/image";
 
 import { Button } from "@/components/home/button";
-import { navLinks } from "@/components/home/homepage-data";
+import { navLinks as fallbackNavLinks } from "@/components/home/homepage-data";
+import type { NavLink } from "@/types/cms";
 
-export function Navbar() {
+type NavbarProps = {
+  navLinks?: readonly NavLink[] | NavLink[];
+  logo?: string;
+  logoAlt?: string;
+  ctaLabel?: string;
+};
+
+export function Navbar({
+  navLinks: navLinksProp,
+  logo,
+  logoAlt,
+  ctaLabel,
+}: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const links = navLinksProp && navLinksProp.length > 0 ? navLinksProp : fallbackNavLinks;
 
   const closeMenu = () => setIsMenuOpen(false);
 
@@ -17,8 +31,8 @@ export function Navbar() {
       <div className="homepage-shell flex min-h-[84px] items-center justify-between gap-6 py-4 xl:min-h-[98px] xl:py-0">
         <a href="/" className="shrink-0" onClick={closeMenu}>
           <Image
-            src="/figma-assets/hero-logo.png"
-            alt="BlueVerse"
+            src={logo ?? "/figma-assets/hero-logo.png"}
+            alt={logoAlt ?? "BlueVerse"}
             width={195}
             height={50}
             className="h-auto w-[150px] md:w-[180px] 2xl:w-[195px]"
@@ -27,7 +41,7 @@ export function Navbar() {
         </a>
         <nav aria-label="Primary" className="hidden xl:block">
           <ul className="flex items-center gap-8 text-[13px] 2xl:text-[15px] font-medium text-white">
-            {navLinks.map((link) => (
+            {links.map((link) => (
               <li key={link.label}>
                 <a href={link.href} className="hover:text-white/75">
                   {link.label}
@@ -38,7 +52,7 @@ export function Navbar() {
         </nav>
         <div className="hidden shrink-0 xl:block">
           <Button size="compact">
-            Talk To Our Team
+            {ctaLabel ?? "Talk To Our Team"}
           </Button>
         </div>
         <button
@@ -78,7 +92,7 @@ export function Navbar() {
             className="homepage-shell flex flex-col gap-6 py-6"
           >
             <ul className="flex flex-col gap-4 text-[16px] font-medium text-white">
-              {navLinks.map((link) => (
+              {links.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
@@ -95,7 +109,7 @@ export function Navbar() {
               size="compact"
               onClick={closeMenu}
             >
-              Talk To Our Team
+              {ctaLabel ?? "Talk To Our Team"}
             </Button>
           </nav>
         </div>

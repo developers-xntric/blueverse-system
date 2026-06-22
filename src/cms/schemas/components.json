@@ -1,0 +1,48 @@
+[
+  {
+    "collectionName": "components_shared_hero",
+    "info": { "displayName": "Hero", "icon": "star" },
+    "category": "shared",
+    "attributes": {
+      "title": { "type": "string", "required": true },
+      "description": { "type": "text", "required": true },
+      "primaryCtaLabel": { "type": "string" },
+      "primaryCtaHref": { "type": "string" },
+      "secondaryCtaLabel": { "type": "string" },
+      "secondaryCtaHref": { "type": "string" }
+    }
+  },
+  {
+    "collectionName": "components_shared_seo",
+    "info": { "displayName": "SEO", "icon": "search" },
+    "category": "shared",
+    "attributes": {
+      "metaTitle": { "type": "string" },
+      "metaDescription": { "type": "text" },
+      "ogTitle": { "type": "string" },
+      "ogDescription": { "type": "text" },
+      "ogImage": { "type": "media", "allowedTypes": ["images"] },
+      "twitterCard": { "type": "string" },
+      "canonicalURL": { "type": "string" },
+      "structuredData": { "type": "json" }
+    }
+  },
+  {
+    "collectionName": "components_shared_nav_link",
+    "info": { "displayName": "Nav Link", "icon": "link" },
+    "category": "shared",
+    "attributes": {
+      "label": { "type": "string", "required": true },
+      "href": { "type": "string", "required": true }
+    }
+  },
+  {
+    "collectionName": "components_shared_office",
+    "info": { "displayName": "Office", "icon": "pin" },
+    "category": "shared",
+    "attributes": {
+      "title": { "type": "string", "required": true },
+      "address": { "type": "text", "required": true }
+    }
+  }
+]

@@ -1,0 +1,125 @@
+[
+  {
+    "collectionName": "global-setting",
+    "info": { "singularName": "global-setting", "pluralName": "global-settings", "displayName": "Global Setting" },
+    "options": {},
+    "attributes": {
+      "title": { "type": "string", "required": true, "default": "BlueVerse | Water Infrastructure Landing Page" },
+      "description": { "type": "text", "required": true },
+      "ogTitle": { "type": "string" },
+      "ogDescription": { "type": "text" },
+      "ogImage": { "type": "media", "allowedTypes": ["images"] },
+      "twitterCard": { "type": "string" }
+    }
+  },
+  {
+    "collectionName": "navbar",
+    "info": { "singularName": "navbar", "pluralName": "navbars", "displayName": "Navbar" },
+    "options": {},
+    "attributes": {
+      "logo": { "type": "string", "default": "/figma-assets/hero-logo.png" },
+      "logoAlt": { "type": "string", "default": "BlueVerse" },
+      "navLinks": { "type": "json", "required": true },
+      "ctaLabel": { "type": "string", "default": "Talk To Our Team" }
+    }
+  },
+  {
+    "collectionName": "footer",
+    "info": { "singularName": "footer", "pluralName": "footers", "displayName": "Footer" },
+    "options": {},
+    "attributes": {
+      "logo": { "type": "string", "default": "/figma-assets/partner-logo-6.png" },
+      "navLinks": { "type": "json" },
+      "serviceLinks": { "type": "json" },
+      "copyright": { "type": "string", "default": "Copyright 2026 BlueVerse CleanTech Pvt. Ltd. All rights reserved." },
+      "socialLinks": { "type": "json" }
+    }
+  },
+  {
+    "collectionName": "home-page",
+    "info": { "singularName": "home-page", "pluralName": "home-pages", "displayName": "Home Page" },
+    "options": {},
+    "attributes": {
+      "hero": { "type": "component", "component": "shared.hero" },
+      "marqueeLogos": { "type": "json" },
+      "heroPartners": { "type": "json" },
+      "stats": { "type": "json" },
+      "challenges": { "type": "json" },
+      "solutions": { "type": "json" },
+      "industries": { "type": "json" },
+      "aboutTabs": { "type": "json" },
+      "partners": { "type": "json" },
+      "deploymentHighlights": { "type": "json" },
+      "offices": { "type": "json" },
+      "footerServiceLinks": { "type": "json" },
+      "navLinks": { "type": "json" },
+      "seo": { "type": "component", "component": "shared.seo" }
+    }
+  },
+  {
+    "collectionName": "waste-water-treatment-page",
+    "info": { "singularName": "waste-water-treatment-page", "pluralName": "waste-water-treatment-pages", "displayName": "Waste Water Treatment Page" },
+    "options": {},
+    "attributes": {
+      "hero": { "type": "json" },
+      "stats": { "type": "json" },
+      "epcFocusAreas": { "type": "json" },
+      "electroxProcesses": { "type": "json" },
+      "scaleCards": { "type": "json" },
+      "ecosystemProducts": { "type": "json" },
+      "industries": { "type": "json" },
+      "aboutValues": { "type": "json" },
+      "partnerships": { "type": "json" },
+      "deploymentHighlights": { "type": "json" },
+      "offices": { "type": "json" }
+    }
+  },
+  {
+    "collectionName": "vehicle-washing-page",
+    "info": { "singularName": "vehicle-washing-page", "pluralName": "vehicle-washing-pages", "displayName": "Vehicle Washing Page" },
+    "options": {},
+    "attributes": {
+      "hero": { "type": "json" },
+      "features": { "type": "json" },
+      "washTypes": { "type": "json" },
+      "businessModels": { "type": "json" },
+      "regionalCards": { "type": "json" }
+    }
+  },
+  {
+    "collectionName": "esg-platform-page",
+    "info": { "singularName": "esg-platform-page", "pluralName": "esg-platform-pages", "displayName": "ESG Platform Page" },
+    "options": {},
+    "attributes": {
+      "hero": { "type": "json" },
+      "whatItTracks": { "type": "json" },
+      "capabilities": { "type": "json" },
+      "pricingModel": { "type": "json" }
+    }
+  },
+  {
+    "collectionName": "contact-form",
+    "info": { "singularName": "contact-form", "pluralName": "contact-forms", "displayName": "Contact Form" },
+    "options": {},
+    "attributes": {
+      "heading": { "type": "string" },
+      "description": { "type": "text" },
+      "offices": { "type": "json" },
+      "submitLabel": { "type": "string" },
+      "submittingLabel": { "type": "string" },
+      "successMessage": { "type": "string" },
+      "errorMessage": { "type": "string" }
+    }
+  },
+  {
+    "collectionName": "wwtp-contact-form",
+    "info": { "singularName": "wwtp-contact-form", "pluralName": "wwtp-contact-forms", "displayName": "WWTP Contact Form" },
+    "options": {},
+    "attributes": {
+      "heading": { "type": "string" },
+      "description": { "type": "text" },
+      "offices": { "type": "json" },
+      "submitLabel": { "type": "string" }
+    }
+  }
+]

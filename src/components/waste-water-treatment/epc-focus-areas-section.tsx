@@ -1,6 +1,13 @@
-import { epcFocusAreas } from "@/components/waste-water-treatment/data";
+import type { EpcFocusArea } from "@/types/cms";
+import { epcFocusAreas as fallbackAreas } from "@/components/waste-water-treatment/data";
 
-export function EpcFocusAreasSection() {
+type EpcFocusAreasSectionProps = {
+  areas?: readonly EpcFocusArea[] | EpcFocusArea[];
+};
+
+export function EpcFocusAreasSection({ areas }: EpcFocusAreasSectionProps) {
+  const focusAreas = areas && areas.length > 0 ? areas : fallbackAreas;
+
   return (
     <section className="bg-white py-12 2xl:max-w-360 w-[90%] mx-auto">
       <div className="mx-auto">
@@ -9,7 +16,7 @@ export function EpcFocusAreasSection() {
         </h2>
 
         <div className="mt-12.5 grid gap-7.5 xl:grid-cols-2">
-          {epcFocusAreas.map((area) => (
+          {focusAreas.map((area) => (
             <article
               key={area.title}
               className="rounded-2xl border border-black/20 bg-black/2 px-10 py-5"
@@ -39,9 +46,7 @@ export function EpcFocusAreasSection() {
           <p className="font-heading text-[32px] leading-[1.06] font-bold xl:text-[24px] xl:leading-[1.16] text-brand-navy text-balance">
             Delivering end-to-end water infrastructure solutions from design and procurement to construction and deployment.
           </p>
-          <button
-            className="w-82.5 cursor-pointer hover:bg-[#1191d0]/90 rounded-[5px] border border-white bg-[#1191d0]  py-3 font-heading text-[16px] font-medium text-white text-center"
-          >
+          <button className="w-82.5 cursor-pointer hover:bg-[#1191d0]/90 rounded-[5px] border border-white bg-[#1191d0] py-3 font-heading text-[16px] font-medium text-white text-center">
             Let&apos;s Discuss Your Project
           </button>
         </div>

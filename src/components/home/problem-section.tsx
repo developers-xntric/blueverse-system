@@ -4,13 +4,50 @@ import {
   NetworkIcon,
   WaterScarcityIcon,
 } from "@/components/home/icons";
-import { challenges } from "@/components/home/homepage-data";
+import type { Challenge } from "@/types/cms";
 import { SectionHeading } from "@/components/home/section-heading";
 import { Button } from "@/components/home/button";
 
 const icons = [WaterScarcityIcon, FactoryIcon, BadgeIcon, NetworkIcon];
 
-export function ProblemSection() {
+type ProblemSectionProps = {
+  challenges?: readonly Challenge[] | Challenge[];
+};
+
+export function ProblemSection({ challenges = [] }: ProblemSectionProps) {
+  const challengesList = challenges.length > 0
+    ? challenges
+    : [
+        {
+          title: "Water Scarcity",
+          points: [
+            "Operating in one of the world's most water-stressed regions",
+            "70-90% wastewater still discharged",
+          ],
+        },
+        {
+          title: "Industrial Water Waste",
+          points: [
+            "Traditional vehicle washing uses 120-180 litres of water per wash.",
+            "Industrial washing generates high-COD/TSS effluent",
+          ],
+        },
+        {
+          title: "ESG Compliance",
+          points: [
+            "India, UAE, KSA, and Qatar enforcing ESG reporting mandates",
+            "Companies lack real-time Scope 1, 2, 3 water metrics",
+          ],
+        },
+        {
+          title: "A Fragmented Market",
+          points: [
+            "Disconnected solutions",
+            "Multiple vendors for vehicle washing, water treatment & ESG reporting",
+          ],
+        },
+      ];
+
   return (
     <section className="bg-white py-12 md:py-[50px]">
       <div className="homepage-shell">
@@ -19,7 +56,7 @@ export function ProblemSection() {
           title="Challenges Driving the Need for Change"
         />
         <div className="mt-7 md:mt-10 grid gap-8 md:grid-cols-2 xl:grid-cols-4 xl:gap-0">
-          {challenges.map((challenge, index) => {
+          {challengesList.map((challenge, index) => {
             const Icon = icons[index];
 
             return (

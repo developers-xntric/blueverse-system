@@ -1,11 +1,23 @@
 import Image from "next/image";
 
+import type { ScaleCard, EcosystemProduct } from "@/types/cms";
 import {
-  ecosystemProducts,
-  scaleCards,
+  scaleCards as fallbackScaleCards,
+  ecosystemProducts as fallbackEcosystemProducts,
 } from "@/components/waste-water-treatment/data";
 
-export function BuiltForEveryScaleSection() {
+type BuiltForEveryScaleSectionProps = {
+  scaleCards?: readonly ScaleCard[] | ScaleCard[];
+  ecosystemProducts?: readonly EcosystemProduct[] | EcosystemProduct[];
+};
+
+export function BuiltForEveryScaleSection({
+  scaleCards,
+  ecosystemProducts,
+}: BuiltForEveryScaleSectionProps) {
+  const cards = scaleCards && scaleCards.length > 0 ? scaleCards : fallbackScaleCards;
+  const products = ecosystemProducts && ecosystemProducts.length > 0 ? ecosystemProducts : fallbackEcosystemProducts;
+
   return (
     <section className="border-b border-[#dfdfdf] bg-white 2xl:max-w-360 w-[90%] mx-auto py-12 md:py-15">
       <div className="mx-auto max-w-[1652px]">
@@ -19,7 +31,7 @@ export function BuiltForEveryScaleSection() {
         </div>
 
         <div className="mt-7.5 grid gap-4 xl:grid-cols-4">
-          {scaleCards.map((card) => (
+          {cards.map((card) => (
             <article
               key={card.code}
               className="overflow-hidden rounded-[20px] border border-[#dbdbdb] bg-white"
@@ -49,7 +61,7 @@ export function BuiltForEveryScaleSection() {
         </div>
 
         <div className="mt-5 grid gap-5 xl:grid-cols-3">
-          {ecosystemProducts.map((product) => (
+          {products.map((product) => (
             <article
               key={product.title}
               className="rounded-[19px] border border-[#dbdbdb] bg-white px-5 py-7.5"

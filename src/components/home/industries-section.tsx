@@ -5,13 +5,62 @@ import Image from "next/image";
 
 import { ArrowUpRightIcon } from "@/components/home/icons";
 import { Button } from "@/components/home/button";
-import { industries } from "@/components/home/homepage-data";
+import type { Industry } from "@/types/cms";
 import { SectionHeading } from "@/components/home/section-heading";
 
-export function IndustriesSection() {
+type IndustriesSectionProps = {
+  industries?: readonly Industry[] | Industry[];
+};
+
+const fallbackIndustries: Industry[] = [
+  {
+    title: "Hotels & Hospitality",
+    image: "/figma-assets/industries-7.png",
+    points: ["Wastewater recycling for laundry, kitchens, landscaping", "ESG reporting for corporate sustainability targets"],
+    description: "BlueVerse CleanTech helps hotels, resorts, and hospitality groups make water efficiency a part of everyday operations without compromising guest comfort, hygiene standards, or service quality.",
+    details: [],
+  },
+  {
+    title: "Vehicle Wash",
+    image: "/figma-assets/industries-2.png",
+    points: ["Automated wash tunnels with water recycling", "WaaS (Wash-as-a-Service) subscription model"],
+    description: "Vehicle wash operations require large volumes of water every day, making efficient treatment and reuse essential for long-term profitability and sustainability.",
+    details: [],
+  },
+  {
+    title: "Industrial Facilities",
+    image: "/figma-assets/industry-facilities.png",
+    points: ["Effluent treatment for manufacturing, logistics", "JAFZA, KIZAD, EGA zone compliance"],
+    description: "Industrial facilities face growing pressure to manage water more responsibly while maintaining productivity, compliance, and operational continuity.",
+    details: [],
+  },
+  {
+    title: "Malls & Commercial Real Estate",
+    image: "/figma-assets/industry-tab-malls.png",
+    points: ["Water recycling for facility management", "ESG dashboards for LEED/Estidama compliance"],
+    description: "Malls and commercial real estate developments rely on water for cooling, cleaning, landscaping, sanitation, and daily facility operations.",
+    details: [],
+  },
+  {
+    title: "Government & Municipalities",
+    image: "/figma-assets/industry-tab-government.png",
+    points: ["Aligned with UAE Water Security Strategy 2036", "Saudi Water Vision 2030 Policy Support"],
+    description: "BlueVerse CleanTech partners with government entities and municipalities to support sustainable water management across public infrastructure, communities, and civic facilities.",
+    details: [],
+  },
+  {
+    title: "Developers & Master Planners",
+    image: "/figma-assets/industries-4.png",
+    points: ["Built-in water reuse infrastructure", "Aldar, Emaar, Nakheel, Deyaar partnerships"],
+    description: "Sustainable communities begin with smart planning. BlueVerse CleanTech works with developers, consultants, and master planners to integrate water efficiency, wastewater reuse, and circular resource strategies.",
+    details: [],
+  },
+];
+
+export function IndustriesSection({ industries }: IndustriesSectionProps) {
   const [activeIndustry, setActiveIndustry] = useState<number | null>(null);
-  const selectedIndustry =
-    activeIndustry === null ? null : industries[activeIndustry];
+  const industriesList = industries && industries.length > 0 ? industries : fallbackIndustries;
+  const selectedIndustry = activeIndustry === null ? null : industriesList[activeIndustry];
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -53,7 +102,7 @@ export function IndustriesSection() {
         {selectedIndustry ? (
           <div className="mt-10">
             <div className="flex overflow-x-auto flex-nowrap gap-2 md:grid md:gap-4 md:grid-cols-3 xl:grid-cols-6">
-              {industries.map((industry, index) => (
+              {industriesList.map((industry, index) => (
                 <button
                   key={industry.title}
                   type="button"
@@ -75,13 +124,13 @@ export function IndustriesSection() {
                   alt={selectedIndustry.title}
                   width={676}
                   height={656}
-                  className=" min-h-[250px] md:min-h-[500px] max-h-[520px] w-full object-cover"
+                  className="min-h-[250px] md:min-h-[500px] max-h-[520px] w-full object-cover"
                 />
               </article>
-              <div className="flex flex-col items-start justify-between bg-transparent ">
+              <div className="flex flex-col items-start justify-between bg-transparent">
                 <div>
                   <SectionHeading eyebrow="Industries" title="" />
-                  <h3 className="font-heading text-[22px] md:text-[30px] leading-[1.1] font-bold text-[#062B4F] ">
+                  <h3 className="font-heading text-[22px] md:text-[30px] leading-[1.1] font-bold text-[#062B4F]">
                     {selectedIndustry.title}
                   </h3>
                   <p className="mt-3 text-[15px] md:text-[18px] leading-[1.45] text-black/85">
@@ -98,7 +147,7 @@ export function IndustriesSection() {
           </div>
         ) : (
           <div ref={carouselRef} className="mt-10 flex overflow-x-auto snap-x snap-mandatory gap-[24px] md:grid xl:grid-cols-3 xl:gap-[25px] md:gap-[24px]">
-            {industries.map((industry, index) => (
+            {industriesList.map((industry, index) => (
               <button
                 key={industry.title}
                 type="button"

@@ -1,16 +1,39 @@
 "use client";
 
 import { GlobeIcon, MapPinIcon } from "@/components/home/icons";
-import { offices } from "@/components/home/homepage-data";
 import { SectionHeading } from "@/components/home/section-heading";
 import type { FormEvent, ReactNode } from "react";
 import { useState } from "react";
 
 const officeIcons = [GlobeIcon, MapPinIcon];
 
-export function ContactSection() {
+type ContactSectionProps = {
+  offices?: { title: string; address: string }[];
+  heading?: string;
+  description?: string;
+  submitLabel?: string;
+  submittingLabel?: string;
+  successMessage?: string;
+  errorMessage?: string;
+};
+
+const fallbackOffices = [
+  { title: "UAE", address: "near Al Quoz - Al Qouz Ind.second - Al Quoz - Dubai - United Arab Emirates" },
+  { title: "India", address: "Floor-8, Plot-208, Regent Chambers, Jamnalal Bajaj Marg, Nariman Point, Mumbai, Maharashtra - 400021" },
+];
+
+export function ContactSection({
+  offices: officesProp,
+  heading,
+  description,
+  submitLabel,
+  submittingLabel,
+  successMessage,
+  errorMessage,
+}: ContactSectionProps) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [statusMessage, setStatusMessage] = useState("");
+  const offices = officesProp && officesProp.length > 0 ? officesProp : fallbackOffices;
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -38,15 +61,15 @@ export function ContactSection() {
       const result = (await response.json()) as { message?: string };
 
       if (!response.ok) {
-        throw new Error(result.message || "Unable to send your message right now.");
+        throw new Error(result.message || (errorMessage ?? "Unable to send your message right now."));
       }
 
       form.reset();
       setStatus("success");
-      setStatusMessage(result.message || "Message sent successfully.");
+      setStatusMessage(result.message || (successMessage ?? "Message sent successfully."));
     } catch (error) {
       setStatus("error");
-      setStatusMessage(error instanceof Error ? error.message : "Unable to send your message right now.");
+      setStatusMessage(error instanceof Error ? error.message : (errorMessage ?? "Unable to send your message right now."));
     }
   }
 
@@ -55,8 +78,8 @@ export function ContactSection() {
       <div className="homepage-shell">
         <SectionHeading
           eyebrow=""
-          title="Let's Build Something Together"
-          description="Whether you have a project in mind, a question about our services, or want to explore a partnership — our team is ready to help."
+          title={heading ?? "Let's Build Something Together"}
+          description={description ?? "Whether you have a project in mind, a question about our services, or want to explore a partnership — our team is ready to help."}
           centered
         />
         <div className="mt-8 grid gap-[18px] xl:grid-cols-[621px_1fr]">
@@ -75,7 +98,7 @@ export function ContactSection() {
                   <h3 className="mt-4 md:mt-8 font-display text-[24px] md:text-[29px] font-bold leading-none text-brand-navy">
                     {office.title}
                   </h3>
-                  <p className="mt-4 text-[16px]  md:text-[19px] leading-[1.5] text-brand-soft">
+                  <p className="mt-4 text-[16px] md:text-[19px] leading-[1.5] text-brand-soft">
                     {office.address}
                   </p>
                 </article>
@@ -112,7 +135,7 @@ export function ContactSection() {
                     <option>ESG Intelligence Platform</option>
                   </select>
                   <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-brand-soft">
-                    <span aria-hidden>⌄</span>
+                    <span aria-hidden>&#x2304;</span>
                   </span>
                 </div>
               </Field>
@@ -134,7 +157,7 @@ export function ContactSection() {
                 disabled={status === "submitting"}
                 className="inline-flex w-full items-center justify-center gap-2 rounded-[5px] border border-white bg-brand-gradient px-6 py-3 font-heading text-[17px] font-medium leading-none text-white shadow-[0_8px_20px_rgba(17,145,208,0.18)] transition duration-200 hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-70 md:text-[20px]"
               >
-                <span>{status === "submitting" ? "Sending..." : "Talk To Our Team"}</span>
+                <span>{status === "submitting" ? (submittingLabel ?? "Sending...") : (submitLabel ?? "Talk To Our Team")}</span>
               </button>
             </div>
             {statusMessage ? (

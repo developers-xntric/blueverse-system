@@ -1,19 +1,44 @@
 import { GlobeIcon, MapPinIcon } from "@/components/home/icons";
-import { offices } from "@/components/waste-water-treatment/data";
 
 const officeIcons = [GlobeIcon, MapPinIcon];
 
-export function ContactSection() {
+type ContactSectionProps = {
+  heading?: string;
+  description?: string;
+  submitLabel?: string;
+  offices?: { title: string; address: string }[];
+};
+
+const fallbackOffices = [
+  {
+    title: "UAE",
+    address: "near Al Quoz - Al Qouz Ind.second - Al Quoz - Dubai - United Arab Emirates",
+  },
+  {
+    title: "India",
+    address:
+      "Floor-8, Plot-208, Regent Chambers, Jamnalal Bajaj Marg, Nariman Point, Mumbai, Maharashtra - 400021",
+  },
+];
+
+export function ContactSection({
+  heading,
+  description,
+  submitLabel,
+  offices: officesProp,
+}: ContactSectionProps) {
+  const offices = officesProp && officesProp.length > 0 ? officesProp : fallbackOffices;
+
   return (
     <section id="contact" className="bg-brand-ice px-5 py-12 md:px-10 md:py-[60px] xl:px-[134px]">
       <div className="mx-auto max-w-[1652px]">
         <div className="text-center">
           <h2 className="font-heading text-[42px] leading-[1.05] font-bold text-brand-navy md:text-[50px] xl:text-[55px]">
-            Let&apos;s Build Something Together
+            {heading ?? "Let's Build Something Together"}
           </h2>
           <p className="mx-auto mt-[10px] max-w-[1652px] text-[20px] leading-[1.4] text-brand-muted xl:text-[22px] xl:leading-[1.405]">
-            Whether you have a project in mind, a question about our services,
-            or want to explore a partnership — our team is ready to help.
+            {description ??
+              "Whether you have a project in mind, a question about our services, or want to explore a partnership — our team is ready to help."}
           </p>
         </div>
 
@@ -79,7 +104,7 @@ export function ContactSection() {
               type="submit"
               className="bg-brand-gradient mt-[27px] inline-flex min-h-[55px] w-full items-center justify-center rounded-[5px] border border-white px-[30px] py-3 font-heading text-[20px] font-medium text-white"
             >
-              Talk To Our Team ↗
+              {submitLabel ?? "Talk To Our Team ↗"}
             </button>
           </form>
         </div>

@@ -2,8 +2,13 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import type { ESGContent } from "@/types/cms";
 
-const whatItTracks = [
+type EsgPlatformPageProps = {
+  content?: ESGContent;
+};
+
+const fallbackWhatItTracks = [
   "Water saved (litres/day, month, year)",
   "Water reused (% recovery rate per facility)",
   "Carbon avoided (kg CO₂e equivalent)",
@@ -12,7 +17,7 @@ const whatItTracks = [
   "Scope 1, 2, 3 water metrics (GHG Protocol aligned)",
 ];
 
-const capabilities = [
+const fallbackCapabilities = [
   "Real-time dashboard accessible by web and mobile",
   "Multi-site aggregation view all facilities in one view",
   "Export-ready reports for ESG disclosures (UAE SCA, Saudi Tadawul, TCFD, GRI)",
@@ -20,7 +25,7 @@ const capabilities = [
   "IoT integration with INDRA Spectrum and BlueVerse washing equipment",
 ];
 
-const pricingModel = [
+const fallbackPricingModel = [
   "SaaS subscription (annual or multi-year)",
   "Bundled into system deployments at no additional charge",
 ];
@@ -57,7 +62,17 @@ function SectionCard({
   );
 }
 
-function Hero() {
+function HeroSection({
+  subtitle,
+  title,
+  description,
+  heroImage,
+}: {
+  subtitle?: string;
+  title?: string;
+  description?: string;
+  heroImage?: string;
+}) {
   return (
     <section className="bg-white">
       <div className="mx-auto grid w-[90%] 2xl:max-w-360 items-center gap-8 py-15.5 lg:grid-cols-[1fr_810px]">
@@ -68,16 +83,14 @@ function Hero() {
           className="max-w-202.5"
         >
           <p className="bg-linear-to-b bg-clip-text font-heading text-[19px] font-semibold uppercase leading-5.25 text-transparent from-[#1191d0] from-[23.381%] to-[#1f62af]">
-            ESG Intelligence Platform
+            {subtitle ?? "ESG Intelligence Platform"}
           </p>
           <h1 className="mt-2.5 max-w-212 font-heading text-[24px] font-bold text-brand-navy md:text-[40px] leading-tight">
-            Technology-led Sustainability
-            for a Resource-Conscious
-            World
+            {title ?? "Technology-led Sustainability\nfor a Resource-Conscious\nWorld"}
           </h1>
           <p className="mt-6.75 max-w-202.5 text-[16px] text-brand-muted">
-            The BlueVerse ESG Intelligence platform gives facility managers, sustainability officers, and corporate boards
-            real-time visibility into water and carbon metrics formatted for regulatory compliance and global ESG frameworks.
+            {description ??
+              "The BlueVerse ESG Intelligence platform gives facility managers, sustainability officers, and corporate boards real-time visibility into water and carbon metrics formatted for regulatory compliance and global ESG frameworks."}
           </p>
         </motion.div>
         <motion.div
@@ -87,7 +100,7 @@ function Hero() {
           className="relative h-70 w-full lg:h-125.25"
         >
           <Image
-            src="/esg-assets/hero.png"
+            src={heroImage ?? "/esg-assets/hero.png"}
             alt="BlueVerse ESG dashboard"
             fill
             priority
@@ -100,12 +113,21 @@ function Hero() {
   );
 }
 
+export function EsgPlatformPage({ content }: EsgPlatformPageProps) {
+  const hero = content?.hero;
+  const whatItTracks = content?.whatItTracks ?? fallbackWhatItTracks;
+  const capabilities = content?.capabilities ?? fallbackCapabilities;
+  const pricingModel = content?.pricingModel ?? fallbackPricingModel;
 
-export function EsgPlatformPage() {
   return (
     <div className="bg-white text-black">
       <main>
-        <Hero />
+        <HeroSection
+          subtitle={hero?.subtitle}
+          title={hero?.title}
+          description={hero?.description}
+          heroImage={hero?.heroImage}
+        />
         <section className="border-t border-transparent pb-22.5">
           <div className="mx-auto grid w-[90%] max-w-360 gap-5 lg:grid-cols-3">
             <SectionCard icon="/esg-assets/card-1.png" title="What It Tracks" items={whatItTracks} />
@@ -114,7 +136,6 @@ export function EsgPlatformPage() {
           </div>
         </section>
       </main>
-   
     </div>
   );
 }

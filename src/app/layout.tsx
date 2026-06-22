@@ -21,12 +21,15 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "BlueVerse | Water Infrastructure Landing Page",
+  title: {
+    default: "BlueVerse | Water Infrastructure Landing Page",
+    template: "%s | BlueVerse",
+  },
   description:
     "BlueVerse cleantech landing page for water treatment, automated vehicle washing, and ESG intelligence solutions.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

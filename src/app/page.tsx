@@ -8,19 +8,27 @@ import {
   ProblemSection,
   SolutionsSection,
 } from "@/components/home";
+import { getHomePageContent } from "@/services/content-service";
 
-export default function Home() {
+export default async function Home() {
+  const content = await getHomePageContent();
+
   return (
     <>
-      <HeroSection />
+      <HeroSection
+        hero={content.hero}
+        marqueeLogos={content.marqueeLogos}
+        heroPartners={content.heroPartners}
+        stats={content.stats}
+      />
       <main>
-        <ProblemSection />
-        <SolutionsSection />
-        <IndustriesSection />
-        <AboutSection />
-        <PartnershipsSection />
-        <DeploymentSection />
-        <ContactSection />
+        <ProblemSection challenges={content.challenges} />
+        <SolutionsSection solutions={content.solutions} />
+        <IndustriesSection industries={content.industries} />
+        <AboutSection aboutTabs={content.aboutTabs} />
+        <PartnershipsSection partners={content.partners} />
+        <DeploymentSection highlights={content.deploymentHighlights} />
+        <ContactSection offices={content.offices} />
       </main>
     </>
   );
