@@ -103,7 +103,7 @@ function CtaButton({
       rel={href.startsWith("http") ? "noreferrer" : undefined}
       whileHover={{ y: -1 }}
       whileTap={{ scale: 0.98 }}
-      className={`inline-flex h-[50px] items-center justify-center gap-[5px] rounded-[5px] border border-white px-[30px] font-heading text-[20.734px] font-medium leading-[30.186px] text-white ${className}`}
+      className={`inline-flex h-[50px] items-center justify-center gap-[10px] rounded-[5px] border border-white px-[30px] font-heading text-[17px] md:text-[20.734px] font-medium leading-[24px] md:leading-[30.186px] text-white ${className}`}
     >
       <span>{children}</span>
       <ArrowIcon />
@@ -147,10 +147,10 @@ function Hero() {
           <p className="font-sans text-[14px] font-bold uppercase leading-[24.227px] tracking-[1.6959px] md:text-[16.959px]">
             Automated Vehicle Washing
           </p>
-          <h1 className="mt-[15px] font-heading text-[44px] font-bold leading-normal md:text-[65px] md:leading-[72.681px]">
+          <h1 className="mt-[15px] font-heading text-[35px] leading-[42px] font-bold md:text-[65px] md:leading-[72.681px]">
             Sustainable Vehicle Washing Solutions
           </h1>
-          <p className="mt-[15px] max-w-[708px] text-[15.5px] leading-[24.227px] md:text-[16.959px]">
+          <p className="mt-[15px] max-w-[708px] text-[17px] leading-[24.227px] md:text-[16.959px]">
             BlueVerse operates and supplies fully automated vehicle washing systems that combine throughput, quality, and water
             efficiency in a single footprint - designed for petrol stations, malls, fleet depots, automotive dealerships, and
             government facilities.
@@ -163,7 +163,7 @@ function Hero() {
 
 function SectionTitle({ children }: { children: ReactNode }) {
   return (
-    <h2 className="w-full text-center font-heading text-[38px] font-bold leading-[1.06] md:text-[40px] md:leading-normal">
+    <h2 className="w-full text-center font-heading text-[24px] font-bold leading-[1.06] md:text-[40px] md:leading-normal">
       {children}
     </h2>
   );
@@ -173,7 +173,7 @@ function SystemFeatures() {
   return (
     <MotionSection
       id="vehicle-washing"
-      className="border-b border-[#dfdfdf]  py-16 md:py-[70px]"
+      className="border-b border-[#dfdfdf]  py-8 md:py-[70px]"
     >
       <div className="mx-auto flex 2xl:max-w-[1440px] w-[90%] flex-col gap-[30px]">
         <SectionTitle>System Features</SectionTitle>
@@ -184,10 +184,10 @@ function SystemFeatures() {
               whileHover={{ y: -4 }}
               className="flex min-w-0 flex-col items-center gap-[30px] text-center"
             >
-              <span className="relative flex size-[58.145px] items-center justify-center rounded-[19.382px] bg-[#e8f4fd]">
+              <span className="relative flex size-[48px] md:size-[58.145px] items-center justify-center rounded-[19.382px] bg-[#e8f4fd]">
                 <Image src={`/vehicle-assets/${icon}`} alt="" width={30} height={30} className="size-[30px]" />
               </span>
-              <p className="max-w-[258.5px] text-[18px] font-normal leading-normal tracking-[-0.19px]">{label}</p>
+              <p className="max-w-[258.5px] text-[16px] md:text-[18px] font-normal leading-normal tracking-[-0.19px]">{label}</p>
             </motion.article>
           ))}
         </div>
@@ -198,7 +198,7 @@ function SystemFeatures() {
 
 function WashTypes() {
   return (
-    <MotionSection id="wash-types" className="border-b border-[#dfdfdf]  py-16  md:py-[70px]">
+    <MotionSection id="wash-types" className="border-b border-[#dfdfdf]  py-8  md:py-[70px]">
       <div className="mx-auto flex 2xl:max-w-[1440px] w-[90%] flex-col gap-[30px]">
         <SectionTitle>Wash Types Available</SectionTitle>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -206,12 +206,12 @@ function WashTypes() {
             <motion.article
               key={title}
               whileHover={{ y: -5, borderColor: "rgba(6,43,79,0.7)" }}
-              className="flex min-h-[273.372px] flex-col items-center gap-[20px] rounded-[19.382px] border-[1.21px] border-[rgba(6,43,79,0.4)] bg-white px-[30px] py-10 text-center"
+              className="flex min-h-[273.372px] flex-col items-center gap-[20px] rounded-[19.382px] border-[1.21px] border-[rgba(6,43,79,0.4)] bg-white px-4 md:px-[30px] py-6 md:py-10 text-center"
             >
               <Image src="/vehicle-assets/wash-type.svg" alt="" width={48.454} height={48.454} className="size-[48.454px]" />
               <div className="flex flex-col items-center gap-[15px]">
-                <h3 className="font-heading text-[24.227px] font-bold leading-[33.918px] text-brand-navy">{title}</h3>
-                <p className="text-[16px] leading-[22.2px] text-brand-soft">{description}</p>
+                <h3 className="font-heading text-[20px] leading-[24px] md:text-[24.227px] font-bold md:leading-[33.918px] text-brand-navy">{title}</h3>
+                <p className="text-[15px] leading-[20px] md:text-[16px] md:leading-[22.2px] text-brand-soft">{description}</p>
               </div>
             </motion.article>
           ))}
@@ -223,7 +223,7 @@ function WashTypes() {
 
 function BusinessModels() {
   return (
-    <MotionSection id="business-models" className="border-b border-[#dfdfdf]  py-16  md:py-[70px]">
+    <MotionSection id="business-models" className="border-b border-[#dfdfdf]  py-8  md:py-[70px]">
       <div className="mx-auto flex 2xl:max-w-[1440px] w-[90%] flex-col gap-[30px]">
         <SectionTitle>Business Models</SectionTitle>
         <div className="grid gap-5 xl:grid-cols-3">
@@ -235,8 +235,8 @@ function BusinessModels() {
             >
               <Image src={`/vehicle-assets/${icon}`} alt="" width={48} height={48} className="size-12" />
               <div className="flex w-full flex-col items-center gap-4">
-                <h3 className="font-heading text-[20px] font-bold leading-7 text-brand-navy">{title}</h3>
-                <p className="text-[14px] leading-5 text-brand-muted">{description}</p>
+                <h3 className="font-heading text-[20px] leading-[25px] md:text-[24.227px] font-bold md:leading-[33.918px] text-brand-navy">{title}</h3>
+                <p className="text-[15px] leading-[20px] md:text-[16px] md:leading-[22.2px] text-brand-muted">{description}</p>
               </div>
             </motion.article>
           ))}
@@ -250,7 +250,7 @@ function RegionalCtas() {
   return (
     <MotionSection
       id="regions"
-      className="relative z-0  py-[70px] text-white  md:pb-[77px] md:pt-[78px]"
+      className="relative z-0  py-[40px] text-white  md:pb-[77px] md:pt-[78px]"
     >
       <div
         className="absolute inset-0 -z-10"
@@ -261,14 +261,14 @@ function RegionalCtas() {
           <motion.article
             key={region}
             whileHover={{ y: -5 }}
-            className="flex min-h-[381.145px] flex-col items-center rounded-[16px] border border-white/20 bg-[rgba(255,255,255,0.1)] p-10 text-center hover:bg-[rgba(255,255,255,0.13)]"
+            className="flex  flex-col items-center rounded-[16px] border border-white/20 bg-[rgba(255,255,255,0.1)] p-4 md:p-10 text-center hover:bg-[rgba(255,255,255,0.13)]"
           >
-            <div className="flex w-full flex-1 flex-col items-center gap-[30px]">
-              <Image src={`/vehicle-assets/${icon}`} alt="" width={58.145} height={58.145} className="size-[58.145px]" />
+            <div className="flex w-full flex-1 flex-col items-center gap-[30px] ">
+              <Image src={`/vehicle-assets/${icon}`} alt="" width={58.145} height={58.145} className="size-[40px] md:size-[58.145px]" />
               <div className="flex flex-col items-center gap-[10px]">
                 <h2 className="font-heading text-[30px] font-bold leading-[33.918px]">{region}</h2>
                 <p className="text-[20px] font-medium italic leading-[24.227px]">{site}</p>
-                <p className="max-w-[729px] text-[16.959px] leading-[24.227px]">{copy}</p>
+                <p className="max-w-[729px] text-[15px] leading-[20px] md:text-[16.959px] leading-[24.227px]">{copy}</p>
               </div>
               <CtaButton href={href} className="mt-auto w-full bg-transparent">
                 {cta}

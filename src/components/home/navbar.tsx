@@ -13,9 +13,9 @@ export function Navbar() {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <div className="border-b border-white/10 bg-brand-blue/90 backdrop-blur-[10px]">
+    <div className="sticky top-0 z-50 border-b border-white/10 bg-[#2162AF]">
       <div className="homepage-shell flex min-h-[84px] items-center justify-between gap-6 py-4 xl:min-h-[98px] xl:py-0">
-        <a href="#top" className="shrink-0" onClick={closeMenu}>
+        <a href="/" className="shrink-0" onClick={closeMenu}>
           <Image
             src="/figma-assets/hero-logo.png"
             alt="BlueVerse"

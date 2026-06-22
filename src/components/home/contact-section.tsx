@@ -55,7 +55,7 @@ export function ContactSection() {
       <div className="homepage-shell">
         <SectionHeading
           eyebrow=""
-          title="Let&apos;s Build Something Together"
+          title="Let's Build Something Together"
           description="Whether you have a project in mind, a question about our services, or want to explore a partnership — our team is ready to help."
           centered
         />
@@ -67,15 +67,15 @@ export function ContactSection() {
               return (
                 <article
                   key={office.title}
-                  className="rounded-[19px] bg-white p-8 shadow-[0_1px_3px_rgba(0,0,0,0.08)]"
+                  className="rounded-[10px] md:rounded-[19px] bg-white p-4 md:p-8 shadow-[0_1px_3px_rgba(0,0,0,0.08)]"
                 >
                   <div className="flex size-[48px] items-center justify-center rounded-full bg-brand-ice text-brand-navy">
                     <Icon className="size-[24px]" />
                   </div>
-                  <h3 className="mt-8 font-display text-[29px] font-bold leading-none text-brand-navy">
+                  <h3 className="mt-4 md:mt-8 font-display text-[24px] md:text-[29px] font-bold leading-none text-brand-navy">
                     {office.title}
                   </h3>
-                  <p className="mt-4 text-[19px] leading-[1.5] text-brand-soft">
+                  <p className="mt-4 text-[16px]  md:text-[19px] leading-[1.5] text-brand-soft">
                     {office.address}
                   </p>
                 </article>
@@ -84,9 +84,9 @@ export function ContactSection() {
           </div>
           <form
             onSubmit={handleSubmit}
-            className="rounded-[29px] bg-white px-6 py-8 shadow-[0_1px_3px_rgba(0,0,0,0.08)] md:px-[30px] md:py-[40px]"
+            className="rounded-[10px] md:rounded-[29px] bg-white px-5 py-6 shadow-[0_1px_3px_rgba(0,0,0,0.08)] sm:px-6 sm:py-8 md:px-[30px] md:py-[40px]"
           >
-            <div className="grid gap-[20px] md:grid-cols-2">
+            <div className="grid gap-5 sm:grid-cols-2 md:gap-[20px]">
               <Field label="Full Name">
                 <input name="name" type="text" placeholder="Your Name" className="form-field" required />
               </Field>
@@ -100,7 +100,7 @@ export function ContactSection() {
                 <input name="phone" type="tel" placeholder="+91 XXXX XXX XXX" className="form-field" />
               </Field>
             </div>
-            <div className="mt-[30px]">
+            <div className="mt-5 md:mt-[30px]">
               <Field label="Service Interest">
                 <div className="relative">
                   <select name="service" className="form-field appearance-none pr-12" defaultValue="">
@@ -117,7 +117,7 @@ export function ContactSection() {
                 </div>
               </Field>
             </div>
-            <div className="mt-[30px]">
+            <div className="mt-5 md:mt-[30px]">
               <Field label="Message">
                 <textarea
                   name="message"

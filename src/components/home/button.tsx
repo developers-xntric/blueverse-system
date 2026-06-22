@@ -25,8 +25,8 @@ export function Button({
       : "bg-white text-brand-sky hover:bg-brand-ice";
   const sizeClasses =
     size === "compact"
-      ? "px-4 py-2.5 text-[15px] md:text-[13px]"
-      : "px-6 py-3 text-[17px] md:text-[20px]";
+      ? "px-4 py-2.5 text-[13px] md:text-[13px]"
+      : "px-6 py-3 text-[13px] md:text-[20px]";
   const iconClasses = size === "compact" ? "size-4" : "size-4 md:size-[18px]";
 
   return (
