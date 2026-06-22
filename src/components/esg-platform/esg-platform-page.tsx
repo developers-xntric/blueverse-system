@@ -2,8 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import type { ReactNode } from "react";
 
 const whatItTracks = [
   "Water saved (litres/day, month, year)",
@@ -27,16 +25,6 @@ const pricingModel = [
   "Bundled into system deployments at no additional charge",
 ];
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/#about" },
-  { label: "Vehicle Washing", href: "/vehicle-washing" },
-  { label: "ESG Platform", href: "/esg-platform" },
-  { label: "EPC Solutions", href: "/#contact" },
-  { label: "Clients", href: "/#contact" },
-  { label: "Contact", href: "/#contact" },
-];
-
 function SectionCard({
   icon,
   title,
@@ -49,18 +37,18 @@ function SectionCard({
   return (
     <motion.article
       whileHover={{ y: -3 }}
-      className="rounded-[19.382px] border border-[#dbdbdb] bg-white px-[30px] py-10 shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
+      className="rounded-[19.382px] border border-[#dbdbdb] bg-white px-7.5 py-10 shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
     >
-      <div className="flex items-center gap-[15px]">
+      <div className="flex items-center gap-3.75">
         <span className="flex size-[58.145px] shrink-0 items-center justify-center rounded-[19.382px] bg-[#e8f4fd]">
           <Image src={icon} alt="" width={25.57} height={26} className="size-[25.567px]" />
         </span>
         <h3 className="font-heading text-[24.227px] font-bold leading-[33.918px] text-brand-navy">{title}</h3>
       </div>
-      <ul className="mt-[15px] space-y-[16px]">
+      <ul className="mt-3.75 space-y-4">
         {items.map((item) => (
-          <li key={item} className="flex items-start gap-[10px]">
-            <span className="mt-[9px] size-[7.268px] shrink-0 rounded-full bg-brand-green" />
+          <li key={item} className="flex items-start gap-2.5">
+            <span className="mt-2.25 size-[7.268px] shrink-0 rounded-full bg-brand-green" />
             <span className="text-[16.959px] leading-[24.227px] text-brand-muted">{item}</span>
           </li>
         ))}
