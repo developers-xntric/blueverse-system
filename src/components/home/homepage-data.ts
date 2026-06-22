@@ -136,7 +136,7 @@ export const solutions = [
 export const industries = [
   {
     title: "Hotels & Hospitality",
-    image: "/figma-assets/industries-7.png",
+    image: "/figma-assets/industry-tab-1.png",
     points: [
       "Wastewater recycling for laundry, kitchens, landscaping",
       "ESG reporting for corporate sustainability targets",
@@ -166,7 +166,7 @@ export const industries = [
   },
   {
     title: "Industrial Facilities",
-    image: "/figma-assets/industry-facilities.png",
+     image: "/figma-assets/industry-tab-3.png",
     points: [
       "Effluent treatment for manufacturing, logistics",
       "JAFZA, KIZAD, EGA zone compliance",
@@ -181,7 +181,7 @@ export const industries = [
   },
   {
     title: "Malls & Commercial Real Estate",
-    image: "/figma-assets/industry-tab-malls.png",
+      image: "/figma-assets/industry-tab-4.png",
     points: [
       "Water recycling for facility management",
       "ESG dashboards for LEED/Estidama compliance",
@@ -196,7 +196,7 @@ export const industries = [
   },
   {
     title: "Government & Municipalities",
-    image: "/figma-assets/industry-tab-government.png",
+   image: "/figma-assets/industry-tab-5.png",
     points: [
       "Aligned with UAE Water Security Strategy 2036",
       "Saudi Water Vision 2030 Policy Support",
@@ -211,7 +211,7 @@ export const industries = [
   },
   {
     title: "Developers & Master Planners",
-    image: "/figma-assets/industries-4.png",
+    image: "/figma-assets/industry-tab-6.png",
     points: [
       "Built-in water reuse infrastructure",
       "Aldar, Emaar, Nakheel, Deyaar partnerships",

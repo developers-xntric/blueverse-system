@@ -14,6 +14,7 @@ export function IndustriesSection() {
     activeIndustry === null ? null : industries[activeIndustry];
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [activeDot, setActiveDot] = useState(0);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -21,6 +22,22 @@ export function IndustriesSection() {
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
+
+  useEffect(() => {
+    if (activeIndustry !== null || !isMobile) return;
+    const el = carouselRef.current;
+    if (!el) return;
+
+    const updateDot = () => {
+      const cardWidth = el.querySelector("button")?.offsetWidth ?? 280;
+      const gap = 24;
+      const index = Math.round(el.scrollLeft / (cardWidth + gap));
+      setActiveDot(Math.min(index, industries.length - 1));
+    };
+
+    el.addEventListener("scroll", updateDot);
+    return () => el.removeEventListener("scroll", updateDot);
+  }, [activeIndustry, isMobile]);
 
   useEffect(() => {
     if (activeIndustry !== null || !isMobile) return;
@@ -97,47 +114,68 @@ export function IndustriesSection() {
             </div>
           </div>
         ) : (
-          <div ref={carouselRef} className="mt-10 flex overflow-x-auto snap-x snap-mandatory gap-[24px] md:grid xl:grid-cols-3 xl:gap-[25px] md:gap-[24px]">
-            {industries.map((industry, index) => (
-              <button
-                key={industry.title}
-                type="button"
-                onClick={() => setActiveIndustry(index)}
-                className="min-w-[280px] snap-start md:min-w-0 grid grid-rows-2 overflow-hidden rounded-[10px] md:rounded-[20px] border border-brand-card-line bg-white text-left transition-colors duration-200 hover:border-brand-sky"
-              >
-                <div className="relative overflow-hidden">
-                  <Image
-                    src={industry.image}
-                    alt={industry.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1280px) 100vw, 531px"
-                  />
-                </div>
-                <div className="flex flex-col justify-center p-4 md:p-6">
-                  <div className="flex items-start justify-between gap-4">
-                    <h3 className="font-heading text-[20px] md:text-[23px] leading-[1.15] font-bold text-brand-navy">
-                      {industry.title}
-                    </h3>
-                    <ArrowUpRightIcon className="mt-1 size-6 shrink-0 text-brand-navy" />
+          <>
+            <div ref={carouselRef} className="mt-10 flex overflow-x-auto snap-x snap-mandatory gap-[24px] scrollbar-hide md:grid xl:grid-cols-3 xl:gap-[25px] md:gap-[24px]">
+              {industries.map((industry, index) => (
+                <button
+                  key={industry.title}
+                  type="button"
+                  onClick={() => setActiveIndustry(index)}
+                  className="min-w-[280px] snap-start md:min-w-0 grid grid-rows-2 overflow-hidden rounded-[10px] md:rounded-[20px] border border-brand-card-line bg-white text-left transition-colors duration-200 hover:border-brand-sky"
+                >
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src={industry.image}
+                      alt={industry.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1280px) 100vw, 531px"
+                    />
                   </div>
-                  <ul className="mt-5 space-y-3">
-                    {industry.points.map((point) => (
-                      <li
-                        key={point}
-                        className="flex items-start gap-3 text-[18px] leading-[1.4] text-brand-muted"
-                      >
-                        <span className="mt-[8] 2xl:mt-[10px] size-[7px] shrink-0 rounded-full bg-brand-green" />
-                        <span className="text-[15px] 2xl:text-[18px] leading-[1.4] text-brand-muted">
-                          {point}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </button>
-            ))}
-          </div>
+                  <div className="flex flex-col justify-center p-4 md:p-6">
+                    <div className="flex items-start justify-between gap-4">
+                      <h3 className="font-heading text-[20px] md:text-[23px] leading-[1.15] font-bold text-brand-navy">
+                        {industry.title}
+                      </h3>
+                      <ArrowUpRightIcon className="mt-1 size-6 shrink-0 text-brand-navy" />
+                    </div>
+                    <ul className="mt-5 space-y-3">
+                      {industry.points.map((point) => (
+                        <li
+                          key={point}
+                          className="flex items-start gap-3 text-[18px] leading-[1.4] text-brand-muted"
+                        >
+                          <span className="mt-[8] 2xl:mt-[10px] size-[7px] shrink-0 rounded-full bg-brand-green" />
+                          <span className="text-[15px] 2xl:text-[18px] leading-[1.4] text-brand-muted">
+                            {point}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </button>
+              ))}
+            </div>
+            {isMobile && (
+              <div className="mt-6 flex items-center justify-center gap-2">
+                {industries.map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => {
+                      const el = carouselRef.current;
+                      if (!el) return;
+                      const cardWidth = el.querySelector("button")?.offsetWidth ?? 280;
+                      el.scrollTo({ left: (cardWidth + 24) * i, behavior: "smooth" });
+                    }}
+                    className={`size-[10px] rounded-full transition-colors ${
+                      i === activeDot ? "bg-brand-sky" : "bg-brand-navy/30"
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
+          </>
         )}
       </div>
     </section>
