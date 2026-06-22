@@ -39,11 +39,12 @@ export function EpcFocusAreasSection() {
           <p className="font-heading text-[24px] leading-[1.12] font-bold text-brand-navy text-balance sm:text-[28px] md:pr-6 xl:text-[24px] xl:leading-[1.16]">
             Delivering end-to-end water infrastructure solutions from design and procurement to construction and deployment.
           </p>
-          <button
+          <a
             className="w-full cursor-pointer rounded-[5px] border border-white bg-[#1191d0] py-3 text-center font-heading text-[16px] font-medium text-white hover:bg-[#1191d0]/90 md:w-82.5 md:shrink-0"
+            href="/#contact"
           >
             Let&apos;s Discuss Your Project
-          </button>
+          </a>
         </div>
       </div>
     </section>
