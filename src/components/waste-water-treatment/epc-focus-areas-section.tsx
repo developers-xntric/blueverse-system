@@ -2,7 +2,7 @@ import { epcFocusAreas } from "@/components/waste-water-treatment/data";
 
 export function EpcFocusAreasSection() {
   return (
-    <section className="mx-auto w-[90%] bg-white py-12 2xl:max-w-360">
+    <section className="mx-auto w-[90%] bg-white md:py-12 2xl:max-w-360">
       <div className="mx-auto">
         <h2 className="text-center font-heading text-[24px] leading-[1.05] font-bold text-brand-navy md:text-[40px]">
           EPC Focus Areas
