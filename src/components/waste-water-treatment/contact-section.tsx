@@ -25,7 +25,7 @@ export function ContactSection() {
               return (
                 <article
                   key={office.title}
-                  className="rounded-[19px] border border-transparent bg-white p-[50px]"
+                  className="rounded-[19px] border border-transparent bg-white p-5 sm:p-6 md:p-[50px]"
                 >
                   <div className="flex size-[78px] items-center justify-center rounded-[19px] bg-brand-ice-strong text-brand-navy">
                     <Icon className="size-[39px]" />
@@ -41,8 +41,8 @@ export function ContactSection() {
             })}
           </div>
 
-          <form className="rounded-[29px] border border-white bg-white px-6 py-8 md:px-[60px] md:py-[40px]">
-            <div className="grid gap-[34px] md:grid-cols-2 md:gap-x-[30px]">
+          <form className="rounded-[29px] border border-white bg-white px-5 py-6 sm:px-6 sm:py-8 md:px-[60px] md:py-[40px]">
+            <div className="grid gap-5 sm:grid-cols-2 md:gap-[34px] md:gap-x-[30px]">
               <Field label="Full Name">
                 <input type="text" placeholder="Your Name" className="form-field" />
               </Field>
@@ -56,7 +56,7 @@ export function ContactSection() {
                 <input type="tel" placeholder="+91 XXXX XXX XXX" className="form-field" />
               </Field>
             </div>
-            <div className="mt-[34px]">
+            <div className="mt-5 md:mt-[34px]">
               <Field label="Service Interest">
                 <select className="form-field appearance-none">
                   <option>Select a service</option>
@@ -66,7 +66,7 @@ export function ContactSection() {
                 </select>
               </Field>
             </div>
-            <div className="mt-[34px]">
+            <div className="mt-5 md:mt-[34px]">
               <Field label="Message">
                 <textarea
                   rows={7}
