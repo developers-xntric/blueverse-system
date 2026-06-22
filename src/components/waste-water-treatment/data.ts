@@ -135,7 +135,7 @@ export const ecosystemProducts = [
     icon: "/waste-water-treatment-systems/product-icon-phlox.png",
   },
   {
-    title: "Spectrum — Water Intelligence",
+    title: "Spectrum Water Intelligence",
     description:
       "Unified dashboard connecting any sensor or protocol. 24/7 plant visibility, automation, predictive analytics, and scalable remote operations.",
     icon: "/waste-water-treatment-systems/product-icon-spectrum.png",

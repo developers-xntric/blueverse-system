@@ -24,8 +24,8 @@ export default function WasteWaterTreatmentSystemsPage() {
       <HeroOverviewSection />
       <EpcFocusAreasSection />
       <ElectroxSection />
-      {/* 
       <BuiltForEveryScaleSection />
+      {/* 
       <IndustriesSection />
       <AboutBlueverseSection />
       <PartnershipsSection />
