@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import type { ReactNode } from "react";
 
@@ -12,6 +13,13 @@ import {
 } from "@/components/home/icons";
 
 export function Footer() {
+  const footerServiceLinkMap: Record<(typeof footerServiceLinks)[number], string> = {
+    "Automated Vehicle Washing": "/vehicle-washing",
+    "Water Treatment Systems": "/waste-water-treatment-systems",
+    "ESG Intelligence Platform": "/esg-platform",
+    "EPC Services": "/waste-water-treatment-systems#epc-focus-areas",
+  };
+
   return (
     <footer className="bg-brand-blue py-8 text-white md:py-9">
       <div className="homepage-shell">
@@ -25,9 +33,9 @@ export function Footer() {
           />
           <div className="flex flex-col md:flex-row md:flex-wrap gap-3 text-[16px] text-white/60 md:gap-6 md:text-[15px]">
             {navLinks.map((link) => (
-              <a key={link.label} href={link.href}>
+              <Link key={link.label} href={link.href}>
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
           <div className="flex gap-4">
@@ -48,9 +56,9 @@ export function Footer() {
           </p>
           <div className="mt-4 flex flex-col md:flex-row md:flex-wrap gap-3 text-white/60 md:mt-0 md:gap-4 md:text-[15px]">
             {footerServiceLinks.map((item) => (
-              <a key={item} href="#solutions">
+              <Link key={item} href={footerServiceLinkMap[item]}>
                 {item}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
