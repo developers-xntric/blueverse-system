@@ -199,6 +199,7 @@ function SystemFeatures() {
 function WashTypes() {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [activeDot, setActiveDot] = useState(0);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -206,6 +207,22 @@ function WashTypes() {
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
+
+  useEffect(() => {
+    if (!isMobile) return;
+    const el = carouselRef.current;
+    if (!el) return;
+
+    const updateDot = () => {
+      const cardWidth = el.querySelector("article")?.offsetWidth ?? 280;
+      const gap = 20;
+      const index = Math.round(el.scrollLeft / (cardWidth + gap));
+      setActiveDot(Math.min(index, washTypes.length - 1));
+    };
+
+    el.addEventListener("scroll", updateDot);
+    return () => el.removeEventListener("scroll", updateDot);
+  }, [isMobile]);
 
   useEffect(() => {
     if (!isMobile) return;
@@ -231,7 +248,7 @@ function WashTypes() {
     <MotionSection id="wash-types" className="border-b border-[#dfdfdf]  py-8  md:py-[70px]">
       <div className="mx-auto flex 2xl:max-w-[1440px] w-[90%] flex-col gap-[30px]">
         <SectionTitle>Wash Types Available</SectionTitle>
-        <div ref={carouselRef} className="flex overflow-x-auto snap-x snap-mandatory gap-5 md:grid md:grid-cols-2 xl:grid-cols-4">
+        <div ref={carouselRef} className="flex overflow-x-auto snap-x snap-mandatory gap-5 scrollbar-hide md:grid md:grid-cols-2 xl:grid-cols-4">
           {washTypes.map(([title, description]) => (
             <motion.article
               key={title}
@@ -245,6 +262,25 @@ function WashTypes() {
             </motion.article>
           ))}
         </div>
+        {isMobile && (
+          <div className="flex items-center justify-center gap-2">
+            {washTypes.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => {
+                  const el = carouselRef.current;
+                  if (!el) return;
+                  const cardWidth = el.querySelector("article")?.offsetWidth ?? 280;
+                  el.scrollTo({ left: (cardWidth + 20) * i, behavior: "smooth" });
+                }}
+                className={`size-[10px] rounded-full transition-colors ${
+                  i === activeDot ? "bg-brand-sky" : "bg-brand-navy/30"
+                }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </MotionSection>
   );
@@ -290,7 +326,7 @@ function RegionalCtas() {
           <motion.article
             key={region}
             whileHover={{ y: -5 }}
-            className="flex min-h-[381.145px] flex-col items-center rounded-[16px] border border-white/20 bg-[rgba(255,255,255,0.1)] p-4 md:p-10 text-center hover:bg-[rgba(255,255,255,0.13)]"
+            className="flex  flex-col items-center rounded-[16px] border border-white/20 bg-[rgba(255,255,255,0.1)] p-4 md:p-10 text-center hover:bg-[rgba(255,255,255,0.13)]"
           >
             <div className="flex w-full flex-1 flex-col items-center gap-[30px] ">
               <Image src={`/vehicle-assets/${icon}`} alt="" width={58.145} height={58.145} className="size-[40px] md:size-[58.145px]" />

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import type { ReactNode } from "react";
 
@@ -6,14 +7,21 @@ import {
   navLinks,
 } from "@/components/home/homepage-data";
 import {
+  FacebookIcon,
   InstagramIcon,
   LinkedinIcon,
-  TwitterIcon,
 } from "@/components/home/icons";
 
 export function Footer() {
+  const footerServiceLinkMap: Record<(typeof footerServiceLinks)[number], string> = {
+    "Automated Vehicle Washing": "/vehicle-washing",
+    "Water Treatment Systems": "/waste-water-treatment-systems",
+    "ESG Intelligence Platform": "/esg-platform",
+    "EPC Services": "/waste-water-treatment-systems#epc-focus-areas",
+  };
+
   return (
-    <footer className="bg-brand-blue py-8 text-white md:py-[36px]">
+    <footer className="bg-brand-blue py-8 text-white md:py-9">
       <div className="homepage-shell">
         <div className="flex flex-col gap-6 md:gap-8 xl:flex-row xl:items-center xl:justify-between">
           <Image
@@ -21,24 +29,33 @@ export function Footer() {
             alt="BlueVerse"
             width={421}
             height={117}
-            className="h-auto w-[170px] md:w-[190px]"
+            className="h-auto w-42.5 md:w-47.5"
           />
           <div className="flex flex-col md:flex-row md:flex-wrap gap-3 text-[16px] text-white/60 md:gap-6 md:text-[15px]">
             {navLinks.map((link) => (
-              <a key={link.label} href={link.href}>
+              <Link key={link.label} href={link.href}>
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
           <div className="flex gap-4">
-            <SocialLink label="LinkedIn">
-              <LinkedinIcon className="size-[24px]" />
+            <SocialLink
+              label="LinkedIn"
+              href="https://www.linkedin.com/company/blueverse-uae/"
+            >
+              <LinkedinIcon className="size-6" />
             </SocialLink>
-            <SocialLink label="Twitter">
-              <TwitterIcon className="size-[24px]" />
+            <SocialLink
+              label="Facebook"
+              href="https://www.facebook.com/people/Blueverse-UAE/61581921664291/"
+            >
+              <FacebookIcon className="size-6" />
             </SocialLink>
-            <SocialLink label="Instagram">
-              <InstagramIcon className="size-[24px]" />
+            <SocialLink
+              label="Instagram"
+              href="http://instagram.com/auto_studiobyblueverse/?fbclid=IwY2xjawOVEMVleHRuA2FlbQIxMQBicmlkETFmNm9ieVB1WVlvNTlSajJtc3J0YwZhcHBfaWQBMAABHnyQiucDioHOtmwzSrS_qJ0PcQwtTpGhEngIRcIkVjJY-oNIzPynusGPGPkp_aem_1BdDCQQcntBFWN9lr5sCaQ"
+            >
+              <InstagramIcon className="size-6" />
             </SocialLink>
           </div>
         </div>
@@ -48,9 +65,9 @@ export function Footer() {
           </p>
           <div className="mt-4 flex flex-col md:flex-row md:flex-wrap gap-3 text-white/60 md:mt-0 md:gap-4 md:text-[15px]">
             {footerServiceLinks.map((item) => (
-              <a key={item} href="#solutions">
+              <Link key={item} href={footerServiceLinkMap[item]}>
                 {item}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -61,16 +78,20 @@ export function Footer() {
 
 function SocialLink({
   label,
+  href,
   children,
 }: {
   label: string;
+  href: string;
   children: ReactNode;
 }) {
   return (
     <a
-      href="#contact"
+      href={href}
       aria-label={label}
-      className="flex size-12 items-center justify-center rounded-full bg-white/5 text-white transition hover:bg-white/10"
+      target="_blank"
+      rel="noreferrer"
+      className="flex size-10 items-center justify-center rounded-full bg-white/5 text-white transition hover:bg-white/10"
     >
       {children}
     </a>

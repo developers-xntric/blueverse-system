@@ -133,6 +133,14 @@ export function TwitterIcon(props: IconProps) {
   );
 }
 
+export function FacebookIcon(props: IconProps) {
+  return (
+    <BaseIcon {...props}>
+      <path d="M14.5 8H16V5.5h-1.9c-2.2 0-3.6 1.5-3.6 3.8V11H8v2.5h2.5V19H13v-5.5h2.4L15.8 11H13V9.6c0-1 .5-1.6 1.5-1.6Z" />
+    </BaseIcon>
+  );
+}
+
 export function InstagramIcon(props: IconProps) {
   return (
     <BaseIcon {...props}>

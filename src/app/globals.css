@@ -91,6 +91,15 @@ textarea {
     0 0 0 4px rgba(17, 145, 208, 0.12);
 }
 
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 .marquee-track {
   width: max-content;
   animation: hero-marquee 28s linear infinite;
