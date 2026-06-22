@@ -261,7 +261,7 @@ function RegionalCtas() {
           <motion.article
             key={region}
             whileHover={{ y: -5 }}
-            className="flex min-h-[381.145px] flex-col items-center rounded-[16px] border border-white/20 bg-[rgba(255,255,255,0.1)] p-4 md:p-10 text-center hover:bg-[rgba(255,255,255,0.13)]"
+            className="flex  flex-col items-center rounded-[16px] border border-white/20 bg-[rgba(255,255,255,0.1)] p-4 md:p-10 text-center hover:bg-[rgba(255,255,255,0.13)]"
           >
             <div className="flex w-full flex-1 flex-col items-center gap-[30px] ">
               <Image src={`/vehicle-assets/${icon}`} alt="" width={58.145} height={58.145} className="size-[40px] md:size-[58.145px]" />
