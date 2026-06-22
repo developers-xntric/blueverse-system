@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import type { ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 const featureItems = [
   ["feature-1.svg", "Fully automated washing tunnels and robotic gantry systems"],
@@ -177,17 +177,17 @@ function SystemFeatures() {
     >
       <div className="mx-auto flex 2xl:max-w-[1440px] w-[90%] flex-col gap-[30px]">
         <SectionTitle>System Features</SectionTitle>
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 xl:gap-5">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 xl:gap-5">
           {featureItems.map(([icon, label]) => (
             <motion.article
               key={label}
               whileHover={{ y: -4 }}
-              className="flex min-w-0 flex-col items-center gap-[30px] text-center"
+              className="flex min-w-0 flex-col items-center gap-4 md:gap-[20px] text-center sm:gap-[30px]"
             >
               <span className="relative flex size-[48px] md:size-[58.145px] items-center justify-center rounded-[19.382px] bg-[#e8f4fd]">
                 <Image src={`/vehicle-assets/${icon}`} alt="" width={30} height={30} className="size-[30px]" />
               </span>
-              <p className="max-w-[258.5px] text-[16px] md:text-[18px] font-normal leading-normal tracking-[-0.19px]">{label}</p>
+              <p className="max-w-[258.5px] text-[13px] md:text-[18px] font-normal leading-normal tracking-[-0.19px]">{label}</p>
             </motion.article>
           ))}
         </div>
@@ -197,16 +197,45 @@ function SystemFeatures() {
 }
 
 function WashTypes() {
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile) return;
+    const el = carouselRef.current;
+    if (!el) return;
+
+    const interval = setInterval(() => {
+      const cardWidth = el.querySelector("article")?.offsetWidth ?? 280;
+      const gap = 20;
+      const maxScroll = el.scrollWidth - el.clientWidth;
+
+      if (el.scrollLeft >= maxScroll - 10) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: cardWidth + gap, behavior: "smooth" });
+      }
+    }, 1500);
+
+    return () => clearInterval(interval);
+  }, [isMobile]);
+
   return (
     <MotionSection id="wash-types" className="border-b border-[#dfdfdf]  py-8  md:py-[70px]">
       <div className="mx-auto flex 2xl:max-w-[1440px] w-[90%] flex-col gap-[30px]">
         <SectionTitle>Wash Types Available</SectionTitle>
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div ref={carouselRef} className="flex overflow-x-auto snap-x snap-mandatory gap-5 md:grid md:grid-cols-2 xl:grid-cols-4">
           {washTypes.map(([title, description]) => (
             <motion.article
               key={title}
-              whileHover={{ y: -5, borderColor: "rgba(6,43,79,0.7)" }}
-              className="flex min-h-[273.372px] flex-col items-center gap-[20px] rounded-[19.382px] border-[1.21px] border-[rgba(6,43,79,0.4)] bg-white px-4 md:px-[30px] py-6 md:py-10 text-center"
+              className="min-w-[280px] snap-start md:min-w-0 flex min-h-[273.372px] flex-col items-center justify-center  gap-[20px] rounded-[19.382px] border-[1.21px] border-[rgba(6,43,79,0.4)] bg-white px-4 md:px-[30px] py-6 md:py-10 text-center"
             >
               <Image src="/vehicle-assets/wash-type.svg" alt="" width={48.454} height={48.454} className="size-[48.454px]" />
               <div className="flex flex-col items-center gap-[15px]">

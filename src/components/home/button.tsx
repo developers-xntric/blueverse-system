@@ -21,8 +21,8 @@ export function Button({
 }: ButtonProps) {
   const classes =
     variant === "primary"
-      ? "bg-brand-gradient text-white shadow-[0_8px_20px_rgba(17,145,208,0.18)] hover:brightness-105"
-      : "bg-white text-brand-sky hover:bg-brand-ice";
+      ? "bg-brand-gradient hover:bg-gradient-to-r hover:from-[#fff] hover:to-[#fff] hover:text-[#1191D0] text-white shadow-[0_8px_20px_rgba(17,145,208,0.18)] hover:brightness-105"
+      : "bg-white text-brand-sky hover:text-white hover:bg-[#1191D0]";
   const sizeClasses =
     size === "compact"
       ? "px-4 py-2.5 text-[13px] md:text-[13px]"
