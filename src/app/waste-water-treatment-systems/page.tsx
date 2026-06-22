@@ -1,21 +1,16 @@
 import type { Metadata } from "next";
 
 import {
-  AboutBlueverseSection,
-  BuiltForEveryScaleSection,
-  ContactSection,
-  DeploymentHighlightsSection,
-  ElectroxSection,
-  EpcFocusAreasSection,
-  HeroOverviewSection,
-  IndustriesSection,
-  PartnershipsSection,
+    BuiltForEveryScaleSection,
+    ElectroxSection,
+    EpcFocusAreasSection,
+    HeroOverviewSection
 } from "@/components/waste-water-treatment";
 
 export const metadata: Metadata = {
   title: "Waste Water Treatment Systems | BlueVerse",
   description:
-    "Pixel-perfect BlueVerse waste water treatment systems page recreated from Figma without the navbar and footer.",
+    "Pixel-perfect BlueVerse waste water treatment systems page",
 };
 
 export default function WasteWaterTreatmentSystemsPage() {
@@ -24,13 +19,7 @@ export default function WasteWaterTreatmentSystemsPage() {
       <HeroOverviewSection />
       <EpcFocusAreasSection />
       <ElectroxSection />
-      {/* 
       <BuiltForEveryScaleSection />
-      <IndustriesSection />
-      <AboutBlueverseSection />
-      <PartnershipsSection />
-      <DeploymentHighlightsSection />
-      <ContactSection /> */}
     </main>
   );
 }
