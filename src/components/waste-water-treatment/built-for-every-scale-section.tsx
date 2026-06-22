@@ -41,7 +41,7 @@ export function BuiltForEveryScaleSection() {
                     className="h-auto w-full object-contain"
                   />
                 </div>
-                <div className="grid grid-cols-1 gap-3 px-5 py-5">
+                <div className="grid grid-cols-3 gap-2 px-3 py-5">
                   <ScaleMeta label="Footprint" value={card.footprint} />
                   <ScaleMeta label="STP capacity" value={card.stp} />
                   <ScaleMeta label="ETP capacity" value={card.etp} />
@@ -132,8 +132,8 @@ export function BuiltForEveryScaleSection() {
 function ScaleMeta({ label, value }: { label: string; value: string }) {
   return (
     <div className="relative text-center sm:text-left">
-      <p className="text-[12px] leading-6 text-brand-muted">{label}</p>
-      <p className="font-heading text-[12px] leading-6 font-medium text-brand-blue">
+      <p className="text-[10px] leading-[1.2] text-brand-muted sm:text-[12px] sm:leading-6">{label}</p>
+      <p className="font-heading text-[11px] leading-[1.2] font-medium text-brand-blue sm:text-[12px] sm:leading-6">
         {value}
       </p>
     </div>
