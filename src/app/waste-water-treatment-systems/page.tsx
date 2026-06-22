@@ -10,7 +10,7 @@ import {
 export const metadata: Metadata = {
   title: "Waste Water Treatment Systems | BlueVerse",
   description:
-    "Pixel-perfect BlueVerse waste water treatment systems page recreated from Figma without the navbar and footer.",
+    "Pixel-perfect BlueVerse waste water treatment systems page",
 };
 
 export default function WasteWaterTreatmentSystemsPage() {
