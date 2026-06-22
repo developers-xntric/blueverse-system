@@ -36,16 +36,22 @@ export function transformNavLinks(data: StrapiCollection<{ label?: string; href?
 
 export function transformHeroContent(data: { title?: string; description?: string; primaryCtaLabel?: string; primaryCtaHref?: string; secondaryCtaLabel?: string; secondaryCtaHref?: string } | null, fallback: HeroContent): HeroContent {
   if (!data) return fallback;
+
+  const primaryCtaLabel = data.primaryCtaLabel ?? (data as { primaryCta?: { label?: string } }).primaryCta?.label;
+  const primaryCtaHref = data.primaryCtaHref ?? (data as { primaryCta?: { href?: string } }).primaryCta?.href;
+  const secondaryCtaLabel = data.secondaryCtaLabel ?? (data as { secondaryCta?: { label?: string } }).secondaryCta?.label;
+  const secondaryCtaHref = data.secondaryCtaHref ?? (data as { secondaryCta?: { href?: string } }).secondaryCta?.href;
+
   return {
     title: data.title ?? fallback.title,
     description: data.description ?? fallback.description,
     primaryCta: {
-      label: data.primaryCtaLabel ?? fallback.primaryCta.label,
-      href: data.primaryCtaHref ?? fallback.primaryCta.href,
+      label: primaryCtaLabel ?? fallback.primaryCta.label,
+      href: primaryCtaHref ?? fallback.primaryCta.href,
     },
     secondaryCta: {
-      label: data.secondaryCtaLabel ?? fallback.secondaryCta.label,
-      href: data.secondaryCtaHref ?? fallback.secondaryCta.href,
+      label: secondaryCtaLabel ?? fallback.secondaryCta.label,
+      href: secondaryCtaHref ?? fallback.secondaryCta.href,
     },
   };
 }
