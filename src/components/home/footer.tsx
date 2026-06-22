@@ -7,9 +7,9 @@ import {
   navLinks,
 } from "@/components/home/homepage-data";
 import {
+  FacebookIcon,
   InstagramIcon,
   LinkedinIcon,
-  TwitterIcon,
 } from "@/components/home/icons";
 
 export function Footer() {
@@ -39,13 +39,22 @@ export function Footer() {
             ))}
           </div>
           <div className="flex gap-4">
-            <SocialLink label="LinkedIn">
+            <SocialLink
+              label="LinkedIn"
+              href="https://www.linkedin.com/company/blueverse-uae/"
+            >
               <LinkedinIcon className="size-6" />
             </SocialLink>
-            <SocialLink label="Twitter">
-              <TwitterIcon className="size-6" />
+            <SocialLink
+              label="Facebook"
+              href="https://www.facebook.com/people/Blueverse-UAE/61581921664291/"
+            >
+              <FacebookIcon className="size-6" />
             </SocialLink>
-            <SocialLink label="Instagram">
+            <SocialLink
+              label="Instagram"
+              href="http://instagram.com/auto_studiobyblueverse/?fbclid=IwY2xjawOVEMVleHRuA2FlbQIxMQBicmlkETFmNm9ieVB1WVlvNTlSajJtc3J0YwZhcHBfaWQBMAABHnyQiucDioHOtmwzSrS_qJ0PcQwtTpGhEngIRcIkVjJY-oNIzPynusGPGPkp_aem_1BdDCQQcntBFWN9lr5sCaQ"
+            >
               <InstagramIcon className="size-6" />
             </SocialLink>
           </div>
@@ -69,16 +78,20 @@ export function Footer() {
 
 function SocialLink({
   label,
+  href,
   children,
 }: {
   label: string;
+  href: string;
   children: ReactNode;
 }) {
   return (
     <a
-      href="#contact"
+      href={href}
       aria-label={label}
-      className="flex size-12 items-center justify-center rounded-full bg-white/5 text-white transition hover:bg-white/10"
+      target="_blank"
+      rel="noreferrer"
+      className="flex size-10 items-center justify-center rounded-full bg-white/5 text-white transition hover:bg-white/10"
     >
       {children}
     </a>
