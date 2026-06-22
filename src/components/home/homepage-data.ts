@@ -17,17 +17,37 @@ export const heroContent = {
 } as const;
 
 export const heroMarqueeLogos = [
-  { name: "TVS", src: "/figma-assets/marquee-tvs.png", width: 112, height: 112 },
-  { name: "Honda", src: "/figma-assets/marquee-honda.png", width: 99, height: 99 },
+  {
+    name: "TVS",
+    src: "/figma-assets/marquee-tvs.png",
+    width: 112,
+    height: 112,
+  },
+  {
+    name: "Honda",
+    src: "/figma-assets/marquee-honda.png",
+    width: 99,
+    height: 99,
+  },
   {
     name: "Royal Enfield",
     src: "/figma-assets/marquee-royal-enfield.png",
     width: 100,
     height: 99,
   },
-  { name: "IHCL", src: "/figma-assets/marquee-ihcl-1.png", width: 112, height: 112 },
+  {
+    name: "IHCL",
+    src: "/figma-assets/marquee-ihcl-1.png",
+    width: 112,
+    height: 112,
+  },
   { name: "MG", src: "/figma-assets/marquee-mg.png", width: 87, height: 87 },
-  { name: "Tata", src: "/figma-assets/marquee-tata1.png", width: 96, height: 95 },
+  {
+    name: "Tata",
+    src: "/figma-assets/marquee-tata1.png",
+    width: 96,
+    height: 95,
+  },
 ] as const;
 
 export const heroPartners = [
@@ -95,31 +115,34 @@ export const solutions = [
     description:
       "Smart water treatment systems designed to purify, recycle, and optimize water for sustainable operations.",
     image: "/figma-assets/solutions-2.png",
+    href: "/waste-water-treatment-systems",
   },
   {
     title: "Automated Vehicle Washing",
     description:
       "Automated vehicle washing solutions that deliver consistent cleaning performance with efficient water use.",
     image: "/figma-assets/solutions-1.png",
+    href: "/vehicle-washing",
   },
   {
     title: "ESG Intelligence Platform",
     description:
       "AI-Driven Water Intelligence Platform for water assets, carbon credit trading, water exchange, energy optimization, and waste data management.",
     image: "/figma-assets/solutions-3.png",
+    href: "/esg-platform",
   },
 ] as const;
 
 export const industries = [
   {
     title: "Hotels & Hospitality",
-    image: "/figma-assets/industries-4.png",
+    image: "/figma-assets/industries-7.png",
     points: [
       "Wastewater recycling for laundry, kitchens, landscaping",
       "ESG reporting for corporate sustainability targets",
     ],
     description:
-      "BlueVerse helps hotel groups and hospitality operators reduce fresh-water dependence while turning recycling and ESG reporting into a guest-facing sustainability advantage.",
+      "BlueVerse CleanTech helps hotels, resorts, and hospitality groups make water efficiency a part of everyday operations without compromising guest comfort, hygiene standards, or service quality. From laundry, landscaping, kitchens, and housekeeping to wastewater treatment and reuse, our solutions help hospitality brands reduce water waste, control rising utility costs, and improve ESG performance. By integrating smart water management systems, hotels can lower their environmental footprint while creating measurable long-term savings and more sustainable guest experiences.",
     details: [
       "Closed-loop water reuse for laundries, kitchens, landscaping, and utility zones.",
       "Sustainability dashboards aligned to group-wide environmental commitments.",
@@ -128,13 +151,13 @@ export const industries = [
   },
   {
     title: "Vehicle Wash",
-    image: "/figma-assets/industries-5.png",
+    image: "/figma-assets/industries-2.png",
     points: [
       "Automated wash tunnels with water recycling",
       "WaaS (Wash-as-a-Service) subscription model",
     ],
     description:
-      "For modern wash operators, BlueVerse combines smart washing hardware, water recycling, and performance reporting into one scalable operating model.",
+      "Vehicle wash operations require large volumes of water every day, making efficient treatment and reuse essential for long-term profitability and sustainability. BlueVerse CleanTech supports car wash operators with reliable water recycling, filtration, and treatment solutions designed to reduce freshwater dependency. Our systems help maintain consistent wash quality while lowering water consumption, reducing discharge, and improving operational efficiency. Whether for standalone wash centers, fleet wash facilities, or high-volume vehicle wash businesses, we help operators build cleaner, smarter, and more cost-effective water systems.",
     details: [
       "Automated tunnels and rollover systems engineered for consistent throughput.",
       "Water reuse systems that materially cut freshwater use per wash cycle.",
@@ -143,13 +166,13 @@ export const industries = [
   },
   {
     title: "Industrial Facilities",
-    image: "/figma-assets/industries-6.png",
+    image: "/figma-assets/industry-facilities.png",
     points: [
       "Effluent treatment for manufacturing, logistics",
       "JAFZA, KIZAD, EGA zone compliance",
     ],
     description:
-      "Industrial sites use BlueVerse to meet increasingly strict effluent, reuse, and disclosure standards without stitching together multiple vendors.",
+      "Industrial facilities face growing pressure to manage water more responsibly while maintaining productivity, compliance, and operational continuity. BlueVerse CleanTech provides advanced water and wastewater treatment solutions designed for demanding industrial environments. We help manufacturing plants, processing units, and industrial sites recover, reuse, and manage water more efficiently. Our solutions support reduced water intake, lower wastewater discharge, improved regulatory alignment, and better long-term resource planning. With the right system in place, industrial operations can improve performance while reducing environmental impact.",
     details: [
       "Treatment systems sized for manufacturing, logistics, and process-intensive operations.",
       "Regulatory alignment for industrial parks and zone-specific compliance requirements.",
@@ -158,13 +181,13 @@ export const industries = [
   },
   {
     title: "Malls & Commercial Real Estate",
-    image: "/figma-assets/industries-1.png",
+    image: "/figma-assets/industry-tab-malls.png",
     points: [
       "Water recycling for facility management",
       "ESG dashboards for LEED/Estidama compliance",
     ],
     description:
-      "Commercial asset owners can reduce utility intensity across large mixed-use footprints while giving operations teams and investors better sustainability visibility.",
+      "Malls and commercial real estate developments rely on water for cooling, cleaning, landscaping, sanitation, and daily facility operations. BlueVerse CleanTech helps commercial properties reduce water waste, optimize usage, and improve sustainability performance across high-traffic environments. Our solutions support facility managers, developers, and asset owners in lowering operating costs while improving water efficiency and ESG value. By integrating treatment, reuse, and performance monitoring, commercial properties can become more resource-conscious, cost-efficient, and future-ready.",
     details: [
       "Water reuse infrastructure for cooling, cleaning, and site maintenance.",
       "Portfolio-level ESG reporting support for LEED, Estidama, and internal targets.",
@@ -173,13 +196,13 @@ export const industries = [
   },
   {
     title: "Government & Municipalities",
-    image: "/figma-assets/industries-2.png",
+    image: "/figma-assets/industry-tab-government.png",
     points: [
       "Aligned with UAE Water Security Strategy 2036",
       "Saudi Water Vision 2030 Policy Support",
     ],
     description:
-      "BlueVerse supports public-sector entities with resilient water reuse, treatment modernization, and reporting systems that fit long-term national policy goals.",
+      "BlueVerse CleanTech partners with government entities and municipalities to support sustainable water management across public infrastructure, communities, and civic facilities. As cities face rising demand, water scarcity, and environmental pressure, smarter water systems are essential for long-term resilience. Our solutions help public sector teams improve wastewater treatment, enable reuse, reduce water loss, and create more efficient municipal operations. From community-scale systems to infrastructure-focused projects, we support cleaner, more sustainable, and future-ready urban development.",
     details: [
       "Infrastructure aligned with water security and circular-resource strategies.",
       "Decision support for long-horizon treatment, reuse, and utility planning.",
@@ -188,13 +211,13 @@ export const industries = [
   },
   {
     title: "Developers & Master Planners",
-    image: "/figma-assets/industries-3.png",
+    image: "/figma-assets/industries-4.png",
     points: [
       "Built-in water reuse infrastructure",
       "Aldar, Emaar, Nakheel, Deyaar partnerships",
     ],
     description:
-      "Master-planned communities and major developers can embed water reuse and sustainability systems from the start rather than retrofitting them later.",
+      "Sustainable communities begin with smart planning. BlueVerse CleanTech works with developers, consultants, and master planners to integrate water efficiency, wastewater reuse, and circular resource strategies into new developments from the earliest stages.Our solutions help residential communities, mixed-use projects, and large-scale master plans reduce environmental impact, improve operational resilience, and align with sustainability goals. By designing water-smart infrastructure from the start, developers can create future-ready destinations that are efficient, responsible, and built for long-term value.",
     details: [
       "Integrated water reuse planning for communities, districts, and large developments.",
       "Reduced lifecycle cost through early-stage infrastructure coordination.",
@@ -235,58 +258,53 @@ export const aboutPanels = {
     ],
   },
   "Our Mission": {
-    image: "/figma-assets/about-2.png",
-    overlayTitle: "Engineering Water Systems That Scale",
+    image: "/figma-assets/about-tab2.png",
+   overlayTitle: "Building Tomorrow's Infrastructure, Today",
     overlayDescription:
-      "We simplify treatment, reuse, and reporting so customers can operate with less waste and more control.",
-    cards: [
-      {
-        title: "Integrated Delivery",
-        description:
-          "We combine infrastructure, automation, and reporting into one operating model.",
-      },
-      {
-        title: "Practical Decarbonization",
-        description:
-          "Every deployment is designed to lower water, energy, and compliance overhead together.",
-      },
-      {
-        title: "Regional Relevance",
-        description:
-          "Our solutions are built for the water-stressed conditions and policy realities of GCC and India.",
-      },
-      {
-        title: "Execution Focus",
-        description:
-          "From concept to rollout, we prioritize dependable deployment over presentation-only strategy.",
-      },
+      "Innovative water solutions for industries and communities.",
+    heading: "Our Mission",
+    missionParagraphs: [
+      "BlueVerse CleanTech exists to make water reuse the default, not the exception, for businesses. We believe industrial water waste is not inevitable. With the right technology, data intelligence, and circular water solutions, every litre can be recovered, treated, and reused.",
+      "As industries face increasing pressure from water scarcity, rising utility costs, and evolving sustainability requirements, we provide integrated solutions that help organizations operate more efficiently while reducing their environmental impact. Our approach combines advanced water treatment technologies, digital monitoring platforms, and ESG-focused performance insights to create measurable, long-term value.",
+      "We partner with businesses across industrial, commercial, and infrastructure sectors to transform wastewater from a liability into a valuable resource. Through intelligent treatment systems, real-time operational visibility, and performance-driven water management strategies, we help clients reduce freshwater dependency, optimize resource consumption, and strengthen regulatory compliance.",
+      "By enabling circular water ecosystems, BlueVerse is building a future where sustainability and operational excellence work together. Our mission is to empower organizations to conserve resources, lower emissions, improve efficiency, and create a lasting positive impact on communities, industries, and the environment.",
     ],
   },
   "Our Journey": {
-    image: "/figma-assets/about-1.png",
-    overlayTitle: "From Partnerships To Platform",
+    image: "/figma-assets/about-tab3.png",
+   overlayTitle: "Building Tomorrow's Infrastructure, Today",
     overlayDescription:
-      "BlueVerse has grown by connecting proven technologies, regional demand, and deployment discipline.",
-    cards: [
+      "Innovative water solutions for industries and communities.",
+    timeline: [
       {
-        title: "Early Validation",
+        year: "2021",
         description:
-          "Incubation and accelerator backing helped validate the model across priority markets.",
+          "Developed and patented automated 2-wheeler vehicle washing machine",
       },
       {
-        title: "Operational Deployments",
+        year: "2022",
         description:
-          "We expanded from concepts into working systems across vehicle wash and wastewater projects.",
+          "Built proprietary ESG Tech Stack for water metrics in vehicle washing",
       },
       {
-        title: "Technology Expansion",
+        year: "2024",
         description:
-          "Partnerships with specialist providers widened our treatment and infrastructure capability.",
+          "Expanded to 15 operational sites across India; entered the UAE market",
       },
       {
-        title: "Platform Direction",
+        year: "2025",
         description:
-          "Today the journey continues toward a more unified operating layer for water and ESG intelligence.",
+          "Launched UAE B2C car care centre at Al Quoz, Dubai",
+      },
+      {
+        year: "2026",
+        description:
+          "Incubated in WTIIRA Saudi Water Authority innovation programme",
+      },
+      {
+        year: "2026",
+        description:
+          "Selected for WaterTech Accelerator QSTP × TotalEnergies, Qatar",
       },
     ],
   },
@@ -295,21 +313,25 @@ export const aboutPanels = {
 export const partners = [
   {
     name: "MCWW",
+    logo: "/figma-assets/washworks.png",
     description:
       "Manufactures a comprehensive line of automatic car wash systems, including tunnels, arches, and high-performance drying equipment. A trusted one-stop resource for car wash investors and operators seeking reliable, cutting-edge technology, the company focuses on delivering durable, efficient, and easy-to-operate solutions designed to maximize wash quality.",
   },
   {
     name: "INDRA Water",
+    logo: "/figma-assets/indra.png",
     description:
       "BlueVerse is the exclusive GCC system integrator for INDRA Water's ElectroX electrochemical treatment platform, a technology certified as 10 years ahead of conventional ETP/STP systems. INDRA's modular units require zero primary chemicals, have a fraction of the footprint of legacy systems, and are fully remote-monitored.",
   },
   {
     name: "Stinger Chemicals",
+    logo: "/figma-assets/stinger.png",
     description:
       "Stinger Chemicals delivers high-quality industrial and automotive chemical solutions, trusted for performance and reliability. Committed to innovation, we provide products that meet the highest standards for every application, helping businesses achieve superior cleaning, protection, and maintenance results.",
   },
   {
     name: "Xylem",
+    logo: "/figma-assets/xylem.png",
     description:
       "BlueVerse cleantech has partnered with Xylem, a global leader in water technology and solutions, to strengthen our water infrastructure capabilities. Xylem's expertise spans water analysis & monitoring, disinfection systems, filtration, smart metering, and digital water management complementing our EPC and ESG commitments with world-class technology and equipment.",
   },
