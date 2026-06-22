@@ -19,7 +19,39 @@ export function BuiltForEveryScaleSection() {
           </h2>
         </div>
 
-        <div className="mt-7.5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-7.5 sm:hidden">
+          <MobileCarousel>
+            {scaleCards.map((card) => (
+              <article
+                key={card.code}
+                className="overflow-hidden rounded-[20px] border border-[#dbdbdb] bg-white"
+              >
+                <div className="bg-brand-blue px-7.5 py-5 text-white">
+                  <p className="font-heading text-[24px] leading-[1.13] font-semibold">
+                    {card.code}
+                  </p>
+                  <p className="mt-1 text-[16px] tracking-wide">{card.title}</p>
+                </div>
+                <div className="px-2.5 py-0">
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    width={378}
+                    height={253}
+                    className="h-auto w-full object-contain"
+                  />
+                </div>
+                <div className="grid grid-cols-1 gap-3 px-5 py-5">
+                  <ScaleMeta label="Footprint" value={card.footprint} />
+                  <ScaleMeta label="STP capacity" value={card.stp} />
+                  <ScaleMeta label="ETP capacity" value={card.etp} />
+                </div>
+              </article>
+            ))}
+          </MobileCarousel>
+        </div>
+
+        <div className="mt-7.5 hidden gap-4 sm:grid sm:grid-cols-2 xl:grid-cols-4">
           {scaleCards.map((card) => (
             <article
               key={card.code}
@@ -29,7 +61,7 @@ export function BuiltForEveryScaleSection() {
                 <p className="font-heading text-[24px] leading-[1.13] font-semibold">
                   {card.code}
                 </p>
-                <p className="text-[16px] tracking-wide mt-1">{card.title}</p>
+                <p className="mt-1 text-[16px] tracking-wide">{card.title}</p>
               </div>
               <div className="px-2.5 py-0">
                 <Image
