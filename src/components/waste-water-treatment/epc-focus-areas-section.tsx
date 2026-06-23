@@ -43,7 +43,7 @@ export function EpcFocusAreasSection() {
             className="w-full cursor-pointer rounded-[5px] border border-white bg-[#1191d0] py-3 text-center font-heading text-[16px] font-medium text-white hover:bg-[#1191d0]/90 md:w-82.5 md:shrink-0"
             href="/#contact"
           >
-            Let&apos;s Discuss Your Project
+            Build With BlueVerse
           </a>
         </div>
       </div>
