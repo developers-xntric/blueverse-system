@@ -31,7 +31,7 @@ export function Footer() {
             height={117}
             className="h-auto w-42.5 md:w-47.5"
           />
-          <div className="flex flex-col md:flex-row md:flex-wrap gap-3 text-[16px] text-white/60 md:gap-6 md:text-[15.15px]">
+          <div className="flex flex-col md:flex-row md:flex-wrap gap-3 text-[14px] text-white/60 md:gap-6 md:text-[15.15px]">
            {footerServiceLinks.map((item) => (
               <Link key={item} href={footerServiceLinkMap[item]}>
                 {item}
@@ -41,7 +41,7 @@ export function Footer() {
           
         </div>
         <div className="mt-4 border-t border-white/10 pt-3 md:pt-6">
-          <p className="text-[16px] text-white/60 md:text-[15.15px] text-center">
+          <p className="text-[14px] text-white/60 md:text-[15.15px] text-center">
             © 2026 Blueverse CleanTech International Holdings Ltd. All rights reserved.
           </p>
           

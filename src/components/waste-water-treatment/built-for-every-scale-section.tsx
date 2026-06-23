@@ -108,11 +108,11 @@ export function BuiltForEveryScaleSection() {
           {ecosystemProducts.map((product) => (
             <article
               key={product.title}
-              className="rounded-[19px] border border-[#dbdbdb] bg-white px-5 py-7.5"
+              className="rounded-[19px] border border-[#dbdbdb] bg-white p-6"
             >
               <div className="flex items-center gap-3.75">
-                <div className="flex items-center justify-center rounded-2xl bg-brand-ice-strong">
-                  <Image src={product.icon} alt="" width={22} height={22} className="h-auto w-7" />
+                <div className="flex items-center justify-center rounded-2xl bg-brand-ice-strong h-10 w-10">
+                  <Image src={product.icon} alt="" width={20} height={20} className="h-auto w-6" />
                 </div>
                 <h3 className="font-heading text-[20px] leading-[1.2] font-bold text-brand-navy">
                   {product.title}

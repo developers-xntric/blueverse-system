@@ -46,7 +46,7 @@ export function ElectroxSection() {
         <div className="mt-10 hidden gap-6 sm:grid sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-6 xl:gap-5">
           {electroxProcesses.map((process) => (
             <article key={process.title} className="rounded-2xl bg-white/60 p-4 sm:p-5 xl:rounded-none xl:bg-transparent xl:p-0 ">
-              <div className="flex size-10 items-center justify-center rounded-full bg-white">
+              <div className="flex  items-center justify-center rounded-full bg-white">
                 <Image src={process.icon} alt="" width={25} height={25} />
               </div>
               <h3 className="mt-3.75 font-heading text-[16px] leading-[1.41] font-bold text-brand-navy">
