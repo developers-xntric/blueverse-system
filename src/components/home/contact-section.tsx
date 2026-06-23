@@ -73,7 +73,7 @@ export function ContactSection() {
                     <h3 className="font-display text-[24px]  mt-4 md:mt-0 md:text-[29px] font-bold leading-none text-brand-navy">
                       {office.title}
                     </h3>
-                    <p className="mt-4 text-[16px] md:text-[19px] leading-[1.5] text-brand-soft">
+                    <p className="mt-4 text-[16px] md:tex t-[19px] leading-[1.5] text-brand-soft">
                       {office.address}
                     </p>
                   </div>
@@ -95,20 +95,20 @@ export function ContactSection() {
           >
             <div className="grid gap-5 sm:grid-cols-2 md:gap-[10px]">
               <Field label="Full Name">
-                <input name="name" type="text" placeholder="Your Name" className="form-field" required />
+                <input name="name" type="text" placeholder="Your Name" className="form-field h-14" required />
               </Field>
               <Field label="Company">
-                <input name="company" type="text" placeholder="Company Name" className="form-field" required />
+                <input name="company" type="text" placeholder="Company Name" className="form-field h-14" required />
               </Field>
               <Field label="Email Address">
-                <input name="email" type="email" placeholder="email@company.com" className="form-field" required />
+                <input name="email" type="email" placeholder="email@company.com" className="form-field h-14" required />
               </Field>
               <Field label="Phone Number">
-                <input name="phone" type="tel" placeholder="+91 XXXX XXX XXX" className="form-field" required />
+                <input name="phone" type="tel" placeholder="+91 XXXX XXX XXX" className="form-field h-14" required />
               </Field>
             </div>
-            <div className="mt-5 md:mt-[30px]">
-              <Field label="Service Interest">
+            <div className="mt-5 md:mt-[15px]">
+              <Field label="Service Interest h-14">
                 <div className="relative">
                   <select name="service" className="form-field appearance-none pr-12" defaultValue="" required>
                     <option value="" disabled>
@@ -124,18 +124,18 @@ export function ContactSection() {
                 </div>
               </Field>
             </div>
-            <div className="mt-5 md:mt-[30px]">
+            <div className="mt-5 md:mt-[15px]">
               <Field label="Message">
                 <textarea
                   name="message"
                   rows={7}
                   placeholder="Tell us about your project requirements..."
-                  className="form-field min-h-[182px] resize-y py-3"
+                  className="form-field min-h-[170px] resize-y py-3"
                   required
                 />
               </Field>
             </div>
-            <div className="mt-7">
+            <div className="mt-4">
               <button
                 type="submit"
                 disabled={status === "submitting"}
