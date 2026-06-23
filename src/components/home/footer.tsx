@@ -17,11 +17,11 @@ export function Footer() {
     "Automated Vehicle Washing": "/vehicle-washing",
     "Water Treatment Systems": "/waste-water-treatment-systems",
     "ESG Intelligence Platform": "/esg-platform",
-    "EPC Services": "/waste-water-treatment-systems#epc-focus-areas",
+    
   };
 
   return (
-    <footer className="bg-brand-blue py-8 text-white md:py-9">
+    <footer className="bg-brand-blue py-8 text-white md:py-6">
       <div className="homepage-shell">
         <div className="flex flex-col gap-6 md:gap-8 xl:flex-row xl:items-center xl:justify-between">
           <Image
@@ -31,45 +31,20 @@ export function Footer() {
             height={117}
             className="h-auto w-42.5 md:w-47.5"
           />
-          <div className="flex flex-col md:flex-row md:flex-wrap gap-3 text-[16px] text-white/60 md:gap-6 md:text-[15px]">
-            {navLinks.map((link) => (
-              <Link key={link.label} href={link.href}>
-                {link.label}
-              </Link>
-            ))}
-          </div>
-          <div className="flex gap-4">
-            <SocialLink
-              label="LinkedIn"
-              href="https://www.linkedin.com/company/blueverse-uae/"
-            >
-              <LinkedinIcon className="size-6" />
-            </SocialLink>
-            <SocialLink
-              label="Facebook"
-              href="https://www.facebook.com/people/Blueverse-UAE/61581921664291/"
-            >
-              <FacebookIcon className="size-6" />
-            </SocialLink>
-            <SocialLink
-              label="Instagram"
-              href="http://instagram.com/auto_studiobyblueverse/?fbclid=IwY2xjawOVEMVleHRuA2FlbQIxMQBicmlkETFmNm9ieVB1WVlvNTlSajJtc3J0YwZhcHBfaWQBMAABHnyQiucDioHOtmwzSrS_qJ0PcQwtTpGhEngIRcIkVjJY-oNIzPynusGPGPkp_aem_1BdDCQQcntBFWN9lr5sCaQ"
-            >
-              <InstagramIcon className="size-6" />
-            </SocialLink>
-          </div>
-        </div>
-        <div className="mt-8 border-t border-white/10 pt-3 md:pt-8 flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-4 md:gap-0">
-          <p className="text-[16px] text-white/60 md:text-[15px]">
-            © 2026 Blueverse CleanTech International Holdings Ltd. All rights reserved.
-          </p>
-          <div className="mt-4 flex flex-col md:flex-row md:flex-wrap gap-3 text-white/60 md:mt-0 md:gap-4 md:text-[15px]">
-            {footerServiceLinks.map((item) => (
+          <div className="flex flex-col md:flex-row md:flex-wrap gap-3 text-[16px] text-white/60 md:gap-6 md:text-[15.15px]">
+           {footerServiceLinks.map((item) => (
               <Link key={item} href={footerServiceLinkMap[item]}>
                 {item}
               </Link>
             ))}
           </div>
+          
+        </div>
+        <div className="mt-4 border-t border-white/10 pt-3 md:pt-6">
+          <p className="text-[16px] text-white/60 md:text-[15.15px] text-center">
+            © 2026 Blueverse CleanTech International Holdings Ltd. All rights reserved.
+          </p>
+          
         </div>
       </div>
     </footer>

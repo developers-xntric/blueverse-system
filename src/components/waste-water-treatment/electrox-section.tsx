@@ -5,8 +5,8 @@ import { MobileCarousel } from "@/components/waste-water-treatment/mobile-carous
 
 export function ElectroxSection() {
   return (
-    <section className="mx-auto w-[90%] bg-brand-ice-strong py-12 md:py-15 2xl:max-w-360">
-      <div className="w-[90%] mx-auto">
+    <section className="mx-auto bg-brand-ice-strong py-12 md:py-15 ">
+      <div className="w-[90%] 2xl:max-w-360 mx-auto">
         <div className="grid gap-5 xl:grid-cols-2 xl:items-start">
           <div>
             <p className="bg-brand-gradient bg-clip-text font-heading text-[16px] leading-[1.1] font-semibold uppercase text-transparent sm:text-[19px]">
@@ -47,12 +47,12 @@ export function ElectroxSection() {
           {electroxProcesses.map((process) => (
             <article key={process.title} className="rounded-2xl bg-white/60 p-4 sm:p-5 xl:rounded-none xl:bg-transparent xl:p-0 ">
               <div className="flex size-10 items-center justify-center rounded-full bg-white">
-                <Image src={process.icon} alt="" width={30} height={30} />
+                <Image src={process.icon} alt="" width={25} height={25} />
               </div>
               <h3 className="mt-3.75 font-heading text-[16px] leading-[1.41] font-bold text-brand-navy">
                 {process.title}
               </h3>
-              <p className="mt-2 text-[12px] leading-[1.13] text-brand-muted">
+              <p className="mt-2 text-[13px] leading-[1.13] text-brand-muted text-[#4A5565]">
                 {process.description}
               </p>
             </article>
