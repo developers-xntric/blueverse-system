@@ -82,9 +82,12 @@ export function ContactSection() {
                   <h3 className="font-display text-[24px] md:text-[29px] font-bold leading-none text-brand-navy">
                     Email Address
                   </h3>
-                  <p className="mt-4 text-[16px] md:text-[19px] leading-[1.5] text-brand-soft">
+                  <a href="mailto:info@blueverse.ae"  >
+                    <p className="mt-4 text-[16px] md:text-[19px] leading-[1.5] text-brand-soft">
                     info@blueverse.ae
                   </p>
+                  </a>
+                  
                 </div>
               </div>
             </article>
