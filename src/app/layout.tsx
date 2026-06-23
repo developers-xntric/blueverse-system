@@ -6,6 +6,10 @@ import { getFooterContent, getNavbarContent } from "@/services/content-service";
 
 import "./globals.css";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+export const fetchCache = "force-no-store";
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],

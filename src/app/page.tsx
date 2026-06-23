@@ -10,6 +10,10 @@ import {
 } from "@/components/home";
 import { getContactFormContent, getHomePageContent } from "@/services/content-service";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+export const fetchCache = "force-no-store";
+
 export default async function Home() {
   const [content, contactContent] = await Promise.all([
     getHomePageContent(),
