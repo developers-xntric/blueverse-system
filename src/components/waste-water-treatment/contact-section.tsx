@@ -1,4 +1,5 @@
 import { GlobeIcon, MapPinIcon } from "@/components/home/icons";
+import Image from "next/image";
 
 const officeIcons = [GlobeIcon, MapPinIcon];
 
@@ -6,10 +7,18 @@ type ContactSectionProps = {
   heading?: string;
   description?: string;
   submitLabel?: string;
-  offices?: { title: string; address: string }[];
+  offices?: { title: string; address: string; icon?: string }[];
+  fields?: {
+    name: { label: string; placeholder: string; required: boolean };
+    company: { label: string; placeholder: string; required: boolean };
+    email: { label: string; placeholder: string; required: boolean };
+    phone: { label: string; placeholder: string; required: boolean };
+    service: { label: string; placeholder: string; options: string[] };
+    message: { label: string; placeholder: string; required: boolean };
+  };
 };
 
-const fallbackOffices = [
+const fallbackOffices: { title: string; address: string; icon?: string }[] = [
   {
     title: "UAE",
     address: "near Al Quoz - Al Qouz Ind.second - Al Quoz - Dubai - United Arab Emirates",
@@ -26,8 +35,21 @@ export function ContactSection({
   description,
   submitLabel,
   offices: officesProp,
+  fields,
 }: ContactSectionProps) {
   const offices = officesProp && officesProp.length > 0 ? officesProp : fallbackOffices;
+  const formFields = fields ?? {
+    name: { label: "Full Name", placeholder: "Your Name", required: true },
+    company: { label: "Company", placeholder: "Company Name", required: false },
+    email: { label: "Email Address", placeholder: "email@company.com", required: true },
+    phone: { label: "Phone Number", placeholder: "+91 XXXX XXX XXX", required: false },
+    service: {
+      label: "Service Interest",
+      placeholder: "Select a service",
+      options: ["Waste Water Treatment Systems", "Decentralised Desalination Infrastructure", "ElectroX Product Ecosystem"],
+    },
+    message: { label: "Message", placeholder: "Tell us about your project requirements...", required: true },
+  };
 
   return (
     <section id="contact" className="bg-brand-ice px-5 py-12 md:px-10 md:py-[60px] xl:px-[134px]">
@@ -53,7 +75,11 @@ export function ContactSection({
                   className="rounded-[19px] border border-transparent bg-white p-5 sm:p-6 md:p-[50px]"
                 >
                   <div className="flex size-[78px] items-center justify-center rounded-[19px] bg-brand-ice-strong text-brand-navy">
-                    <Icon className="size-[39px]" />
+                    {office.icon ? (
+                      <Image src={office.icon} alt="" width={39} height={39} className="size-[39px] object-contain" />
+                    ) : (
+                      <Icon className="size-[39px]" />
+                    )}
                   </div>
                   <h3 className="mt-10 font-display text-[29px] leading-[1.33] font-bold text-brand-navy">
                     {office.title}
@@ -68,35 +94,36 @@ export function ContactSection({
 
           <form className="rounded-[29px] border border-white bg-white px-5 py-6 sm:px-6 sm:py-8 md:px-[60px] md:py-[40px]">
             <div className="grid gap-5 sm:grid-cols-2 md:gap-[34px] md:gap-x-[30px]">
-              <Field label="Full Name">
-                <input type="text" placeholder="Your Name" className="form-field" />
+              <Field label={formFields.name.label}>
+                <input type="text" placeholder={formFields.name.placeholder} className="form-field" required={formFields.name.required} />
               </Field>
-              <Field label="Company">
-                <input type="text" placeholder="Company Name" className="form-field" />
+              <Field label={formFields.company.label}>
+                <input type="text" placeholder={formFields.company.placeholder} className="form-field" required={formFields.company.required} />
               </Field>
-              <Field label="Email Address">
-                <input type="email" placeholder="email@company.com" className="form-field" />
+              <Field label={formFields.email.label}>
+                <input type="email" placeholder={formFields.email.placeholder} className="form-field" required={formFields.email.required} />
               </Field>
-              <Field label="Phone Number">
-                <input type="tel" placeholder="+91 XXXX XXX XXX" className="form-field" />
+              <Field label={formFields.phone.label}>
+                <input type="tel" placeholder={formFields.phone.placeholder} className="form-field" required={formFields.phone.required} />
               </Field>
             </div>
             <div className="mt-5 md:mt-[34px]">
-              <Field label="Service Interest">
+              <Field label={formFields.service.label}>
                 <select className="form-field appearance-none">
-                  <option>Select a service</option>
-                  <option>Waste Water Treatment Systems</option>
-                  <option>Decentralised Desalination Infrastructure</option>
-                  <option>ElectroX Product Ecosystem</option>
+                  <option>{formFields.service.placeholder}</option>
+                  {formFields.service.options.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
                 </select>
               </Field>
             </div>
             <div className="mt-5 md:mt-[34px]">
-              <Field label="Message">
+              <Field label={formFields.message.label}>
                 <textarea
                   rows={7}
-                  placeholder="Tell us about your project requirements..."
+                  placeholder={formFields.message.placeholder}
                   className="form-field min-h-[182px] resize-none py-3"
+                  required={formFields.message.required}
                 />
               </Field>
             </div>

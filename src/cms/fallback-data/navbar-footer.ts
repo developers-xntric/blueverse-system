@@ -1,4 +1,4 @@
-import type { NavbarContent, FooterContent, NavLink } from "@/types/cms";
+import type { NavbarContent, FooterContent } from "@/types/cms";
 import { fallbackNavLinks, fallbackFooterServiceLinks } from "@/cms/fallback-data/home";
 
 export const fallbackNavbarContent: NavbarContent = {
@@ -6,16 +6,17 @@ export const fallbackNavbarContent: NavbarContent = {
   logoAlt: "BlueVerse",
   navLinks: fallbackNavLinks,
   ctaLabel: "Talk To Our Team",
+  ctaHref: "#contact",
 };
 
 export const fallbackFooterContent: FooterContent = {
   logo: "/figma-assets/partner-logo-6.png",
   navLinks: fallbackNavLinks,
-  serviceLinks: fallbackFooterServiceLinks,
+  serviceLinks: fallbackFooterServiceLinks.map((label) => ({ label, href: "#solutions" })),
   copyright: "Copyright 2026 BlueVerse CleanTech Pvt. Ltd. All rights reserved.",
   socialLinks: [
-    { platform: "LinkedIn", href: "#contact" },
-    { platform: "Twitter", href: "#contact" },
-    { platform: "Instagram", href: "#contact" },
+    { platform: "LinkedIn", href: "#contact", icon: "" },
+    { platform: "Twitter", href: "#contact", icon: "" },
+    { platform: "Instagram", href: "#contact", icon: "" },
   ],
 };

@@ -4,17 +4,19 @@ import {
   NetworkIcon,
   WaterScarcityIcon,
 } from "@/components/home/icons";
-import type { Challenge } from "@/types/cms";
+import Image from "next/image";
+import type { Challenge, HomeProblemSection } from "@/types/cms";
 import { SectionHeading } from "@/components/home/section-heading";
 import { Button } from "@/components/home/button";
 
 const icons = [WaterScarcityIcon, FactoryIcon, BadgeIcon, NetworkIcon];
 
 type ProblemSectionProps = {
+  section?: HomeProblemSection;
   challenges?: readonly Challenge[] | Challenge[];
 };
 
-export function ProblemSection({ challenges = [] }: ProblemSectionProps) {
+export function ProblemSection({ section, challenges = [] }: ProblemSectionProps) {
   const challengesList = challenges.length > 0
     ? challenges
     : [
@@ -52,8 +54,8 @@ export function ProblemSection({ challenges = [] }: ProblemSectionProps) {
     <section className="bg-white py-12 md:py-[50px]">
       <div className="homepage-shell">
         <SectionHeading
-          eyebrow="The Problem We Solve"
-          title="Challenges Driving the Need for Change"
+          eyebrow={section?.eyebrow ?? "The Problem We Solve"}
+          title={section?.title ?? "Challenges Driving the Need for Change"}
         />
         <div className="mt-7 md:mt-10 grid gap-8 md:grid-cols-2 xl:grid-cols-4 xl:gap-0">
           {challengesList.map((challenge, index) => {
@@ -66,7 +68,11 @@ export function ProblemSection({ challenges = [] }: ProblemSectionProps) {
               >
                 <div className="flex items-center gap-4">
                   <div className="flex size-[45px] items-center justify-center rounded-[10px] bg-brand-ice text-brand-navy">
-                    <Icon className="size-[28px]" />
+                    {challenge.icon ? (
+                      <Image src={challenge.icon} alt="" width={28} height={28} className="size-[28px] object-contain" />
+                    ) : (
+                      <Icon className="size-[28px]" />
+                    )}
                   </div>
                   <h3 className="font-heading md:text-[20px] leading-[1.1] font-bold text-brand-navy">
                     {challenge.title}
@@ -89,10 +95,15 @@ export function ProblemSection({ challenges = [] }: ProblemSectionProps) {
         </div>
         <div className="mt-10 flex flex-col gap-5 rounded-[18px] bg-brand-blue px-6 py-7 md:mt-[30px] md:flex-row md:items-center md:justify-between md:px-[30px] md:py-[26px]">
           <p className="max-w-[820px] font-heading text-[22px] leading-[1.05] font-semibold text-white md:text-[29px]">
-            Together, we can reduce water waste and build a more sustainable future
+            {section?.ctaText ?? "Together, we can reduce water waste and build a more sustainable future"}
           </p>
-          <Button variant="secondary" size="compact" className="whitespace-nowrap">
-            Let&apos;s Solve Water Challenges Together
+          <Button
+            variant="secondary"
+            size="compact"
+            className="whitespace-nowrap"
+            href={section?.cta?.href ?? "#contact"}
+          >
+            {section?.cta?.label ?? "Let's Solve Water Challenges Together"}
           </Button>
         </div>
       </div>

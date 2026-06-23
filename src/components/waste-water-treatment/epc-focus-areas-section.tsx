@@ -2,17 +2,21 @@ import type { EpcFocusArea } from "@/types/cms";
 import { epcFocusAreas as fallbackAreas } from "@/components/waste-water-treatment/data";
 
 type EpcFocusAreasSectionProps = {
+  title?: string;
+  ctaText?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
   areas?: readonly EpcFocusArea[] | EpcFocusArea[];
 };
 
-export function EpcFocusAreasSection({ areas }: EpcFocusAreasSectionProps) {
+export function EpcFocusAreasSection({ title, ctaText, ctaLabel, ctaHref, areas }: EpcFocusAreasSectionProps) {
   const focusAreas = areas && areas.length > 0 ? areas : fallbackAreas;
 
   return (
     <section className="bg-white py-12 2xl:max-w-360 w-[90%] mx-auto">
       <div className="mx-auto">
         <h2 className="text-center font-heading text-[24px] leading-[1.05] font-bold text-brand-navy md:text-[40px]">
-          EPC Focus Areas
+          {title ?? "EPC Focus Areas"}
         </h2>
 
         <div className="mt-12.5 grid gap-7.5 xl:grid-cols-2">
@@ -44,11 +48,14 @@ export function EpcFocusAreasSection({ areas }: EpcFocusAreasSectionProps) {
 
         <div className="mt-12.5 flex flex-col rounded-[18px] px-5 py-5 md:flex-row md:items-center md:justify-between md:px-5 md:py-5 border border-black/20">
           <p className="font-heading text-[32px] leading-[1.06] font-bold xl:text-[24px] xl:leading-[1.16] text-brand-navy text-balance">
-            Delivering end-to-end water infrastructure solutions from design and procurement to construction and deployment.
+            {ctaText ?? "Delivering end-to-end water infrastructure solutions from design and procurement to construction and deployment."}
           </p>
-          <button className="w-82.5 cursor-pointer hover:bg-[#1191d0]/90 rounded-[5px] border border-white bg-[#1191d0] py-3 font-heading text-[16px] font-medium text-white text-center">
-            Let&apos;s Discuss Your Project
-          </button>
+          <a
+            href={ctaHref ?? "#contact"}
+            className="w-82.5 cursor-pointer hover:bg-[#1191d0]/90 rounded-[5px] border border-white bg-[#1191d0] py-3 font-heading text-[16px] font-medium text-white text-center"
+          >
+            {ctaLabel ?? "Let's Discuss Your Project"}
+          </a>
         </div>
       </div>
     </section>

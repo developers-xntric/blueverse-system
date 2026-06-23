@@ -31,6 +31,8 @@ export const fallbackHeroContent: HeroContent = {
   secondaryCta: { label: "Explore Solutions", href: "#solutions" },
 };
 
+export const fallbackTrustedBrandsLabel = "Trusted By Leading Brands";
+
 export const fallbackMarqueeLogos: MarqueeLogo[] = [
   { name: "TVS", src: "/figma-assets/marquee-tvs.png", width: 112, height: 112 },
   { name: "Honda", src: "/figma-assets/marquee-honda.png", width: 99, height: 99 },
@@ -226,6 +228,7 @@ export const fallbackAboutTabs: AboutTab[] = [
       image: "/figma-assets/about-3.png",
       overlayTitle: "Building Tomorrow's Infrastructure, Today",
       overlayDescription: "Innovative water solutions for industries and communities.",
+      overlayCta: { label: "Get Started", href: "#contact" },
       cards: [
         {
           title: "Innovation",
@@ -252,6 +255,7 @@ export const fallbackAboutTabs: AboutTab[] = [
       image: "/figma-assets/about-tab2.png",
       overlayTitle: "Building Tomorrow's Infrastructure, Today",
       overlayDescription: "Innovative water solutions for industries and communities.",
+      overlayCta: { label: "Get Started", href: "#contact" },
       heading: "Our Mission",
       missionParagraphs: [
         "BlueVerse CleanTech exists to make water reuse the default, not the exception, for businesses. We believe industrial water waste is not inevitable. With the right technology, data intelligence, and circular water solutions, every litre can be recovered, treated, and reused.",
@@ -267,6 +271,7 @@ export const fallbackAboutTabs: AboutTab[] = [
       image: "/figma-assets/about-tab3.png",
       overlayTitle: "Building Tomorrow's Infrastructure, Today",
       overlayDescription: "Innovative water solutions for industries and communities.",
+      overlayCta: { label: "Get Started", href: "#contact" },
       timeline: [
         {
           year: "2021",
@@ -353,16 +358,46 @@ export const fallbackFooterServiceLinks: string[] = [
 
 export const fallbackHomePage: HomePageContent = {
   hero: fallbackHeroContent,
+  trustedBrandsLabel: fallbackTrustedBrandsLabel,
   marqueeLogos: fallbackMarqueeLogos,
   heroPartners: fallbackHeroPartners,
   stats: fallbackStats,
+  problemSection: {
+    eyebrow: "The Problem We Solve",
+    title: "Challenges Driving the Need for Change",
+    ctaText: "Together, we can reduce water waste and build a more sustainable future",
+    cta: { label: "Let's Solve Water Challenges Together", href: "#contact" },
+  },
   challenges: fallbackChallenges,
+  solutionsSection: {
+    eyebrow: "Our Solutions",
+    title: "One Platform. Three Transformative Solutions.",
+    summary: "From Water Treatment to Smart Washing and ESG Reporting, BlueVerse brings every solution together.",
+    cta: { label: "Let's Talk Sustainable Growth", href: "#contact" },
+  },
   solutions: fallbackSolutions,
+  industriesSection: {
+    eyebrow: "Who We Serve",
+    title: "Industries We Transform",
+    detailEyebrow: "Industries",
+    detailCta: { label: "Let's Talk Sustainable Growth", href: "#contact" },
+  },
   industries: fallbackIndustries,
+  aboutSection: {
+    eyebrow: "About BlueVerse",
+    title: "Building Tomorrow's Infrastructure, Today",
+    description: undefined,
+  },
   aboutTabs: fallbackAboutTabs,
+  partnersSection: {
+    eyebrow: "Our Partners",
+    title: "Trusted by Industry Leaders",
+    description: undefined,
+  },
   partners: fallbackPartners,
+  deploymentSection: {
+    title: "Deployment Highlights",
+    image: "/figma-assets/dep.png",
+  },
   deploymentHighlights: fallbackDeploymentHighlights,
-  offices: fallbackOffices,
-  footerServiceLinks: fallbackFooterServiceLinks,
-  navLinks: fallbackNavLinks,
 };

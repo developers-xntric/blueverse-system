@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Manrope, Playfair_Display } from "next/font/google";
 
 import { Footer, Navbar } from "@/components/home";
+import { getFooterContent, getNavbarContent } from "@/services/content-service";
 
 import "./globals.css";
 
@@ -34,15 +35,32 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [navbarContent, footerContent] = await Promise.all([
+    getNavbarContent(),
+    getFooterContent(),
+  ]);
+
   return (
     <html
       lang="en"
       className={`${inter.variable} ${manrope.variable} ${playfairDisplay.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <Navbar />
+        <Navbar
+          navLinks={navbarContent.navLinks}
+          logo={navbarContent.logo}
+          logoAlt={navbarContent.logoAlt}
+          ctaLabel={navbarContent.ctaLabel}
+          ctaHref={navbarContent.ctaHref}
+        />
         <div className="flex-1">{children}</div>
-        <Footer />
+        <Footer
+          navLinks={footerContent.navLinks}
+          serviceLinks={footerContent.serviceLinks}
+          logo={footerContent.logo}
+          copyright={footerContent.copyright}
+          socialLinks={footerContent.socialLinks}
+        />
       </body>
     </html>
   );

@@ -2,22 +2,31 @@
 
 import { GlobeIcon, MapPinIcon } from "@/components/home/icons";
 import { SectionHeading } from "@/components/home/section-heading";
+import Image from "next/image";
 import type { FormEvent, ReactNode } from "react";
 import { useState } from "react";
 
 const officeIcons = [GlobeIcon, MapPinIcon];
 
 type ContactSectionProps = {
-  offices?: { title: string; address: string }[];
+  offices?: { title: string; address: string; icon?: string }[];
   heading?: string;
   description?: string;
+  fields?: {
+    name: { label: string; placeholder: string; required: boolean };
+    company: { label: string; placeholder: string; required: boolean };
+    email: { label: string; placeholder: string; required: boolean };
+    phone: { label: string; placeholder: string; required: boolean };
+    service: { label: string; placeholder: string; options: string[] };
+    message: { label: string; placeholder: string; required: boolean };
+  };
   submitLabel?: string;
   submittingLabel?: string;
   successMessage?: string;
   errorMessage?: string;
 };
 
-const fallbackOffices = [
+const fallbackOffices: { title: string; address: string; icon?: string }[] = [
   { title: "UAE", address: "near Al Quoz - Al Qouz Ind.second - Al Quoz - Dubai - United Arab Emirates" },
   { title: "India", address: "Floor-8, Plot-208, Regent Chambers, Jamnalal Bajaj Marg, Nariman Point, Mumbai, Maharashtra - 400021" },
 ];
@@ -26,6 +35,7 @@ export function ContactSection({
   offices: officesProp,
   heading,
   description,
+  fields,
   submitLabel,
   submittingLabel,
   successMessage,
@@ -34,6 +44,14 @@ export function ContactSection({
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [statusMessage, setStatusMessage] = useState("");
   const offices = officesProp && officesProp.length > 0 ? officesProp : fallbackOffices;
+  const formFields = fields ?? {
+    name: { label: "Full Name", placeholder: "Your Name", required: true },
+    company: { label: "Company", placeholder: "Company Name", required: false },
+    email: { label: "Email Address", placeholder: "email@company.com", required: true },
+    phone: { label: "Phone Number", placeholder: "+91 XXXX XXX XXX", required: false },
+    service: { label: "Service Interest", placeholder: "Select a service", options: ["Water Treatment Systems", "Automated Vehicle Washing", "ESG Intelligence Platform"] },
+    message: { label: "Message", placeholder: "Tell us about your project requirements...", required: true },
+  };
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -93,7 +111,11 @@ export function ContactSection({
                   className="rounded-[10px] md:rounded-[19px] bg-white p-4 md:p-8 shadow-[0_1px_3px_rgba(0,0,0,0.08)]"
                 >
                   <div className="flex size-[48px] items-center justify-center rounded-full bg-brand-ice text-brand-navy">
-                    <Icon className="size-[24px]" />
+                    {office.icon ? (
+                      <Image src={office.icon} alt="" width={24} height={24} className="size-[24px] object-contain" />
+                    ) : (
+                      <Icon className="size-[24px]" />
+                    )}
                   </div>
                   <h3 className="mt-4 md:mt-8 font-display text-[24px] md:text-[29px] font-bold leading-none text-brand-navy">
                     {office.title}
@@ -110,29 +132,29 @@ export function ContactSection({
             className="rounded-[10px] md:rounded-[29px] bg-white px-5 py-6 shadow-[0_1px_3px_rgba(0,0,0,0.08)] sm:px-6 sm:py-8 md:px-[30px] md:py-[40px]"
           >
             <div className="grid gap-5 sm:grid-cols-2 md:gap-[20px]">
-              <Field label="Full Name">
-                <input name="name" type="text" placeholder="Your Name" className="form-field" required />
+              <Field label={formFields.name.label}>
+                <input name="name" type="text" placeholder={formFields.name.placeholder} className="form-field" required={formFields.name.required} />
               </Field>
-              <Field label="Company">
-                <input name="company" type="text" placeholder="Company Name" className="form-field" />
+              <Field label={formFields.company.label}>
+                <input name="company" type="text" placeholder={formFields.company.placeholder} className="form-field" required={formFields.company.required} />
               </Field>
-              <Field label="Email Address">
-                <input name="email" type="email" placeholder="email@company.com" className="form-field" required />
+              <Field label={formFields.email.label}>
+                <input name="email" type="email" placeholder={formFields.email.placeholder} className="form-field" required={formFields.email.required} />
               </Field>
-              <Field label="Phone Number">
-                <input name="phone" type="tel" placeholder="+91 XXXX XXX XXX" className="form-field" />
+              <Field label={formFields.phone.label}>
+                <input name="phone" type="tel" placeholder={formFields.phone.placeholder} className="form-field" required={formFields.phone.required} />
               </Field>
             </div>
             <div className="mt-5 md:mt-[30px]">
-              <Field label="Service Interest">
+              <Field label={formFields.service.label}>
                 <div className="relative">
                   <select name="service" className="form-field appearance-none pr-12" defaultValue="">
                     <option value="" disabled>
-                      Select a service
+                      {formFields.service.placeholder}
                     </option>
-                    <option>Water Treatment Systems</option>
-                    <option>Automated Vehicle Washing</option>
-                    <option>ESG Intelligence Platform</option>
+                    {formFields.service.options.map((option) => (
+                      <option key={option}>{option}</option>
+                    ))}
                   </select>
                   <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-brand-soft">
                     <span aria-hidden>&#x2304;</span>
@@ -141,13 +163,13 @@ export function ContactSection({
               </Field>
             </div>
             <div className="mt-5 md:mt-[30px]">
-              <Field label="Message">
+              <Field label={formFields.message.label}>
                 <textarea
                   name="message"
                   rows={7}
-                  placeholder="Tell us about your project requirements..."
+                  placeholder={formFields.message.placeholder}
                   className="form-field min-h-[182px] resize-y py-3"
-                  required
+                  required={formFields.message.required}
                 />
               </Field>
             </div>

@@ -7,11 +7,15 @@ import {
 } from "@/components/waste-water-treatment/data";
 
 type BuiltForEveryScaleSectionProps = {
+  eyebrow?: string;
+  title?: string;
   scaleCards?: readonly ScaleCard[] | ScaleCard[];
   ecosystemProducts?: readonly EcosystemProduct[] | EcosystemProduct[];
 };
 
 export function BuiltForEveryScaleSection({
+  eyebrow,
+  title,
   scaleCards,
   ecosystemProducts,
 }: BuiltForEveryScaleSectionProps) {
@@ -23,10 +27,10 @@ export function BuiltForEveryScaleSection({
       <div className="mx-auto max-w-[1652px]">
         <div className="text-center">
           <p className="bg-brand-gradient bg-clip-text font-heading text-[19px] leading-[1.1] font-semibold uppercase text-transparent">
-            Built for Every Scale
+            {eyebrow ?? "Built for Every Scale"}
           </p>
           <h2 className="mt-2.5 font-heading text-[24px] leading-[1.05] font-bold text-brand-navy md:text-[40px]">
-            ElectroX Product Ecosystem
+            {title ?? "ElectroX Product Ecosystem"}
           </h2>
         </div>
 

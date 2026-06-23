@@ -112,10 +112,10 @@ export function VehicleWashingPage({ content }: VehicleWashingPageProps) {
         heroImage={hero?.heroImage}
       />
       <main>
-        <SystemFeatures features={features} />
-        <WashTypes washTypes={washTypes} />
-        <BusinessModels models={businessModels} />
-        <RegionalCtas cards={regionalCards} />
+        <SystemFeatures title={content?.featuresSectionTitle} features={features} />
+        <WashTypes title={content?.washTypesSectionTitle} washTypes={washTypes} />
+        <BusinessModels title={content?.businessModelsSectionTitle} models={businessModels} />
+        <RegionalCtas title={content?.regionalSectionTitle} cards={regionalCards} />
       </main>
     </div>
   );
@@ -174,11 +174,11 @@ function SectionTitle({ children }: { children: ReactNode }) {
   );
 }
 
-function SystemFeatures({ features }: { features: { icon: string; description: string }[] }) {
+function SystemFeatures({ title, features }: { title?: string; features: { icon: string; description: string }[] }) {
   return (
     <MotionSection id="vehicle-washing" className="border-b border-[#dfdfdf] py-8 md:py-[70px]">
       <div className="mx-auto flex 2xl:max-w-[1440px] w-[90%] flex-col gap-[30px]">
-        <SectionTitle>System Features</SectionTitle>
+        <SectionTitle>{title ?? "System Features"}</SectionTitle>
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 xl:gap-5">
           {features.map((feature) => (
             <motion.article
@@ -198,11 +198,11 @@ function SystemFeatures({ features }: { features: { icon: string; description: s
   );
 }
 
-function WashTypes({ washTypes }: { washTypes: { title: string; description: string }[] }) {
+function WashTypes({ title, washTypes }: { title?: string; washTypes: { title: string; description: string }[] }) {
   return (
     <MotionSection id="wash-types" className="border-b border-[#dfdfdf] py-8 md:py-[70px]">
       <div className="mx-auto flex 2xl:max-w-[1440px] w-[90%] flex-col gap-[30px]">
-        <SectionTitle>Wash Types Available</SectionTitle>
+        <SectionTitle>{title ?? "Wash Types Available"}</SectionTitle>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {washTypes.map((type) => (
             <motion.article
@@ -223,11 +223,11 @@ function WashTypes({ washTypes }: { washTypes: { title: string; description: str
   );
 }
 
-function BusinessModels({ models }: { models: { icon: string; title: string; description: string }[] }) {
+function BusinessModels({ title, models }: { title?: string; models: { icon: string; title: string; description: string }[] }) {
   return (
     <MotionSection id="business-models" className="border-b border-[#dfdfdf] py-8 md:py-[70px]">
       <div className="mx-auto flex 2xl:max-w-[1440px] w-[90%] flex-col gap-[30px]">
-        <SectionTitle>Business Models</SectionTitle>
+        <SectionTitle>{title ?? "Business Models"}</SectionTitle>
         <div className="grid gap-5 xl:grid-cols-3">
           {models.map((model) => (
             <motion.article
@@ -248,7 +248,7 @@ function BusinessModels({ models }: { models: { icon: string; title: string; des
   );
 }
 
-function RegionalCtas({ cards }: { cards: { icon: string; region: string; site: string; copy: string; cta: string; href: string }[] }) {
+function RegionalCtas({ title, cards }: { title?: string; cards: { icon: string; region: string; site: string; copy: string; cta: string; href: string }[] }) {
   return (
     <MotionSection id="regions" className="relative z-0 py-[40px] text-white md:pb-[77px] md:pt-[78px]">
       <div
@@ -256,6 +256,11 @@ function RegionalCtas({ cards }: { cards: { icon: string; region: string; site: 
         style={{ backgroundImage: "linear-gradient(164.398deg, rgb(33, 98, 175) 0%, rgb(10, 61, 107) 100%)" }}
       />
       <div className="mx-auto grid 2xl:max-w-[1440px] w-[90%] gap-[30px] lg:grid-cols-2">
+        {title ? (
+          <div className="lg:col-span-2 text-center font-heading text-[24px] font-bold leading-[1.06] md:text-[40px] md:leading-normal">
+            {title}
+          </div>
+        ) : null}
         {cards.map((card) => (
           <motion.article
             key={card.region}

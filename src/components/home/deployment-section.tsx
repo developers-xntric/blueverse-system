@@ -4,21 +4,23 @@ import { deploymentHighlights as fallbackHighlights } from "@/components/home/ho
 import { SectionHeading } from "@/components/home/section-heading";
 
 type DeploymentSectionProps = {
+  title?: string;
+  image?: string;
   highlights?: string[];
 };
 
-export function DeploymentSection({ highlights }: DeploymentSectionProps) {
+export function DeploymentSection({ title, image, highlights }: DeploymentSectionProps) {
   const items = highlights && highlights.length > 0 ? highlights : [...fallbackHighlights];
 
   return (
     <section className="py-6 md:py-[45px]">
       <div className="homepage-shell rounded-[18px]">
         <div className="rounded-[20px] bg-[#E8F4FD] flex flex-col justify-center items-center px-4 md:px-6 py-8 md:px-[51px] md:py-[55px]">
-          <SectionHeading eyebrow="" title="Deployment Highlights" centered />
+          <SectionHeading eyebrow="" title={title ?? "Deployment Highlights"} centered />
           <div className="mt-10 grid gap-6 xl:grid-cols-[530px_1fr] xl:items-center">
             <div className="justify-self-center">
               <Image
-                src="/figma-assets/dep.png"
+                src={image ?? "/figma-assets/dep.png"}
                 alt="BlueVerse dashboard on a laptop"
                 width={730}
                 height={551}

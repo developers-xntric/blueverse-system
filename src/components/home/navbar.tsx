@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 import Image from "next/image";
 
@@ -13,6 +14,7 @@ type NavbarProps = {
   logo?: string;
   logoAlt?: string;
   ctaLabel?: string;
+  ctaHref?: string;
 };
 
 export function Navbar({
@@ -20,6 +22,7 @@ export function Navbar({
   logo,
   logoAlt,
   ctaLabel,
+  ctaHref,
 }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const links = navLinksProp && navLinksProp.length > 0 ? navLinksProp : fallbackNavLinks;
@@ -29,7 +32,7 @@ export function Navbar({
   return (
     <div className="sticky top-0 z-50 border-b border-white/10 bg-[#2162AF]">
       <div className="homepage-shell flex min-h-[84px] items-center justify-between gap-6 py-4 xl:min-h-[98px] xl:py-0">
-        <a href="/" className="shrink-0" onClick={closeMenu}>
+        <Link href="/" className="shrink-0" onClick={closeMenu}>
           <Image
             src={logo ?? "/figma-assets/hero-logo.png"}
             alt={logoAlt ?? "BlueVerse"}
@@ -38,7 +41,7 @@ export function Navbar({
             className="h-auto w-[150px] md:w-[180px] 2xl:w-[195px]"
             priority
           />
-        </a>
+        </Link>
         <nav aria-label="Primary" className="hidden xl:block">
           <ul className="flex items-center gap-8 text-[13px] 2xl:text-[15px] font-medium text-white">
             {links.map((link) => (
@@ -51,7 +54,7 @@ export function Navbar({
           </ul>
         </nav>
         <div className="hidden shrink-0 xl:block">
-          <Button size="compact">
+          <Button size="compact" href={ctaHref ?? "#contact"}>
             {ctaLabel ?? "Talk To Our Team"}
           </Button>
         </div>
@@ -107,6 +110,7 @@ export function Navbar({
             <Button
               className="w-full"
               size="compact"
+              href={ctaHref ?? "#contact"}
               onClick={closeMenu}
             >
               {ctaLabel ?? "Talk To Our Team"}

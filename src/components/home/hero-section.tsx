@@ -6,34 +6,15 @@ import type { HeroContent, MarqueeLogo, Partner, Stat } from "@/types/cms";
 
 type HeroSectionProps = {
   hero?: HeroContent;
+  trustedBrandsLabel?: string;
   marqueeLogos?: readonly MarqueeLogo[] | MarqueeLogo[];
   heroPartners?: readonly Partner[] | Partner[];
   stats?: readonly Stat[] | Stat[];
 };
 
-function AcceleratorMark() {
-  return (
-    <div className="flex items-center gap-4">
-      <Image
-        src="/figma-assets/top-11.png"
-        alt="TotalEnergies logo"
-        width={2000}
-        height={2000}
-        className="w-[80px] md:w-[60px]"
-      />
-      <Image
-        src="/figma-assets/top-6.png"
-        alt="TotalEnergies logo"
-        width={2000}
-        height={2000}
-        className="w-[80px] md:w-[60px]"
-      />
-    </div>
-  );
-}
-
 export function HeroSection({
   hero,
+  trustedBrandsLabel,
   marqueeLogos = [],
   heroPartners = [],
   stats = [],
@@ -128,7 +109,7 @@ export function HeroSection({
 
           <div className="mt-16 md:mt-[84px]">
             <p className="text-center font-heading text-[16px] font-semibold uppercase tracking-[0.04em] text-white md:text-[30px]">
-              Trusted By Leading Brands
+              {trustedBrandsLabel ?? "Trusted By Leading Brands"}
             </p>
             <div className="mt-6 overflow-hidden">
               <div className="marquee-track flex gap-[21px]">
@@ -155,24 +136,20 @@ export function HeroSection({
       </div>
       <div className="homepage-shell py-8 md:py-[35px]">
         <div className="grid gap-6 xl:grid-cols-2">
-          {partnersList.map((partner, index) => (
+          {partnersList.map((partner) => (
             <article
               key={partner.title}
               className="rounded-[12px] border border-white/65 bg-white/[0.03] px-4 md:px-6 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
             >
               <div className="flex flex-col items-center gap-4 md:flex-row md:items-start">
                 <div className="shrink-0">
-                  {index === 0 ? (
-                    <Image
-                      src={partner.logo}
-                      alt="WTIIRA logo"
-                      width={129}
-                      height={110}
-                      className="h-auto w-[90px] md:w-[100px]"
-                    />
-                  ) : (
-                    <AcceleratorMark />
-                  )}
+                  <Image
+                    src={partner.logo}
+                    alt={`${partner.title} logo`}
+                    width={129}
+                    height={110}
+                    className="h-auto w-[90px] md:w-[100px]"
+                  />
                 </div>
                 <div className="flex-1">
                   <h2 className="font-heading text-[20px] font-bold leading-none md:text-[22px]">

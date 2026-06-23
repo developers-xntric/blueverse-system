@@ -5,6 +5,7 @@ import { wastewaterStats as fallbackStats } from "@/components/waste-water-treat
 
 type HeroOverviewSectionProps = {
   stats?: readonly WastewaterStat[] | WastewaterStat[];
+  statsSectionLabel?: string;
   heroSubtitle?: string;
   heroTitle?: string;
   heroDescription?: string;
@@ -13,6 +14,7 @@ type HeroOverviewSectionProps = {
 
 export function HeroOverviewSection({
   stats,
+  statsSectionLabel,
   heroSubtitle,
   heroTitle,
   heroDescription,
@@ -50,7 +52,7 @@ export function HeroOverviewSection({
 
         <div className="2xl:max-w-360 w-[90%] mx-auto mt-7.5 flex items-center gap-4">
           <p className="bg-brand-gradient bg-clip-text font-heading text-[15px] leading-[1.1] font-semibold uppercase text-transparent">
-            Water Treatment Systems
+            {statsSectionLabel ?? "Water Treatment Systems"}
           </p>
           <div className="h-px flex-1 bg-[#2162af]" />
         </div>
@@ -62,7 +64,7 @@ export function HeroOverviewSection({
               className="rounded-[20px] border border-[#dbdbdb] bg-white px-7.5 py-7 text-center"
             >
               <div className="mx-auto flex size-20 items-center justify-center rounded-full bg-brand-ice-strong">
-                <Image src={stat.icon} alt="" width={66} height={67} className="w-12" />
+                <Image src={stat.icon ?? "/waste-water-treatment-systems/stat-icon-1.png"} alt="" width={66} height={67} className="w-12" />
               </div>
               <p className="mt-5 font-heading text-[26px] leading-none font-bold text-brand-navy">
                 {stat.value}

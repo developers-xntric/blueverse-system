@@ -8,23 +8,37 @@ export const fallbackESGContent: ESGContent = {
       "The BlueVerse ESG Intelligence platform gives facility managers, sustainability officers, and corporate boards real-time visibility into water and carbon metrics formatted for regulatory compliance and global ESG frameworks.",
     heroImage: "/esg-assets/hero.png",
   },
-  whatItTracks: [
-    "Water saved (litres/day, month, year)",
-    "Water reused (% recovery rate per facility)",
-    "Carbon avoided (kg CO₂e equivalent)",
-    "Energy consumption per KLD treated",
-    "Chemical reduction vs conventional baseline",
-    "Scope 1, 2, 3 water metrics (GHG Protocol aligned)",
-  ],
-  capabilities: [
-    "Real-time dashboard accessible by web and mobile",
-    "Multi-site aggregation view all facilities in one view",
-    "Export-ready reports for ESG disclosures (UAE SCA, Saudi Tadawul, TCFD, GRI)",
-    "Alert system for discharge limit breaches",
-    "IoT integration with INDRA Spectrum and BlueVerse washing equipment",
-  ],
-  pricingModel: [
-    "SaaS subscription (annual or multi-year)",
-    "Bundled into system deployments at no additional charge",
+  cards: [
+    {
+      title: "What It Tracks",
+      icon: "/esg-assets/card-1.png",
+      items: [
+        "Water saved (litres/day, month, year)",
+        "Water reused (% recovery rate per facility)",
+        "Carbon avoided (kg CO2e equivalent)",
+        "Energy consumption per KLD treated",
+        "Chemical reduction vs conventional baseline",
+        "Scope 1, 2, 3 water metrics (GHG Protocol aligned)",
+      ],
+    },
+    {
+      title: "Platform Capabilities",
+      icon: "/esg-assets/card-2.png",
+      items: [
+        "Real-time dashboard accessible by web and mobile",
+        "Multi-site aggregation view all facilities in one view",
+        "Export-ready reports for ESG disclosures (UAE SCA, Saudi Tadawul, TCFD, GRI)",
+        "Alert system for discharge limit breaches",
+        "IoT integration with INDRA Spectrum and BlueVerse washing equipment",
+      ],
+    },
+    {
+      title: "Pricing Model",
+      icon: "/esg-assets/card-3.png",
+      items: [
+        "SaaS subscription (annual or multi-year)",
+        "Bundled into system deployments at no additional charge",
+      ],
+    },
   ],
 };

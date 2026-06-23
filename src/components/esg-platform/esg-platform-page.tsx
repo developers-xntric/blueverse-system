@@ -3,32 +3,11 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import type { ESGContent } from "@/types/cms";
+import { fallbackESGContent } from "@/cms/fallback-data";
 
 type EsgPlatformPageProps = {
   content?: ESGContent;
 };
-
-const fallbackWhatItTracks = [
-  "Water saved (litres/day, month, year)",
-  "Water reused (% recovery rate per facility)",
-  "Carbon avoided (kg CO₂e equivalent)",
-  "Energy consumption per KLD treated",
-  "Chemical reduction vs conventional baseline",
-  "Scope 1, 2, 3 water metrics (GHG Protocol aligned)",
-];
-
-const fallbackCapabilities = [
-  "Real-time dashboard accessible by web and mobile",
-  "Multi-site aggregation view all facilities in one view",
-  "Export-ready reports for ESG disclosures (UAE SCA, Saudi Tadawul, TCFD, GRI)",
-  "Alert system for discharge limit breaches",
-  "IoT integration with INDRA Spectrum and BlueVerse washing equipment",
-];
-
-const fallbackPricingModel = [
-  "SaaS subscription (annual or multi-year)",
-  "Bundled into system deployments at no additional charge",
-];
 
 function SectionCard({
   icon,
@@ -115,9 +94,7 @@ function HeroSection({
 
 export function EsgPlatformPage({ content }: EsgPlatformPageProps) {
   const hero = content?.hero;
-  const whatItTracks = content?.whatItTracks ?? fallbackWhatItTracks;
-  const capabilities = content?.capabilities ?? fallbackCapabilities;
-  const pricingModel = content?.pricingModel ?? fallbackPricingModel;
+  const cards = content?.cards?.length ? content.cards : fallbackESGContent.cards;
 
   return (
     <div className="bg-white text-black">
@@ -130,9 +107,9 @@ export function EsgPlatformPage({ content }: EsgPlatformPageProps) {
         />
         <section className="border-t border-transparent pb-22.5">
           <div className="mx-auto grid w-[90%] max-w-360 gap-5 lg:grid-cols-3">
-            <SectionCard icon="/esg-assets/card-1.png" title="What It Tracks" items={whatItTracks} />
-            <SectionCard icon="/esg-assets/card-2.png" title="Platform Capabilities" items={capabilities} />
-            <SectionCard icon="/esg-assets/card-3.png" title="Pricing Model" items={pricingModel} />
+            {cards.map((card) => (
+              <SectionCard key={card.title} icon={card.icon} title={card.title} items={card.items} />
+            ))}
           </div>
         </section>
       </main>

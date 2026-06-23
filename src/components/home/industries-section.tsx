@@ -5,10 +5,11 @@ import Image from "next/image";
 
 import { ArrowUpRightIcon } from "@/components/home/icons";
 import { Button } from "@/components/home/button";
-import type { Industry } from "@/types/cms";
+import type { HomeIndustriesSection, Industry } from "@/types/cms";
 import { SectionHeading } from "@/components/home/section-heading";
 
 type IndustriesSectionProps = {
+  section?: HomeIndustriesSection;
   industries?: readonly Industry[] | Industry[];
 };
 
@@ -57,7 +58,7 @@ const fallbackIndustries: Industry[] = [
   },
 ];
 
-export function IndustriesSection({ industries }: IndustriesSectionProps) {
+export function IndustriesSection({ section, industries }: IndustriesSectionProps) {
   const [activeIndustry, setActiveIndustry] = useState<number | null>(null);
   const industriesList = industries && industries.length > 0 ? industries : fallbackIndustries;
   const selectedIndustry = activeIndustry === null ? null : industriesList[activeIndustry];
@@ -95,8 +96,8 @@ export function IndustriesSection({ industries }: IndustriesSectionProps) {
     <section id="industries" className="bg-white py-14">
       <div className="homepage-shell">
         <SectionHeading
-          eyebrow="Who We Serve"
-          title="Industries We Transform"
+          eyebrow={section?.eyebrow ?? "Who We Serve"}
+          title={section?.title ?? "Industries We Transform"}
           centered
         />
         {selectedIndustry ? (
@@ -129,7 +130,7 @@ export function IndustriesSection({ industries }: IndustriesSectionProps) {
               </article>
               <div className="flex flex-col items-start justify-between bg-transparent">
                 <div>
-                  <SectionHeading eyebrow="Industries" title="" />
+                  <SectionHeading eyebrow={section?.detailEyebrow ?? "Industries"} title="" />
                   <h3 className="font-heading text-[22px] md:text-[30px] leading-[1.1] font-bold text-[#062B4F]">
                     {selectedIndustry.title}
                   </h3>
@@ -138,8 +139,12 @@ export function IndustriesSection({ industries }: IndustriesSectionProps) {
                   </p>
                 </div>
                 <div className="mt-6">
-                  <Button size="compact" onClick={() => setActiveIndustry(null)}>
-                    Let&apos;s Talk Sustainable Growth
+                  <Button
+                    size="compact"
+                    href={section?.detailCta?.href ?? "#contact"}
+                    onClick={() => setActiveIndustry(null)}
+                  >
+                    {section?.detailCta?.label ?? "Let's Talk Sustainable Growth"}
                   </Button>
                 </div>
               </div>

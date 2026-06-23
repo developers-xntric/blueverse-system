@@ -1,304 +1,274 @@
 import { fetchCMS } from "@/cms/fetcher";
 import {
-  transformNavLinks,
-  transformHeroContent,
-  transformMarqueeLogos,
-  transformPartners,
-  transformStats,
-  transformChallenges,
-  transformSolutions,
-  transformIndustries,
   transformAboutTabs,
-  transformPartnerships,
+  transformButtonLink,
+  transformChallenges,
+  transformContactFields,
+  transformDeploymentSection,
+  transformEcosystemProducts,
+  transformElectroxProcesses,
+  transformEpcFocusAreas,
+  transformESGCards,
+  transformHeroContent,
+  transformIndustries,
+  transformIndustriesSection,
+  transformMarqueeLogos,
+  transformNavLinks,
   transformOffices,
+  transformPartners,
+  transformPartnerships,
+  transformProblemSection,
+  transformScaleCards,
+  transformSectionHeader,
+  transformSolutions,
+  transformSolutionsSection,
+  transformStats,
 } from "@/cms/transformers";
 import {
-  fallbackHomePage,
-  fallbackWWTPContent,
-  fallbackVehicleWashingContent,
-  fallbackESGContent,
-  fallbackNavbarContent,
-  fallbackFooterContent,
   fallbackContactFormContent,
-  fallbackWWTPContactFormContent,
-  fallbackSiteMetadata,
+  fallbackESGContent,
+  fallbackFooterContent,
+  fallbackHomePage,
+  fallbackNavbarContent,
   fallbackPageMetadata,
+  fallbackSiteMetadata,
+  fallbackVehicleWashingContent,
+  fallbackWWTPContactFormContent,
+  fallbackWWTPContent,
 } from "@/cms/fallback-data";
 import type {
-  NavLink,
-  HeroContent,
-  MarqueeLogo,
-  Partner,
-  Stat,
-  Challenge,
-  Solution,
-  Industry,
-  AboutTab,
-  Partnership,
-  Office,
-  HomePageContent,
-  WWTPContent,
-  VehicleWashingContent,
-  ESGContent,
-  NavbarContent,
-  FooterContent,
   ContactFormContent,
-  WWTPContactFormContent,
-  SiteMetadata,
+  ESGContent,
+  FooterContent,
+  HomePageContent,
+  NavbarContent,
   PageMetadata,
+  SiteMetadata,
+  VehicleWashingContent,
+  WWTPContactFormContent,
+  WWTPContent,
 } from "@/types/cms";
 
 export async function getHomePageContent(): Promise<HomePageContent> {
-  const cms = await fetchCMS<{
-    hero?: unknown;
-    marqueeLogos?: unknown;
-    heroPartners?: unknown;
-    stats?: unknown;
-    challenges?: unknown;
-    solutions?: unknown;
-    industries?: unknown;
-    aboutTabs?: unknown;
-    partners?: unknown;
-    deploymentHighlights?: string[];
-    offices?: unknown;
-    footerServiceLinks?: string[];
-    navLinks?: unknown;
-  }>("home-page", { populate: "deep" });
+  const cms = await fetchCMS<Record<string, unknown>>("home-page", { populate: "deep" });
 
   if (!cms) return fallbackHomePage;
 
   return {
-    hero: transformHeroContent(
-      cms.hero as { title?: string; description?: string; primaryCtaLabel?: string; primaryCtaHref?: string; secondaryCtaLabel?: string; secondaryCtaHref?: string } | null | undefined ?? null,
-      fallbackHomePage.hero,
-    ),
-    marqueeLogos: transformMarqueeLogos(
-      (cms.marqueeLogos as { name?: string; src?: string; width?: number; height?: number }[] | null | undefined) ?? null,
-      fallbackHomePage.marqueeLogos,
-    ),
-    heroPartners: transformPartners(
-      (cms.heroPartners as { title?: string; subtitle?: string; logo?: string; points?: string[] }[] | null | undefined) ?? null,
-      fallbackHomePage.heroPartners,
-    ),
-    stats: transformStats(
-      (cms.stats as { value?: string; label?: string }[] | null | undefined) ?? null,
-      fallbackHomePage.stats,
-    ),
-    challenges: transformChallenges(
-      (cms.challenges as { title?: string; points?: string[] }[] | null | undefined) ?? null,
-      fallbackHomePage.challenges,
-    ),
-    solutions: transformSolutions(
-      (cms.solutions as { title?: string; description?: string; image?: string; href?: string }[] | null | undefined) ?? null,
-      fallbackHomePage.solutions,
-    ),
-    industries: transformIndustries(
-      (cms.industries as { title?: string; image?: string; points?: string[]; description?: string; details?: string[] }[] | null | undefined) ?? null,
-      fallbackHomePage.industries,
-    ),
-    aboutTabs: transformAboutTabs(
-      (cms.aboutTabs as { name?: string; panel?: { image?: string; overlayTitle?: string; overlayDescription?: string; cards?: { title?: string; description?: string }[]; heading?: string; missionParagraphs?: string[]; timeline?: { year?: string; description?: string }[] } }[] | null | undefined) ?? null,
-      fallbackHomePage.aboutTabs,
-    ),
-    partners: transformPartnerships(
-      (cms.partners as { name?: string; logo?: string; description?: string }[] | null | undefined) ?? null,
-      fallbackHomePage.partners,
-    ),
-    deploymentHighlights: cms.deploymentHighlights ?? fallbackHomePage.deploymentHighlights,
-    offices: transformOffices(
-      (cms.offices as { title?: string; address?: string }[] | null | undefined) ?? null,
-      fallbackHomePage.offices,
-    ),
-    footerServiceLinks: cms.footerServiceLinks ?? fallbackHomePage.footerServiceLinks,
-    navLinks: transformNavLinks(
-      (cms.navLinks as { label?: string; href?: string }[] | null | undefined) ?? null,
-      fallbackHomePage.navLinks,
-    ),
+    hero: transformHeroContent(cms.hero as never, fallbackHomePage.hero),
+    trustedBrandsLabel: (cms.trustedBrandsLabel as string | undefined) ?? fallbackHomePage.trustedBrandsLabel,
+    marqueeLogos: transformMarqueeLogos(cms.marqueeLogos as never, fallbackHomePage.marqueeLogos),
+    heroPartners: transformPartners(cms.heroPartners as never, fallbackHomePage.heroPartners),
+    stats: transformStats(cms.stats as never, fallbackHomePage.stats),
+    problemSection: transformProblemSection(cms.problemSection as never, fallbackHomePage.problemSection),
+    challenges: transformChallenges(cms.challenges as never, fallbackHomePage.challenges),
+    solutionsSection: transformSolutionsSection(cms.solutionsSection as never, fallbackHomePage.solutionsSection),
+    solutions: transformSolutions(cms.solutions as never, fallbackHomePage.solutions),
+    industriesSection: transformIndustriesSection(cms.industriesSection as never, fallbackHomePage.industriesSection),
+    industries: transformIndustries(cms.industries as never, fallbackHomePage.industries),
+    aboutSection: transformSectionHeader(cms.aboutSection as never, fallbackHomePage.aboutSection),
+    aboutTabs: transformAboutTabs(cms.aboutTabs as never, fallbackHomePage.aboutTabs),
+    partnersSection: transformSectionHeader(cms.partnersSection as never, fallbackHomePage.partnersSection),
+    partners: transformPartnerships(cms.partners as never, fallbackHomePage.partners),
+    deploymentSection: transformDeploymentSection(cms.deploymentSection as never, fallbackHomePage.deploymentSection),
+    deploymentHighlights:
+      (cms.deploymentHighlights as { text?: string }[] | undefined)?.map((item) => item.text ?? "").filter(Boolean) ??
+      fallbackHomePage.deploymentHighlights,
   };
 }
 
 export async function getWWTPContent(): Promise<WWTPContent> {
-  const cms = await fetchCMS<{
-    stats?: unknown;
-    epcFocusAreas?: unknown;
-    electroxProcesses?: unknown;
-    scaleCards?: unknown;
-    ecosystemProducts?: unknown;
-    industries?: unknown;
-    aboutValues?: unknown;
-    partnerships?: unknown;
-    deploymentHighlights?: string[];
-    offices?: unknown;
-    hero?: { subtitle?: string; title?: string; description?: string; heroImage?: string };
-  }>("waste-water-treatment-page", { populate: "deep" });
+  const cms = await fetchCMS<Record<string, unknown>>("waste-water-treatment-page", { populate: "deep" });
 
   if (!cms) return fallbackWWTPContent;
 
   return {
-    stats: (cms.stats ?? fallbackWWTPContent.stats) as typeof fallbackWWTPContent.stats,
-    epcFocusAreas: (cms.epcFocusAreas ?? fallbackWWTPContent.epcFocusAreas) as typeof fallbackWWTPContent.epcFocusAreas,
-    electroxProcesses: (cms.electroxProcesses ?? fallbackWWTPContent.electroxProcesses) as typeof fallbackWWTPContent.electroxProcesses,
-    scaleCards: (cms.scaleCards ?? fallbackWWTPContent.scaleCards) as typeof fallbackWWTPContent.scaleCards,
-    ecosystemProducts: (cms.ecosystemProducts ?? fallbackWWTPContent.ecosystemProducts) as typeof fallbackWWTPContent.ecosystemProducts,
-    industries: (cms.industries ?? fallbackWWTPContent.industries) as typeof fallbackWWTPContent.industries,
-    aboutValues: (cms.aboutValues ?? fallbackWWTPContent.aboutValues) as typeof fallbackWWTPContent.aboutValues,
-    partnerships: (cms.partnerships ?? fallbackWWTPContent.partnerships) as typeof fallbackWWTPContent.partnerships,
-    deploymentHighlights: cms.deploymentHighlights ?? fallbackWWTPContent.deploymentHighlights,
-    offices: (cms.offices ?? fallbackWWTPContent.offices) as typeof fallbackWWTPContent.offices,
-    hero: { ...fallbackWWTPContent.hero, ...cms.hero },
+    hero: {
+      ...fallbackWWTPContent.hero,
+      subtitle: (cms.hero as { subtitle?: string } | undefined)?.subtitle ?? fallbackWWTPContent.hero.subtitle,
+      title: (cms.hero as { title?: string } | undefined)?.title ?? fallbackWWTPContent.hero.title,
+      description: (cms.hero as { description?: string } | undefined)?.description ?? fallbackWWTPContent.hero.description,
+      heroImage:
+        ((cms.hero as { heroImage?: { url?: string } } | undefined)?.heroImage?.url
+          ? `${process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL}${(cms.hero as { heroImage?: { url?: string } }).heroImage?.url}`
+          : undefined) ?? fallbackWWTPContent.hero.heroImage,
+    },
+    statsSectionLabel: (cms.statsSectionLabel as string | undefined) ?? fallbackWWTPContent.statsSectionLabel,
+    stats: transformStats(cms.stats as never, fallbackWWTPContent.stats),
+    epcSection: {
+      title: ((cms.epcSection as { title?: string } | undefined)?.title) ?? fallbackWWTPContent.epcSection.title,
+      ctaText: ((cms.epcSection as { ctaText?: string } | undefined)?.ctaText) ?? fallbackWWTPContent.epcSection.ctaText,
+      cta: transformButtonLink((cms.epcSection as { cta?: { label?: string; href?: string } } | undefined)?.cta, fallbackWWTPContent.epcSection.cta ?? { label: "", href: "#" }),
+    },
+    epcFocusAreas: transformEpcFocusAreas(cms.epcFocusAreas as never, fallbackWWTPContent.epcFocusAreas),
+    electroxSection: {
+      eyebrow: ((cms.electroxSection as { eyebrow?: string } | undefined)?.eyebrow) ?? fallbackWWTPContent.electroxSection.eyebrow,
+      title: ((cms.electroxSection as { title?: string } | undefined)?.title) ?? fallbackWWTPContent.electroxSection.title,
+      description: ((cms.electroxSection as { description?: string } | undefined)?.description) ?? fallbackWWTPContent.electroxSection.description,
+    },
+    electroxProcesses: transformElectroxProcesses(cms.electroxProcesses as never, fallbackWWTPContent.electroxProcesses),
+    scaleSection: {
+      eyebrow: ((cms.scaleSection as { eyebrow?: string } | undefined)?.eyebrow) ?? fallbackWWTPContent.scaleSection.eyebrow,
+      title: ((cms.scaleSection as { title?: string } | undefined)?.title) ?? fallbackWWTPContent.scaleSection.title,
+    },
+    scaleCards: transformScaleCards(cms.scaleCards as never, fallbackWWTPContent.scaleCards),
+    ecosystemProducts: transformEcosystemProducts(cms.ecosystemProducts as never, fallbackWWTPContent.ecosystemProducts),
   };
 }
 
 export async function getVehicleWashingContent(): Promise<VehicleWashingContent> {
-  const cms = await fetchCMS<{
-    hero?: { subtitle?: string; title?: string; description?: string; heroImage?: string };
-    features?: { icon?: string; description?: string }[];
-    washTypes?: { title?: string; description?: string }[];
-    businessModels?: { icon?: string; title?: string; description?: string }[];
-    regionalCards?: { icon?: string; region?: string; site?: string; copy?: string; cta?: string; href?: string }[];
-  }>("vehicle-washing-page", { populate: "deep" });
+  const cms = await fetchCMS<Record<string, unknown>>("vehicle-washing-page", { populate: "deep" });
 
   if (!cms) return fallbackVehicleWashingContent;
 
   return {
-    hero: { ...fallbackVehicleWashingContent.hero, ...cms.hero },
-    features: (cms.features ?? fallbackVehicleWashingContent.features) as typeof fallbackVehicleWashingContent.features,
-    washTypes: (cms.washTypes ?? fallbackVehicleWashingContent.washTypes) as typeof fallbackVehicleWashingContent.washTypes,
-    businessModels: (cms.businessModels ?? fallbackVehicleWashingContent.businessModels) as typeof fallbackVehicleWashingContent.businessModels,
-    regionalCards: (cms.regionalCards ?? fallbackVehicleWashingContent.regionalCards) as typeof fallbackVehicleWashingContent.regionalCards,
+    hero: {
+      ...fallbackVehicleWashingContent.hero,
+      subtitle: (cms.hero as { subtitle?: string } | undefined)?.subtitle ?? fallbackVehicleWashingContent.hero.subtitle,
+      title: (cms.hero as { title?: string } | undefined)?.title ?? fallbackVehicleWashingContent.hero.title,
+      description: (cms.hero as { description?: string } | undefined)?.description ?? fallbackVehicleWashingContent.hero.description,
+      heroImage:
+        ((cms.hero as { heroImage?: { url?: string } } | undefined)?.heroImage?.url
+          ? `${process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL}${(cms.hero as { heroImage?: { url?: string } }).heroImage?.url}`
+          : undefined) ?? fallbackVehicleWashingContent.hero.heroImage,
+    },
+    featuresSectionTitle: (cms.featuresSectionTitle as string | undefined) ?? fallbackVehicleWashingContent.featuresSectionTitle,
+    features:
+      (cms.features as { icon?: { url?: string }; description?: string }[] | undefined)?.map((item, index) => ({
+        icon: item.icon?.url ? `${process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL}${item.icon.url}` : fallbackVehicleWashingContent.features[index]?.icon ?? "",
+        description: item.description ?? fallbackVehicleWashingContent.features[index]?.description ?? "",
+      })) ?? fallbackVehicleWashingContent.features,
+    washTypesSectionTitle: (cms.washTypesSectionTitle as string | undefined) ?? fallbackVehicleWashingContent.washTypesSectionTitle,
+    washTypes:
+      (cms.washTypes as { title?: string; description?: string }[] | undefined)?.map((item, index) => ({
+        title: item.title ?? fallbackVehicleWashingContent.washTypes[index]?.title ?? "",
+        description: item.description ?? fallbackVehicleWashingContent.washTypes[index]?.description ?? "",
+      })) ?? fallbackVehicleWashingContent.washTypes,
+    businessModelsSectionTitle: (cms.businessModelsSectionTitle as string | undefined) ?? fallbackVehicleWashingContent.businessModelsSectionTitle,
+    businessModels:
+      (cms.businessModels as { icon?: { url?: string }; title?: string; description?: string }[] | undefined)?.map((item, index) => ({
+        icon: item.icon?.url ? `${process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL}${item.icon.url}` : fallbackVehicleWashingContent.businessModels[index]?.icon ?? "",
+        title: item.title ?? fallbackVehicleWashingContent.businessModels[index]?.title ?? "",
+        description: item.description ?? fallbackVehicleWashingContent.businessModels[index]?.description ?? "",
+      })) ?? fallbackVehicleWashingContent.businessModels,
+    regionalSectionTitle: (cms.regionalSectionTitle as string | undefined) ?? fallbackVehicleWashingContent.regionalSectionTitle,
+    regionalCards:
+      (cms.regionalCards as { icon?: { url?: string }; region?: string; site?: string; copy?: string; cta?: { label?: string; href?: string } }[] | undefined)?.map((item, index) => ({
+        icon: item.icon?.url ? `${process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL}${item.icon.url}` : fallbackVehicleWashingContent.regionalCards[index]?.icon ?? "",
+        region: item.region ?? fallbackVehicleWashingContent.regionalCards[index]?.region ?? "",
+        site: item.site ?? fallbackVehicleWashingContent.regionalCards[index]?.site ?? "",
+        copy: item.copy ?? fallbackVehicleWashingContent.regionalCards[index]?.copy ?? "",
+        cta: item.cta?.label ?? fallbackVehicleWashingContent.regionalCards[index]?.cta ?? "",
+        href: item.cta?.href ?? fallbackVehicleWashingContent.regionalCards[index]?.href ?? "#",
+      })) ?? fallbackVehicleWashingContent.regionalCards,
   };
 }
 
 export async function getESGContent(): Promise<ESGContent> {
-  const cms = await fetchCMS<{
-    hero?: { subtitle?: string; title?: string; description?: string; heroImage?: string };
-    whatItTracks?: string[];
-    capabilities?: string[];
-    pricingModel?: string[];
-  }>("esg-platform-page", { populate: "deep" });
+  const cms = await fetchCMS<Record<string, unknown>>("esg-platform-page", { populate: "deep" });
 
   if (!cms) return fallbackESGContent;
 
   return {
-    hero: { ...fallbackESGContent.hero, ...cms.hero },
-    whatItTracks: cms.whatItTracks ?? fallbackESGContent.whatItTracks,
-    capabilities: cms.capabilities ?? fallbackESGContent.capabilities,
-    pricingModel: cms.pricingModel ?? fallbackESGContent.pricingModel,
-  } as ESGContent;
+    hero: {
+      ...fallbackESGContent.hero,
+      subtitle: (cms.hero as { subtitle?: string } | undefined)?.subtitle ?? fallbackESGContent.hero.subtitle,
+      title: (cms.hero as { title?: string } | undefined)?.title ?? fallbackESGContent.hero.title,
+      description: (cms.hero as { description?: string } | undefined)?.description ?? fallbackESGContent.hero.description,
+      heroImage:
+        ((cms.hero as { heroImage?: { url?: string } } | undefined)?.heroImage?.url
+          ? `${process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL}${(cms.hero as { heroImage?: { url?: string } }).heroImage?.url}`
+          : undefined) ?? fallbackESGContent.hero.heroImage,
+    },
+    cards: transformESGCards(cms.cards as never, fallbackESGContent.cards),
+  };
 }
 
 export async function getNavbarContent(): Promise<NavbarContent> {
-  const cms = await fetchCMS<{
-    logo?: string;
-    logoAlt?: string;
-    navLinks?: { label?: string; href?: string }[];
-    ctaLabel?: string;
-  }>("navbar", { populate: "deep" });
+  const cms = await fetchCMS<Record<string, unknown>>("navbar", { populate: "deep" });
 
   if (!cms) return fallbackNavbarContent;
 
   return {
-    logo: cms.logo ?? fallbackNavbarContent.logo,
-    logoAlt: cms.logoAlt ?? fallbackNavbarContent.logoAlt,
-    navLinks: transformNavLinks(cms.navLinks as { label?: string; href?: string }[] | null ?? null, fallbackNavbarContent.navLinks),
-    ctaLabel: cms.ctaLabel ?? fallbackNavbarContent.ctaLabel,
-  } as typeof fallbackNavbarContent;
+    logo:
+      ((cms.logo as { url?: string } | undefined)?.url
+        ? `${process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL}${(cms.logo as { url?: string }).url}`
+        : undefined) ?? fallbackNavbarContent.logo,
+    logoAlt: (cms.logoAlt as string | undefined) ?? fallbackNavbarContent.logoAlt,
+    navLinks: transformNavLinks(cms.navLinks as never, fallbackNavbarContent.navLinks),
+    ctaLabel: ((cms.cta as { label?: string } | undefined)?.label) ?? fallbackNavbarContent.ctaLabel,
+    ctaHref: ((cms.cta as { href?: string } | undefined)?.href) ?? fallbackNavbarContent.ctaHref,
+  };
 }
 
 export async function getFooterContent(): Promise<FooterContent> {
-  const cms = await fetchCMS<{
-    logo?: string;
-    navLinks?: { label?: string; href?: string }[];
-    serviceLinks?: string[];
-    copyright?: string;
-    socialLinks?: { platform?: string; href?: string }[];
-  }>("footer", { populate: "deep" });
+  const cms = await fetchCMS<Record<string, unknown>>("footer", { populate: "deep" });
 
   if (!cms) return fallbackFooterContent;
 
   return {
-    logo: cms.logo ?? fallbackFooterContent.logo,
-    navLinks: transformNavLinks(cms.navLinks as { label?: string; href?: string }[] | null ?? null, fallbackFooterContent.navLinks),
-    serviceLinks: cms.serviceLinks ?? fallbackFooterContent.serviceLinks,
-    copyright: cms.copyright ?? fallbackFooterContent.copyright,
-    socialLinks: (cms.socialLinks ?? fallbackFooterContent.socialLinks) as typeof fallbackFooterContent.socialLinks,
+    logo:
+      ((cms.logo as { url?: string } | undefined)?.url
+        ? `${process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL}${(cms.logo as { url?: string }).url}`
+        : undefined) ?? fallbackFooterContent.logo,
+    navLinks: transformNavLinks(cms.navLinks as never, fallbackFooterContent.navLinks),
+    serviceLinks: transformNavLinks(cms.serviceLinks as never, fallbackFooterContent.serviceLinks),
+    copyright: (cms.copyright as string | undefined) ?? fallbackFooterContent.copyright,
+    socialLinks:
+      (cms.socialLinks as { platform?: string; href?: string; icon?: { url?: string } }[] | undefined)?.map((item, index) => ({
+        platform: item.platform ?? fallbackFooterContent.socialLinks[index]?.platform ?? "",
+        href: item.href ?? fallbackFooterContent.socialLinks[index]?.href ?? "#",
+        icon: item.icon?.url ? `${process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL}${item.icon.url}` : fallbackFooterContent.socialLinks[index]?.icon ?? "",
+      })) ?? fallbackFooterContent.socialLinks,
   };
 }
 
 export async function getContactFormContent(): Promise<ContactFormContent> {
-  const cms = await fetchCMS<{
-    heading?: string;
-    description?: string;
-    offices?: { title?: string; address?: string }[];
-    fields?: Record<string, unknown>;
-    submitLabel?: string;
-    submittingLabel?: string;
-    successMessage?: string;
-    errorMessage?: string;
-  }>("contact-form", { populate: "deep" });
+  const cms = await fetchCMS<Record<string, unknown>>("contact-form", { populate: "deep" });
 
   if (!cms) return fallbackContactFormContent;
 
-  const offices = cms.offices
-    ? cms.offices.map((o, i) => ({
-        title: o.title ?? fallbackContactFormContent.offices[i]?.title ?? "",
-        address: o.address ?? fallbackContactFormContent.offices[i]?.address ?? "",
-      }))
-    : fallbackContactFormContent.offices;
-
   return {
-    heading: cms.heading ?? fallbackContactFormContent.heading,
-    description: cms.description ?? fallbackContactFormContent.description,
-    offices,
-    fields: fallbackContactFormContent.fields,
-    submitLabel: cms.submitLabel ?? fallbackContactFormContent.submitLabel,
-    submittingLabel: cms.submittingLabel ?? fallbackContactFormContent.submittingLabel,
-    successMessage: cms.successMessage ?? fallbackContactFormContent.successMessage,
-    errorMessage: cms.errorMessage ?? fallbackContactFormContent.errorMessage,
-  } as typeof fallbackContactFormContent;
+    heading: (cms.heading as string | undefined) ?? fallbackContactFormContent.heading,
+    description: (cms.description as string | undefined) ?? fallbackContactFormContent.description,
+    offices: transformOffices(cms.offices as never, fallbackContactFormContent.offices),
+    fields: transformContactFields(cms as never, fallbackContactFormContent.fields),
+    submitLabel: (cms.submitLabel as string | undefined) ?? fallbackContactFormContent.submitLabel,
+    submittingLabel: (cms.submittingLabel as string | undefined) ?? fallbackContactFormContent.submittingLabel,
+    successMessage: (cms.successMessage as string | undefined) ?? fallbackContactFormContent.successMessage,
+    errorMessage: (cms.errorMessage as string | undefined) ?? fallbackContactFormContent.errorMessage,
+  };
 }
 
 export async function getWWTPContactFormContent(): Promise<WWTPContactFormContent> {
-  const cms = await fetchCMS<{
-    heading?: string;
-    description?: string;
-    offices?: { title?: string; address?: string }[];
-    submitLabel?: string;
-  }>("wwtp-contact-form", { populate: "deep" });
+  const cms = await fetchCMS<Record<string, unknown>>("wwtp-contact-form", { populate: "deep" });
 
   if (!cms) return fallbackWWTPContactFormContent;
 
   return {
-    heading: cms.heading ?? fallbackWWTPContactFormContent.heading,
-    description: cms.description ?? fallbackWWTPContactFormContent.description,
-    offices: (cms.offices?.map((o, i) => ({
-      title: o.title ?? fallbackWWTPContactFormContent.offices[i]?.title ?? "",
-      address: o.address ?? fallbackWWTPContactFormContent.offices[i]?.address ?? "",
-    })) ?? fallbackWWTPContactFormContent.offices) as typeof fallbackWWTPContactFormContent.offices,
-    fields: fallbackWWTPContactFormContent.fields,
-    submitLabel: cms.submitLabel ?? fallbackWWTPContactFormContent.submitLabel,
-  } as typeof fallbackWWTPContactFormContent;
+    heading: (cms.heading as string | undefined) ?? fallbackWWTPContactFormContent.heading,
+    description: (cms.description as string | undefined) ?? fallbackWWTPContactFormContent.description,
+    offices: transformOffices(cms.offices as never, fallbackWWTPContactFormContent.offices),
+    fields: transformContactFields(cms as never, fallbackWWTPContactFormContent.fields),
+    submitLabel: (cms.submitLabel as string | undefined) ?? fallbackWWTPContactFormContent.submitLabel,
+  };
 }
 
 export async function getSiteMetadata(): Promise<SiteMetadata> {
-  const cms = await fetchCMS<{
-    title?: string;
-    description?: string;
-    ogTitle?: string;
-    ogDescription?: string;
-    ogImage?: string;
-    twitterCard?: string;
-  }>("global-setting");
+  const cms = await fetchCMS<Record<string, unknown>>("global-setting", { populate: "deep" });
 
   if (!cms) return fallbackSiteMetadata;
 
   return {
-    title: cms.title ?? fallbackSiteMetadata.title,
-    description: cms.description ?? fallbackSiteMetadata.description,
-    ogTitle: cms.ogTitle ?? fallbackSiteMetadata.ogTitle,
-    ogDescription: cms.ogDescription ?? fallbackSiteMetadata.ogDescription,
-    ogImage: cms.ogImage ?? fallbackSiteMetadata.ogImage,
-    twitterCard: cms.twitterCard ?? fallbackSiteMetadata.twitterCard,
+    title: (cms.title as string | undefined) ?? fallbackSiteMetadata.title,
+    description: (cms.description as string | undefined) ?? fallbackSiteMetadata.description,
+    ogTitle: (cms.ogTitle as string | undefined) ?? fallbackSiteMetadata.ogTitle,
+    ogDescription: (cms.ogDescription as string | undefined) ?? fallbackSiteMetadata.ogDescription,
+    ogImage:
+      ((cms.ogImage as { url?: string } | undefined)?.url
+        ? `${process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL}${(cms.ogImage as { url?: string }).url}`
+        : undefined) ?? fallbackSiteMetadata.ogImage,
+    twitterCard: (cms.twitterCard as string | undefined) ?? fallbackSiteMetadata.twitterCard,
   };
 }
 

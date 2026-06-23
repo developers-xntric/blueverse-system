@@ -4,10 +4,18 @@ import type { ElectroxProcess } from "@/types/cms";
 import { electroxProcesses as fallbackProcesses } from "@/components/waste-water-treatment/data";
 
 type ElectroxSectionProps = {
+  eyebrow?: string;
+  title?: string;
+  description?: string;
   processes?: readonly ElectroxProcess[] | ElectroxProcess[];
 };
 
-export function ElectroxSection({ processes }: ElectroxSectionProps) {
+export function ElectroxSection({
+  eyebrow,
+  title,
+  description,
+  processes,
+}: ElectroxSectionProps) {
   const processList = processes && processes.length > 0 ? processes : fallbackProcesses;
 
   return (
@@ -16,18 +24,15 @@ export function ElectroxSection({ processes }: ElectroxSectionProps) {
         <div className="grid xl:grid-cols-2 xl:items-start">
           <div>
             <p className="bg-brand-gradient bg-clip-text font-heading text-[19px] leading-[1.1] font-semibold uppercase text-transparent">
-              ElectroX™ — Six processes.
+              {eyebrow ?? "ElectroX - Six processes."}
             </p>
             <h2 className="mt-5 font-heading text-[24px] leading-[1.1] font-bold text-brand-navy md:text-[35px]">
-              One reactor. Infinite possibilities.
+              {title ?? "One reactor. Infinite possibilities."}
             </h2>
           </div>
           <p className="text-[18px] leading-normal text-brand-muted xl:pt-1 xl:text-[16px]">
-            ElectroX™ Six processes. One reactor. Infinite possibilities.
-            Indra&apos;s patented non-contact micro-electrolysis platform
-            replacing chemical-heavy, multi-stage conventional treatment with a
-            single electricity-driven reactor. Handles pollutant shock loads
-            with zero chemical dosing in primary treatment.
+            {description ??
+              "ElectroX Six processes. One reactor. Infinite possibilities. Indra's patented non-contact micro-electrolysis platform replacing chemical-heavy, multi-stage conventional treatment with a single electricity-driven reactor. Handles pollutant shock loads with zero chemical dosing in primary treatment."}
           </p>
         </div>
 

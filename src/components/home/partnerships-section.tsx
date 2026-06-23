@@ -1,13 +1,14 @@
 import Image from "next/image";
 
-import type { Partnership } from "@/types/cms";
+import type { Partnership, SectionHeaderContent } from "@/types/cms";
 import { SectionHeading } from "@/components/home/section-heading";
 
 type PartnershipsSectionProps = {
+  section?: SectionHeaderContent;
   partners?: readonly Partnership[] | Partnership[];
 };
 
-export function PartnershipsSection({ partners = [] }: PartnershipsSectionProps) {
+export function PartnershipsSection({ section, partners = [] }: PartnershipsSectionProps) {
   const partnersList = partners.length > 0
     ? partners
     : [
@@ -41,8 +42,9 @@ export function PartnershipsSection({ partners = [] }: PartnershipsSectionProps)
     <section className="bg-white py-12 md:py-[50px]">
       <div className="homepage-shell">
         <SectionHeading
-          eyebrow="Our Partners"
-          title="Trusted by Industry Leaders"
+          eyebrow={section?.eyebrow ?? "Our Partners"}
+          title={section?.title ?? "Trusted by Industry Leaders"}
+          description={section?.description}
           centered
         />
         <div className="mt-[30px] grid gap-[20px] md:grid-cols-2 xl:grid-cols-4">

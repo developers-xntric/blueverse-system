@@ -5,7 +5,6 @@ export interface CMSMedia {
   width?: number;
   height?: number;
   mime?: string;
-  localFallback?: string;
 }
 
 export interface CMSSEO {
@@ -24,18 +23,30 @@ export interface NavLink {
   href: string;
 }
 
+export interface ButtonLink {
+  label: string;
+  href: string;
+}
+
+export interface SectionHeaderContent {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+}
+
 export interface HeroContent {
   title: string;
   description: string;
-  primaryCta: { label: string; href: string };
-  secondaryCta: { label: string; href: string };
+  primaryCta: ButtonLink;
+  secondaryCta: ButtonLink;
 }
 
 export interface MarqueeLogo {
   name: string;
   src: string;
-  width: number;
-  height: number;
+  alt?: string;
+  width?: number;
+  height?: number;
 }
 
 export interface Partner {
@@ -48,10 +59,12 @@ export interface Partner {
 export interface Stat {
   value: string;
   label: string;
+  icon?: string;
 }
 
 export interface Challenge {
   title: string;
+  icon?: string;
   points: string[];
 }
 
@@ -74,6 +87,7 @@ export interface Industry {
 export interface AboutValue {
   title: string;
   description: string;
+  icon?: string;
 }
 
 export interface TimelineEvent {
@@ -85,6 +99,7 @@ export interface AboutPanel {
   image: string;
   overlayTitle: string;
   overlayDescription: string;
+  overlayCta: ButtonLink;
   cards?: AboutValue[];
   heading?: string;
   missionParagraphs?: string[];
@@ -102,40 +117,59 @@ export interface Partnership {
   description: string;
 }
 
-export interface DeploymentHighlight {
-  text: string;
-}
-
 export interface Office {
   title: string;
   address: string;
+  icon?: string;
 }
 
-export interface ServiceLink {
-  label: string;
+export interface HomeProblemSection {
+  eyebrow?: string;
+  title: string;
+  ctaText?: string;
+  cta?: ButtonLink;
+}
+
+export interface HomeSolutionsSection {
+  eyebrow?: string;
+  title: string;
+  summary?: string;
+  cta?: ButtonLink;
+}
+
+export interface HomeIndustriesSection {
+  eyebrow?: string;
+  title: string;
+  detailEyebrow?: string;
+  detailCta?: ButtonLink;
+}
+
+export interface DeploymentSectionContent {
+  title: string;
+  image: string;
 }
 
 export interface HomePageContent {
   hero: HeroContent;
+  trustedBrandsLabel: string;
   marqueeLogos: MarqueeLogo[];
   heroPartners: Partner[];
   stats: Stat[];
+  problemSection: HomeProblemSection;
   challenges: Challenge[];
+  solutionsSection: HomeSolutionsSection;
   solutions: Solution[];
+  industriesSection: HomeIndustriesSection;
   industries: Industry[];
+  aboutSection: SectionHeaderContent;
   aboutTabs: AboutTab[];
+  partnersSection: SectionHeaderContent;
   partners: Partnership[];
+  deploymentSection: DeploymentSectionContent;
   deploymentHighlights: string[];
-  offices: Office[];
-  footerServiceLinks: string[];
-  navLinks: NavLink[];
 }
 
-export interface WastewaterStat {
-  value: string;
-  label: string;
-  icon: string;
-}
+export type WastewaterStat = Stat;
 
 export interface EpcFocusArea {
   title: string;
@@ -164,29 +198,33 @@ export interface EcosystemProduct {
   icon: string;
 }
 
-export interface WWTPIndustry {
-  title: string;
-  image: string;
-  points: string[];
-}
-
 export interface WWTPContent {
-  stats: WastewaterStat[];
-  epcFocusAreas: EpcFocusArea[];
-  electroxProcesses: ElectroxProcess[];
-  scaleCards: ScaleCard[];
-  ecosystemProducts: EcosystemProduct[];
-  industries: WWTPIndustry[];
-  aboutValues: AboutValue[];
-  partnerships: Partnership[];
-  deploymentHighlights: string[];
-  offices: Office[];
   hero: {
     subtitle: string;
     title: string;
     description: string;
     heroImage: string;
   };
+  statsSectionLabel: string;
+  stats: WastewaterStat[];
+  epcSection: {
+    title: string;
+    ctaText?: string;
+    cta?: ButtonLink;
+  };
+  epcFocusAreas: EpcFocusArea[];
+  electroxSection: {
+    eyebrow?: string;
+    title: string;
+    description?: string;
+  };
+  electroxProcesses: ElectroxProcess[];
+  scaleSection: {
+    eyebrow?: string;
+    title: string;
+  };
+  scaleCards: ScaleCard[];
+  ecosystemProducts: EcosystemProduct[];
 }
 
 export interface VehicleWashFeature {
@@ -221,10 +259,20 @@ export interface VehicleWashingContent {
     description: string;
     heroImage: string;
   };
+  featuresSectionTitle: string;
   features: VehicleWashFeature[];
+  washTypesSectionTitle: string;
   washTypes: VehicleWashType[];
+  businessModelsSectionTitle: string;
   businessModels: VehicleBusinessModel[];
+  regionalSectionTitle: string;
   regionalCards: VehicleRegionalCard[];
+}
+
+export interface ESGListCard {
+  title: string;
+  icon: string;
+  items: string[];
 }
 
 export interface ESGContent {
@@ -234,17 +282,15 @@ export interface ESGContent {
     description: string;
     heroImage: string;
   };
-  whatItTracks: string[];
-  capabilities: string[];
-  pricingModel: string[];
+  cards: ESGListCard[];
 }
 
 export interface FooterContent {
   logo: string;
   navLinks: NavLink[];
-  serviceLinks: string[];
+  serviceLinks: NavLink[];
   copyright: string;
-  socialLinks: { platform: string; href: string }[];
+  socialLinks: { platform: string; href: string; icon?: string }[];
 }
 
 export interface NavbarContent {
@@ -252,6 +298,19 @@ export interface NavbarContent {
   logoAlt: string;
   navLinks: NavLink[];
   ctaLabel: string;
+  ctaHref: string;
+}
+
+export interface TextFieldConfig {
+  label: string;
+  placeholder: string;
+  required: boolean;
+}
+
+export interface SelectFieldConfig {
+  label: string;
+  placeholder: string;
+  options: string[];
 }
 
 export interface ContactFormContent {
@@ -259,12 +318,12 @@ export interface ContactFormContent {
   description: string;
   offices: Office[];
   fields: {
-    name: { label: string; placeholder: string; required: boolean };
-    company: { label: string; placeholder: string; required: boolean };
-    email: { label: string; placeholder: string; required: boolean };
-    phone: { label: string; placeholder: string; required: boolean };
-    service: { label: string; placeholder: string; options: string[] };
-    message: { label: string; placeholder: string; required: boolean };
+    name: TextFieldConfig;
+    company: TextFieldConfig;
+    email: TextFieldConfig;
+    phone: TextFieldConfig;
+    service: SelectFieldConfig;
+    message: TextFieldConfig;
   };
   submitLabel: string;
   submittingLabel: string;
@@ -277,12 +336,12 @@ export interface WWTPContactFormContent {
   description: string;
   offices: Office[];
   fields: {
-    name: { label: string; placeholder: string };
-    company: { label: string; placeholder: string };
-    email: { label: string; placeholder: string };
-    phone: { label: string; placeholder: string };
-    service: { label: string; options: string[] };
-    message: { label: string; placeholder: string };
+    name: TextFieldConfig;
+    company: TextFieldConfig;
+    email: TextFieldConfig;
+    phone: TextFieldConfig;
+    service: SelectFieldConfig;
+    message: TextFieldConfig;
   };
   submitLabel: string;
 }

@@ -10,16 +10,17 @@ import {
   UsersIcon,
 } from "@/components/home/icons";
 import { SectionHeading } from "@/components/home/section-heading";
-import type { AboutTab } from "@/types/cms";
+import type { AboutTab, SectionHeaderContent } from "@/types/cms";
 
 const icons = [LightbulbIcon, LeafIcon, ShieldIcon, UsersIcon];
 
 type AboutSectionProps = {
+  section?: SectionHeaderContent;
   aboutTabs?: readonly AboutTab[] | AboutTab[];
 };
 
-export function AboutSection({ aboutTabs = [] }: AboutSectionProps) {
-  const tabsData = aboutTabs.length > 0
+export function AboutSection({ section, aboutTabs = [] }: AboutSectionProps) {
+  const tabsData: readonly AboutTab[] = aboutTabs.length > 0
     ? aboutTabs
     : [
         {
@@ -28,6 +29,7 @@ export function AboutSection({ aboutTabs = [] }: AboutSectionProps) {
             image: "/figma-assets/about-3.png",
             overlayTitle: "Building Tomorrow's Infrastructure, Today",
             overlayDescription: "Innovative water solutions for industries and communities.",
+            overlayCta: { label: "Get Started", href: "#contact" },
             cards: [
               { title: "Innovation", description: "Proprietary technology and bespoke solutions over off-the-shelf defaults." },
               { title: "Sustainability", description: "Every solution is designed with environmental responsibility in mind." },
@@ -42,6 +44,7 @@ export function AboutSection({ aboutTabs = [] }: AboutSectionProps) {
             image: "/figma-assets/about-tab2.png",
             overlayTitle: "Building Tomorrow's Infrastructure, Today",
             overlayDescription: "Innovative water solutions for industries and communities.",
+            overlayCta: { label: "Get Started", href: "#contact" },
             heading: "Our Mission",
             missionParagraphs: [
               "BlueVerse CleanTech exists to make water reuse the default, not the exception, for businesses. We believe industrial water waste is not inevitable. With the right technology, data intelligence, and circular water solutions, every litre can be recovered, treated, and reused.",
@@ -57,6 +60,7 @@ export function AboutSection({ aboutTabs = [] }: AboutSectionProps) {
             image: "/figma-assets/about-tab3.png",
             overlayTitle: "Building Tomorrow's Infrastructure, Today",
             overlayDescription: "Innovative water solutions for industries and communities.",
+            overlayCta: { label: "Get Started", href: "#contact" },
             timeline: [
               { year: "2021", description: "Developed and patented automated 2-wheeler vehicle washing machine" },
               { year: "2022", description: "Built proprietary ESG Tech Stack for water metrics in vehicle washing" },
@@ -76,8 +80,9 @@ export function AboutSection({ aboutTabs = [] }: AboutSectionProps) {
     <section id="about" className="py-12 bg-[#E8F4FD] md:py-[60px]">
       <div className="homepage-shell">
         <SectionHeading
-          eyebrow="About BlueVerse"
-          title="Building Tomorrow's Infrastructure, Today"
+          eyebrow={section?.eyebrow ?? "About BlueVerse"}
+          title={section?.title ?? "Building Tomorrow's Infrastructure, Today"}
+          description={section?.description}
           centered
         />
         <div className="mt-8 md:grid flex flex-wrap gap-2 md:gap-4 md:grid-cols-3 max-w-[99%] mx-auto">
@@ -113,10 +118,10 @@ export function AboutSection({ aboutTabs = [] }: AboutSectionProps) {
                 {activePanel.overlayDescription}
               </p>
               <a
-                href="#contact"
+                href={activePanel.overlayCta?.href ?? "#contact"}
                 className="mt-4 inline-block font-sans text-[18px] font-medium text-brand-navy underline underline-offset-4"
               >
-                Get Started
+                {activePanel.overlayCta?.label ?? "Get Started"}
               </a>
             </div>
           </article>
@@ -131,7 +136,11 @@ export function AboutSection({ aboutTabs = [] }: AboutSectionProps) {
                     className="rounded-[10px] md:rounded-[18px] border border-brand-card-line bg-[#e3eff8] p-4 md:p-[22px] flex flex-col items-start justify-between"
                   >
                     <div className="flex size-[40px] md:size-[58px] items-center justify-center rounded-[10px] md:rounded-[18px] bg-brand-sky text-white">
-                      <Icon className="size-[24px] md:size-[28px]" />
+                      {item.icon ? (
+                        <Image src={item.icon} alt="" width={28} height={28} className="size-[24px] md:size-[28px] object-contain" />
+                      ) : (
+                        <Icon className="size-[24px] md:size-[28px]" />
+                      )}
                     </div>
                     <div>
                       <h3 className="mt-7 md:mt-10 font-heading text-[20px] leading-[1.1] font-bold text-black">

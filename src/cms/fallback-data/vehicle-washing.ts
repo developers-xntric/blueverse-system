@@ -8,6 +8,7 @@ export const fallbackVehicleWashingContent: VehicleWashingContent = {
       "BlueVerse operates and supplies fully automated vehicle washing systems that combine throughput, quality, and water efficiency in a single footprint - designed for petrol stations, malls, fleet depots, automotive dealerships, and government facilities.",
     heroImage: "/vehicle-assets/wash-tunnel.png",
   },
+  featuresSectionTitle: "System Features",
   features: [
     { icon: "/vehicle-assets/feature-1.svg", description: "Fully automated washing tunnels and robotic gantry systems" },
     { icon: "/vehicle-assets/feature-2.svg", description: "Express tunnel wash: high-volume throughput for busy locations" },
@@ -16,6 +17,7 @@ export const fallbackVehicleWashingContent: VehicleWashingContent = {
     { icon: "/vehicle-assets/feature-5.svg", description: "IoT-enabled - real-time wash data feeds into ESG dashboard" },
     { icon: "/vehicle-assets/feature-6.svg", description: "Zero capex model available: Pay-per-Wash / Wash-as-a-Service (WaaS)" },
   ],
+  washTypesSectionTitle: "Wash Types Available",
   washTypes: [
     {
       title: "Express Tunnel Wash",
@@ -34,11 +36,13 @@ export const fallbackVehicleWashingContent: VehicleWashingContent = {
       description: "Patented automated motorcycle wash system. 8 washes per hour, 138 sq.ft. footprint, 98% water recovery.",
     },
   ],
+  businessModelsSectionTitle: "Business Models",
   businessModels: [
     { icon: "/vehicle-assets/business-1.svg", title: "CapEx purchase", description: "Full system ownership" },
     { icon: "/vehicle-assets/business-2.svg", title: "Wash-as-a-Service (WaaS)", description: "Revenue-share or subscription model, zero upfront capex" },
     { icon: "/vehicle-assets/business-3.svg", title: "Annual Maintenance Contracts (AMCs)", description: "Full system upkeep and consumables" },
   ],
+  regionalSectionTitle: "Regional Presence",
   regionalCards: [
     {
       icon: "/vehicle-assets/india.svg",

@@ -13,9 +13,10 @@ import type { NavLink } from "@/types/cms";
 
 type FooterProps = {
   navLinks?: readonly NavLink[] | NavLink[];
-  serviceLinks?: string[];
+  serviceLinks?: NavLink[];
   logo?: string;
   copyright?: string;
+  socialLinks?: { platform: string; href: string; icon?: string }[];
 };
 
 export function Footer({
@@ -23,11 +24,24 @@ export function Footer({
   serviceLinks,
   logo,
   copyright,
+  socialLinks,
 }: FooterProps) {
   const links = navLinksProp && navLinksProp.length > 0 ? navLinksProp : fallbackNavLinks;
   const services = serviceLinks && serviceLinks.length > 0
     ? serviceLinks
-    : ["Automated Vehicle Washing", "Water Treatment Systems", "ESG Intelligence Platform", "EPC Services"];
+    : [
+        { label: "Automated Vehicle Washing", href: "#solutions" },
+        { label: "Water Treatment Systems", href: "#solutions" },
+        { label: "ESG Intelligence Platform", href: "#solutions" },
+        { label: "EPC Services", href: "#solutions" },
+      ];
+  const socialItems = socialLinks && socialLinks.length > 0
+    ? socialLinks
+    : [
+        { platform: "LinkedIn", href: "#contact", icon: "" },
+        { platform: "Twitter", href: "#contact", icon: "" },
+        { platform: "Instagram", href: "#contact", icon: "" },
+      ];
 
   return (
     <footer className="bg-brand-blue py-8 text-white md:py-[36px]">
@@ -48,15 +62,13 @@ export function Footer({
             ))}
           </div>
           <div className="flex gap-4">
-            <SocialLink label="LinkedIn">
-              <LinkedinIcon className="size-[24px]" />
-            </SocialLink>
-            <SocialLink label="Twitter">
-              <TwitterIcon className="size-[24px]" />
-            </SocialLink>
-            <SocialLink label="Instagram">
-              <InstagramIcon className="size-[24px]" />
-            </SocialLink>
+            {socialItems.map((item) => (
+              <SocialLink key={item.platform} label={item.platform} href={item.href} icon={item.icon}>
+                {item.platform === "LinkedIn" ? <LinkedinIcon className="size-[24px]" /> : null}
+                {item.platform === "Twitter" ? <TwitterIcon className="size-[24px]" /> : null}
+                {item.platform === "Instagram" ? <InstagramIcon className="size-[24px]" /> : null}
+              </SocialLink>
+            ))}
           </div>
         </div>
         <div className="mt-8 border-t border-white/10 pt-3 md:pt-8 flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-4 md:gap-0">
@@ -65,8 +77,8 @@ export function Footer({
           </p>
           <div className="mt-4 flex flex-col md:flex-row md:flex-wrap gap-3 text-white/60 md:mt-0 md:gap-4 md:text-[15px]">
             {services.map((item) => (
-              <a key={item} href="#solutions">
-                {item}
+              <a key={item.label} href={item.href}>
+                {item.label}
               </a>
             ))}
           </div>
@@ -78,18 +90,26 @@ export function Footer({
 
 function SocialLink({
   label,
+  href,
+  icon,
   children,
 }: {
   label: string;
+  href: string;
+  icon?: string;
   children: ReactNode;
 }) {
   return (
     <a
-      href="#contact"
+      href={href}
       aria-label={label}
       className="flex size-12 items-center justify-center rounded-full bg-white/5 text-white transition hover:bg-white/10"
     >
-      {children}
+      {icon ? (
+        <Image src={icon} alt={label} width={24} height={24} className="size-6 object-contain" />
+      ) : (
+        children
+      )}
     </a>
   );
 }
