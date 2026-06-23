@@ -108,7 +108,7 @@ export function ContactSection() {
               </Field>
             </div>
             <div className="mt-5 md:mt-[15px]">
-              <Field label="Service Interest h-14">
+              <Field label="Service Interest">
                 <div className="relative">
                   <select name="service" className="form-field appearance-none pr-12" defaultValue="" required>
                     <option value="" disabled>
