@@ -8,7 +8,7 @@ export const navLinks = [
 ] as const;
 
 export const heroContent = {
-  title: "Delivering Scalable, Innovative & Reliable Services",
+  title: "Building a Circular Water Infrastructure Platform",
   description:
     "Helping businesses reduce water consumption, achieve regulatory compliance, and report ESG metrics - all from one unified platform.",
   primaryCta: { label: "Talk To Our Team", href: "#contact" },
@@ -113,7 +113,7 @@ export const solutions = [
     title: "Water Treatment Systems",
     description:
       "Smart water treatment systems designed to purify, recycle, and optimize water for sustainable operations.",
-    image: "/figma-assets/solutions-2.png",
+    image: "/solution-2.png",
     href: "/waste-water-treatment-systems",
   },
   {
@@ -126,7 +126,7 @@ export const solutions = [
   {
     title: "ESG Intelligence Platform",
     description:
-      "AI-Driven Water Intelligence Platform for water assets, carbon credit trading, water exchange, energy optimization, and waste data management.",
+      "AI-Driven Water Intelligence Platform for water assets, carbon credit trading, water exchange, energy optimization, and waste data management",
     image: "/figma-assets/solutions-3.png",
     href: "/esg-platform",
   },
@@ -150,7 +150,7 @@ export const industries = [
   },
   {
     title: "Vehicle Wash",
-    image: "/figma-assets/industries-2.png",
+    image: "/indus-2.png",
     points: [
       "Automated wash tunnels with water recycling",
       "WaaS (Wash-as-a-Service) subscription model",
@@ -180,7 +180,7 @@ export const industries = [
   },
   {
     title: "Malls & Commercial Real Estate",
-      image: "/figma-assets/industry-tab-4.png",
+      image: "/indus-4.png",
     points: [
       "Water recycling for facility management",
       "ESG dashboards for LEED/Estidama compliance",
@@ -210,7 +210,7 @@ export const industries = [
   },
   {
     title: "Developers & Master Planners",
-    image: "/figma-assets/industry-tab-6.png",
+    image: "/indus-6.png",
     points: [
       "Built-in water reuse infrastructure",
       "Aldar, Emaar, Nakheel, Deyaar partnerships",
@@ -325,13 +325,13 @@ export const partners = [
     name: "Stinger Chemicals",
     logo: "/figma-assets/stinger.png",
     description:
-      "Stinger Chemicals delivers high-quality industrial and automotive chemical solutions, trusted for performance and reliability. Committed to innovation, we provide products that meet the highest standards for every application, helping businesses achieve superior cleaning, protection, and maintenance results.",
+      "Stinger Chemicals delivers high-quality industrial and automotive chemical solutions, trusted for performance and reliability. Committed to innovation, we provide products that meet the highest standards for every application, helping businesses achieve superior cleaning, protection, and maintenance results. With a focus on consistency, safety, and customer satisfaction.",
   },
   {
     name: "Xylem",
     logo: "/figma-assets/xylem.png",
     description:
-      "BlueVerse cleantech has partnered with Xylem, a global leader in water technology and solutions, to strengthen our water infrastructure capabilities. Xylem's expertise spans water analysis & monitoring, disinfection systems, filtration, smart metering, and digital water management complementing our EPC and ESG commitments with world-class technology and equipment.",
+      "BlueVerse cleantech  has partnered with Xylem, a global leader in water technology and solutions, to strengthen our water infrastructure capabilities. Xylem's expertise spans water analysis & monitoring, disinfection systems, filtration, smart metering, and digital water management complementing our EPC and ESG commitments with world-class technology and equipment.",
   },
 ] as const;
 
@@ -360,5 +360,4 @@ export const footerServiceLinks = [
   "Automated Vehicle Washing",
   "Water Treatment Systems",
   "ESG Intelligence Platform",
-  "EPC Services",
 ] as const;

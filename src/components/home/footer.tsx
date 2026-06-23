@@ -13,7 +13,7 @@ import {
 } from "@/components/home/icons";
 
 export function Footer() {
-  const footerServiceLinkMap: Record<(typeof footerServiceLinks)[number], string> = {
+  const footerServiceLinkMap: Record<string, string> = {
     "Automated Vehicle Washing": "/vehicle-washing",
     "Water Treatment Systems": "/waste-water-treatment-systems",
     "ESG Intelligence Platform": "/esg-platform",
@@ -61,7 +61,7 @@ export function Footer() {
         </div>
         <div className="mt-8 border-t border-white/10 pt-3 md:pt-8 flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-4 md:gap-0">
           <p className="text-[16px] text-white/60 md:text-[15px]">
-            Copyright 2026 BlueVerse CleanTech Pvt. Ltd. All rights reserved.
+            ©  2026 BlueVerse CleanTech Pvt. Ltd. All rights reserved.
           </p>
           <div className="mt-4 flex flex-col md:flex-row md:flex-wrap gap-3 text-white/60 md:mt-0 md:gap-4 md:text-[15px]">
             {footerServiceLinks.map((item) => (

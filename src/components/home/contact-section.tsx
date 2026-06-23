@@ -1,12 +1,10 @@
 "use client";
 
-import { GlobeIcon, MapPinIcon } from "@/components/home/icons";
+import { MapPinIcon } from "@/components/home/icons";
 import { offices } from "@/components/home/homepage-data";
 import { SectionHeading } from "@/components/home/section-heading";
 import type { FormEvent, ReactNode } from "react";
 import { useState } from "react";
-
-const officeIcons = [GlobeIcon, MapPinIcon];
 
 export function ContactSection() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -56,54 +54,63 @@ export function ContactSection() {
         <SectionHeading
           eyebrow=""
           title="Let's Build Something Together"
-          description="Whether you have a project in mind, a question about our services, or want to explore a partnership — our team is ready to help."
+          description=""
           centered
         />
+        <p className="text-[#4A5565] mx-auto mt-3  text-[16px] leading-[1.4] md:text-[22px]">Whether you have a project in mind, a question about our services, or want to explore a partnership our team is ready to help.</p>
         <div className="mt-8 grid gap-[18px] xl:grid-cols-[621px_1fr]">
           <div className="grid gap-[18px]">
-            {offices.map((office, index) => {
-              const Icon = officeIcons[index];
-
-              return (
-                <article
-                  key={office.title}
-                  className="rounded-[10px] md:rounded-[19px] bg-white p-4 md:p-8 shadow-[0_1px_3px_rgba(0,0,0,0.08)]"
-                >
-                  <div className="flex size-[48px] items-center justify-center rounded-full bg-brand-ice text-brand-navy">
-                    <Icon className="size-[24px]" />
+            <article className="rounded-[10px] md:rounded-[19px] bg-white h-full pb-10 md:pb-0 pt-4 md:pt-8 px-4 md:px-8 shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
+              <div className="flex size-[48px] items-center justify-center rounded-[10px] bg-brand-ice text-brand-navy">
+                <MapPinIcon className="size-[24px]" />
+              </div>
+              <div className="mt-4 md:mt-8 flex items-start flex-col justify-between lg:h-[70%] ">
+                {offices.map((office, _index) => (
+                  <div
+                    key={office.title}
+                    className={"pb-8 border-b border-gray-200"}
+                  >
+                    <h3 className="font-display text-[24px]  mt-4 md:mt-0 md:text-[29px] font-bold leading-none text-brand-navy">
+                      {office.title}
+                    </h3>
+                    <p className="mt-4 text-[16px] md:text-[19px] leading-[1.5] text-brand-soft">
+                      {office.address}
+                    </p>
                   </div>
-                  <h3 className="mt-4 md:mt-8 font-display text-[24px] md:text-[29px] font-bold leading-none text-brand-navy">
-                    {office.title}
+                ))}
+                <div className="pt-6 ">
+                  <h3 className="font-display text-[24px] md:text-[29px] font-bold leading-none text-brand-navy">
+                    Email Address
                   </h3>
-                  <p className="mt-4 text-[16px]  md:text-[19px] leading-[1.5] text-brand-soft">
-                    {office.address}
+                  <p className="mt-4 text-[16px] md:text-[19px] leading-[1.5] text-brand-soft">
+                    info@blueverse.ae
                   </p>
-                </article>
-              );
-            })}
+                </div>
+              </div>
+            </article>
           </div>
           <form
             onSubmit={handleSubmit}
-            className="rounded-[10px] md:rounded-[29px] bg-white px-5 py-6 shadow-[0_1px_3px_rgba(0,0,0,0.08)] sm:px-6 sm:py-8 md:px-[30px] md:py-[40px]"
+            className="rounded-[10px] md:rounded-[29px] bg-white px-5 py-6 shadow-[0_1px_3px_rgba(0,0,0,0.08)] sm:px-6 sm:py-8 md:px-[30px] md:py-[30px]"
           >
-            <div className="grid gap-5 sm:grid-cols-2 md:gap-[20px]">
+            <div className="grid gap-5 sm:grid-cols-2 md:gap-[10px]">
               <Field label="Full Name">
                 <input name="name" type="text" placeholder="Your Name" className="form-field" required />
               </Field>
               <Field label="Company">
-                <input name="company" type="text" placeholder="Company Name" className="form-field" />
+                <input name="company" type="text" placeholder="Company Name" className="form-field" required />
               </Field>
               <Field label="Email Address">
                 <input name="email" type="email" placeholder="email@company.com" className="form-field" required />
               </Field>
               <Field label="Phone Number">
-                <input name="phone" type="tel" placeholder="+91 XXXX XXX XXX" className="form-field" />
+                <input name="phone" type="tel" placeholder="+91 XXXX XXX XXX" className="form-field" required />
               </Field>
             </div>
             <div className="mt-5 md:mt-[30px]">
               <Field label="Service Interest">
                 <div className="relative">
-                  <select name="service" className="form-field appearance-none pr-12" defaultValue="">
+                  <select name="service" className="form-field appearance-none pr-12" defaultValue="" required>
                     <option value="" disabled>
                       Select a service
                     </option>

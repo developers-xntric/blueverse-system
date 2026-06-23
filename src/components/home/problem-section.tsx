@@ -1,14 +1,10 @@
-import {
-  BadgeIcon,
-  FactoryIcon,
-  NetworkIcon,
-  WaterScarcityIcon,
-} from "@/components/home/icons";
+import Image from "next/image";
+
 import { challenges } from "@/components/home/homepage-data";
 import { SectionHeading } from "@/components/home/section-heading";
 import { Button } from "@/components/home/button";
 
-const icons = [WaterScarcityIcon, FactoryIcon, BadgeIcon, NetworkIcon];
+const icons = ["/1.png", "/2.png", "/3.png", "/5.png"];
 
 export function ProblemSection() {
   return (
@@ -29,7 +25,13 @@ export function ProblemSection() {
               >
                 <div className="flex items-center gap-4">
                   <div className="flex size-[45px] items-center justify-center rounded-[10px] bg-brand-ice text-brand-navy">
-                    <Icon className="size-[28px]" />
+                    <Image
+                      src={Icon}
+                      alt={challenge.title}
+                      width={2000}
+                      height={2000}
+                      className="object-contain w-8 h-8"
+                    />
                   </div>
                   <h3 className="font-heading md:text-[20px] leading-[1.1] font-bold text-brand-navy">
                     {challenge.title}
@@ -42,7 +44,9 @@ export function ProblemSection() {
                       className="flex items-start gap-3 text-[18px] leading-[1.4] text-brand-muted"
                     >
                       <span className="mt-[5px] size-[7px] shrink-0 rounded-full bg-brand-green" />
-                      <span className="text-[13px] md:text-[14px]">{point}</span>
+                      <span className="text-[13px] md:text-[14px]">
+                        {point}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -52,9 +56,14 @@ export function ProblemSection() {
         </div>
         <div className="mt-10 flex flex-col gap-5 rounded-[18px] bg-brand-blue px-6 py-7 md:mt-[30px] md:flex-row md:items-center md:justify-between md:px-[30px] md:py-[26px]">
           <p className="max-w-[820px] font-heading text-[22px] leading-[1.05] font-semibold text-white md:text-[29px]">
-            Together, we can reduce water waste and build a more sustainable future
+            Together, we can reduce water waste and build a more sustainable
+            future
           </p>
-          <Button variant="secondary" size="compact" className="whitespace-nowrap">
+          <Button
+            variant="secondary"
+            size="compact"
+            className="whitespace-nowrap"
+          >
             Let&apos;s Solve Water Challenges Together
           </Button>
         </div>

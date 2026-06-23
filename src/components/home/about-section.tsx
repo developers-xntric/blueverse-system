@@ -78,7 +78,7 @@ export function AboutSection() {
                     className="rounded-[10px] md:rounded-[18px] border border-brand-card-line bg-[#e3eff8] p-4  md:p-[22px] flex flex-col items-start justify-between"
                   >
                     <div className="flex size-[40px] md:size-[58px] items-center justify-center rounded-[10px] md:rounded-[18px] bg-brand-sky text-white">
-                      <Icon className="size-[24px] md:size-[28px]" />
+                      <Icon className="size-[24px] md:size-[30px]" />
                     </div>
                     <div>
                       <h3 className="mt-7 md:mt-10 font-heading text-[20px] leading-[1.1] font-bold text-black">

@@ -52,8 +52,8 @@ export function SolutionsSection() {
         </div>
         <div className="mx-auto mt-12 max-w-[1023px] text-center">
           <p className="font-heading text-[22px] leading-[1.15] font-bold text-brand-navy md:text-[35px]">
-            From Water Treatment to Smart Washing and ESG Reporting,
-             BlueVerse brings every solution together.
+            From Water Treatment to Smart Washing and ESG Reporting, BlueVerse
+            brings every solution together.
           </p>
           <div className="mt-6">
             <Button>Let&apos;s Talk Sustainable Growth</Button>
