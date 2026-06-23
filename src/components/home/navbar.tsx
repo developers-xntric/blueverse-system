@@ -16,7 +16,7 @@ type NavbarProps = {
   ctaLabel?: string;
   ctaHref?: string;
 };
-
+//#nav
 export function Navbar({
   navLinks: navLinksProp,
   logo,
