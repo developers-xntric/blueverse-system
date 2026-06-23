@@ -17,7 +17,7 @@ function AcceleratorMark() {
         alt="TotalEnergies logo"
         width={2000}
         height={2000}
-        className=" w-[80px] md:w-[60px]"
+        className=" w-[80px] md:w-[90px]"
       />
 
       <Image
@@ -25,7 +25,7 @@ function AcceleratorMark() {
         alt="TotalEnergies logo"
         width={2000}
         height={2000}
-        className=" w-[80px] md:w-[60px]"
+        className=" w-[80px] md:w-[90px]"
       />
     </div>
   );
@@ -104,7 +104,7 @@ export function HeroSection() {
               key={partner.title}
               className="rounded-[12px] border border-white/65 bg-white/[0.03] px-4 md:px-6 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] "
             >
-              <div className="flex flex-col items-center  gap-4 md:flex-row md:items-start">
+              <div className="flex flex-col items-center  gap-4 md:flex-row ">
                 <div className="shrink-0">
                   {index === 0 ? (
                     <Image
@@ -112,7 +112,7 @@ export function HeroSection() {
                       alt="WTIIRA logo"
                       width={129}
                       height={110}
-                      className="h-auto w-[90px] md:w-[100px]"
+                      className="h-auto w-[90px] md:w-[90px]"
                     />
                   ) : (
                     <>
