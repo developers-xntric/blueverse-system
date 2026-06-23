@@ -36,6 +36,7 @@ import {
   fallbackWWTPContactFormContent,
   fallbackWWTPContent,
 } from "@/cms/fallback-data";
+import { getStrapiMediaURL } from "@/lib/cms-helpers";
 import type {
   ContactFormContent,
   ESGContent,
@@ -48,6 +49,10 @@ import type {
   WWTPContactFormContent,
   WWTPContent,
 } from "@/types/cms";
+
+function mediaUrl(url?: string): string | undefined {
+  return getStrapiMediaURL(url);
+}
 
 export async function getHomePageContent(): Promise<HomePageContent> {
   const cms = await fetchCMS<Record<string, unknown>>("home-page", { populate: "deep" });
@@ -89,9 +94,8 @@ export async function getWWTPContent(): Promise<WWTPContent> {
       title: (cms.hero as { title?: string } | undefined)?.title ?? fallbackWWTPContent.hero.title,
       description: (cms.hero as { description?: string } | undefined)?.description ?? fallbackWWTPContent.hero.description,
       heroImage:
-        ((cms.hero as { heroImage?: { url?: string } } | undefined)?.heroImage?.url
-          ? `${process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL}${(cms.hero as { heroImage?: { url?: string } }).heroImage?.url}`
-          : undefined) ?? fallbackWWTPContent.hero.heroImage,
+        mediaUrl((cms.hero as { heroImage?: { url?: string } } | undefined)?.heroImage?.url) ??
+        fallbackWWTPContent.hero.heroImage,
     },
     statsSectionLabel: (cms.statsSectionLabel as string | undefined) ?? fallbackWWTPContent.statsSectionLabel,
     stats: transformStats(cms.stats as never, fallbackWWTPContent.stats),
@@ -128,14 +132,13 @@ export async function getVehicleWashingContent(): Promise<VehicleWashingContent>
       title: (cms.hero as { title?: string } | undefined)?.title ?? fallbackVehicleWashingContent.hero.title,
       description: (cms.hero as { description?: string } | undefined)?.description ?? fallbackVehicleWashingContent.hero.description,
       heroImage:
-        ((cms.hero as { heroImage?: { url?: string } } | undefined)?.heroImage?.url
-          ? `${process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL}${(cms.hero as { heroImage?: { url?: string } }).heroImage?.url}`
-          : undefined) ?? fallbackVehicleWashingContent.hero.heroImage,
+        mediaUrl((cms.hero as { heroImage?: { url?: string } } | undefined)?.heroImage?.url) ??
+        fallbackVehicleWashingContent.hero.heroImage,
     },
     featuresSectionTitle: (cms.featuresSectionTitle as string | undefined) ?? fallbackVehicleWashingContent.featuresSectionTitle,
     features:
       (cms.features as { icon?: { url?: string }; description?: string }[] | undefined)?.map((item, index) => ({
-        icon: item.icon?.url ? `${process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL}${item.icon.url}` : fallbackVehicleWashingContent.features[index]?.icon ?? "",
+        icon: mediaUrl(item.icon?.url) ?? fallbackVehicleWashingContent.features[index]?.icon ?? "",
         description: item.description ?? fallbackVehicleWashingContent.features[index]?.description ?? "",
       })) ?? fallbackVehicleWashingContent.features,
     washTypesSectionTitle: (cms.washTypesSectionTitle as string | undefined) ?? fallbackVehicleWashingContent.washTypesSectionTitle,
@@ -147,14 +150,14 @@ export async function getVehicleWashingContent(): Promise<VehicleWashingContent>
     businessModelsSectionTitle: (cms.businessModelsSectionTitle as string | undefined) ?? fallbackVehicleWashingContent.businessModelsSectionTitle,
     businessModels:
       (cms.businessModels as { icon?: { url?: string }; title?: string; description?: string }[] | undefined)?.map((item, index) => ({
-        icon: item.icon?.url ? `${process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL}${item.icon.url}` : fallbackVehicleWashingContent.businessModels[index]?.icon ?? "",
+        icon: mediaUrl(item.icon?.url) ?? fallbackVehicleWashingContent.businessModels[index]?.icon ?? "",
         title: item.title ?? fallbackVehicleWashingContent.businessModels[index]?.title ?? "",
         description: item.description ?? fallbackVehicleWashingContent.businessModels[index]?.description ?? "",
       })) ?? fallbackVehicleWashingContent.businessModels,
     regionalSectionTitle: (cms.regionalSectionTitle as string | undefined) ?? fallbackVehicleWashingContent.regionalSectionTitle,
     regionalCards:
       (cms.regionalCards as { icon?: { url?: string }; region?: string; site?: string; copy?: string; cta?: { label?: string; href?: string } }[] | undefined)?.map((item, index) => ({
-        icon: item.icon?.url ? `${process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL}${item.icon.url}` : fallbackVehicleWashingContent.regionalCards[index]?.icon ?? "",
+        icon: mediaUrl(item.icon?.url) ?? fallbackVehicleWashingContent.regionalCards[index]?.icon ?? "",
         region: item.region ?? fallbackVehicleWashingContent.regionalCards[index]?.region ?? "",
         site: item.site ?? fallbackVehicleWashingContent.regionalCards[index]?.site ?? "",
         copy: item.copy ?? fallbackVehicleWashingContent.regionalCards[index]?.copy ?? "",
@@ -176,9 +179,8 @@ export async function getESGContent(): Promise<ESGContent> {
       title: (cms.hero as { title?: string } | undefined)?.title ?? fallbackESGContent.hero.title,
       description: (cms.hero as { description?: string } | undefined)?.description ?? fallbackESGContent.hero.description,
       heroImage:
-        ((cms.hero as { heroImage?: { url?: string } } | undefined)?.heroImage?.url
-          ? `${process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL}${(cms.hero as { heroImage?: { url?: string } }).heroImage?.url}`
-          : undefined) ?? fallbackESGContent.hero.heroImage,
+        mediaUrl((cms.hero as { heroImage?: { url?: string } } | undefined)?.heroImage?.url) ??
+        fallbackESGContent.hero.heroImage,
     },
     cards: transformESGCards(cms.cards as never, fallbackESGContent.cards),
   };
@@ -191,9 +193,7 @@ export async function getNavbarContent(): Promise<NavbarContent> {
 
   return {
     logo:
-      ((cms.logo as { url?: string } | undefined)?.url
-        ? `${process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL}${(cms.logo as { url?: string }).url}`
-        : undefined) ?? fallbackNavbarContent.logo,
+      mediaUrl((cms.logo as { url?: string } | undefined)?.url) ?? fallbackNavbarContent.logo,
     logoAlt: (cms.logoAlt as string | undefined) ?? fallbackNavbarContent.logoAlt,
     navLinks: transformNavLinks(cms.navLinks as never, fallbackNavbarContent.navLinks),
     ctaLabel: ((cms.cta as { label?: string } | undefined)?.label) ?? fallbackNavbarContent.ctaLabel,
@@ -208,9 +208,7 @@ export async function getFooterContent(): Promise<FooterContent> {
 
   return {
     logo:
-      ((cms.logo as { url?: string } | undefined)?.url
-        ? `${process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL}${(cms.logo as { url?: string }).url}`
-        : undefined) ?? fallbackFooterContent.logo,
+      mediaUrl((cms.logo as { url?: string } | undefined)?.url) ?? fallbackFooterContent.logo,
     navLinks: transformNavLinks(cms.navLinks as never, fallbackFooterContent.navLinks),
     serviceLinks: transformNavLinks(cms.serviceLinks as never, fallbackFooterContent.serviceLinks),
     copyright: (cms.copyright as string | undefined) ?? fallbackFooterContent.copyright,
@@ -218,7 +216,7 @@ export async function getFooterContent(): Promise<FooterContent> {
       (cms.socialLinks as { platform?: string; href?: string; icon?: { url?: string } }[] | undefined)?.map((item, index) => ({
         platform: item.platform ?? fallbackFooterContent.socialLinks[index]?.platform ?? "",
         href: item.href ?? fallbackFooterContent.socialLinks[index]?.href ?? "#",
-        icon: item.icon?.url ? `${process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL}${item.icon.url}` : fallbackFooterContent.socialLinks[index]?.icon ?? "",
+        icon: mediaUrl(item.icon?.url) ?? fallbackFooterContent.socialLinks[index]?.icon ?? "",
       })) ?? fallbackFooterContent.socialLinks,
   };
 }
@@ -265,9 +263,7 @@ export async function getSiteMetadata(): Promise<SiteMetadata> {
     ogTitle: (cms.ogTitle as string | undefined) ?? fallbackSiteMetadata.ogTitle,
     ogDescription: (cms.ogDescription as string | undefined) ?? fallbackSiteMetadata.ogDescription,
     ogImage:
-      ((cms.ogImage as { url?: string } | undefined)?.url
-        ? `${process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL}${(cms.ogImage as { url?: string }).url}`
-        : undefined) ?? fallbackSiteMetadata.ogImage,
+      mediaUrl((cms.ogImage as { url?: string } | undefined)?.url) ?? fallbackSiteMetadata.ogImage,
     twitterCard: (cms.twitterCard as string | undefined) ?? fallbackSiteMetadata.twitterCard,
   };
 }
