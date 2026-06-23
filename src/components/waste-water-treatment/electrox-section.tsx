@@ -6,7 +6,7 @@ import { MobileCarousel } from "@/components/waste-water-treatment/mobile-carous
 export function ElectroxSection() {
   return (
     <section className="mx-auto w-[90%] bg-brand-ice-strong py-12 md:py-15 2xl:max-w-360">
-      <div className="mx-auto max-w-[1652px]">
+      <div className="w-[90%] mx-auto">
         <div className="grid gap-5 xl:grid-cols-2 xl:items-start">
           <div>
             <p className="bg-brand-gradient bg-clip-text font-heading text-[16px] leading-[1.1] font-semibold uppercase text-transparent sm:text-[19px]">
@@ -45,7 +45,7 @@ export function ElectroxSection() {
 
         <div className="mt-10 hidden gap-6 sm:grid sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-6 xl:gap-5">
           {electroxProcesses.map((process) => (
-            <article key={process.title} className="rounded-2xl bg-white/60 p-4 sm:p-5 xl:rounded-none xl:bg-transparent xl:p-0 xl:px-5">
+            <article key={process.title} className="rounded-2xl bg-white/60 p-4 sm:p-5 xl:rounded-none xl:bg-transparent xl:p-0 ">
               <div className="flex size-10 items-center justify-center rounded-full bg-white">
                 <Image src={process.icon} alt="" width={30} height={30} />
               </div>
