@@ -57,7 +57,10 @@ export function ContactSection({ data }: ContactSectionProps) {
   return (
     <section id="contact" className="bg-brand-ice py-12 md:py-[60px]">
       <div className="homepage-shell">
-        <SectionHeading eyebrow="" title={data.heading} centered />
+        <h3 className="font-heading text-[24px] leading-[1.05] font-bold md:text-[40px] text-[#062B4F] text-center">
+          {data.heading}
+        </h3>
+       
         {data.description ? (
           <p className="mx-auto mt-3 text-center text-[16px] leading-[1.4] text-[#4A5565] md:text-[22px]">
             {data.description}
@@ -65,7 +68,7 @@ export function ContactSection({ data }: ContactSectionProps) {
         ) : null}
         <div className="mt-8 grid gap-[18px] xl:grid-cols-[621px_1fr]">
           <div className="grid gap-[18px]">
-            <article className="h-full rounded-[10px] bg-white px-4 pb-10 pt-4 shadow-[0_1px_3px_rgba(0,0,0,0.08)] md:rounded-[19px] md:px-8 md:pb-0 md:pt-8">
+            <article className="h-full rounded-[10px] bg-white px-4 pb-22 pt-4 shadow-[0_1px_3px_rgba(0,0,0,0.08)] md:rounded-[19px] md:px-8 md:pb-0 md:pt-8">
               <div className="flex size-[48px] items-center justify-center rounded-[10px] bg-brand-ice text-brand-navy">
                 <MapPinIcon className="size-[24px]" />
               </div>

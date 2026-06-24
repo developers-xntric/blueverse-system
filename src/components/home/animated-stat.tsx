@@ -51,10 +51,10 @@ export function AnimatedStat({
 
   return (
     <div ref={ref} className="">
-      <dd className="order-first mb-1 font-heading text-[28px] font-bold leading-none text-white md:text-[30px] flex gap-1 items-center justify-center">
+      <dd className="order-first mb-1 font-heading text-[20px] font-bold leading-none text-white md:text-[30px] flex gap-1 items-center justify-center">
         {displayed} <span>{suffix}</span>
       </dd>
-      <dt className="font-heading text-[14px] uppercase text-white/95 md:text-[16px]">
+      <dt className="font-heading text-[13px] uppercase text-white/95 md:text-[16px]">
         {label}
       </dt>
     </div>
