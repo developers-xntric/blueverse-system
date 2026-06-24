@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { VehicleWashingPage } from "@/components/vehicle-washing/vehicle-washing-page";
-import { getVehicleWashingPage } from "@/lib/strapi";
+import { getVehicleWashingPage } from "@/lib/data";
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getVehicleWashingPage();

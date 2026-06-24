@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { AnimatedStat } from "@/components/home/animated-stat";
 import { Button } from "@/components/home/button";
-import type { HomePageData } from "@/lib/strapi";
+import type { HomePageData } from "@/lib/types";
 
 type HeroSectionProps = {
   data: HomePageData;

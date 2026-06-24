@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Manrope, Playfair_Display } from "next/font/google";
 
 import { Footer, Navbar } from "@/components/home";
-import { getFooter, getGlobalSettings, getNavbar } from "@/lib/strapi";
+import { getFooter, getGlobalSettings, getNavbar } from "@/lib/data";
 
 import "./globals.css";
 

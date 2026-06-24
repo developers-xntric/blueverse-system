@@ -2,7 +2,7 @@
 
 import { MapPinIcon } from "@/components/home/icons";
 import { SectionHeading } from "@/components/home/section-heading";
-import type { ContactFormData } from "@/lib/strapi";
+import type { ContactFormData } from "@/lib/types";
 import type { FormEvent, ReactNode } from "react";
 import { useState } from "react";
 

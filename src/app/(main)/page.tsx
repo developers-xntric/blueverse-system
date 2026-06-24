@@ -8,7 +8,7 @@ import {
   ProblemSection,
   SolutionsSection,
 } from "@/components/home";
-import { getContactForm, getHomePage } from "@/lib/strapi";
+import { getContactForm, getHomePage } from "@/lib/data";
 
 export default async function Home() {
   const [pageData, contactForm] = await Promise.all([getHomePage(), getContactForm()]);

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { SectionHeading } from "@/components/home/section-heading";
 import { Button } from "@/components/home/button";
-import type { HomePageData } from "@/lib/strapi";
+import type { HomePageData } from "@/lib/types";
 
 type ProblemSectionProps = {
   data: HomePageData;

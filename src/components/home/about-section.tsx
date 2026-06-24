@@ -10,7 +10,7 @@ import {
   UsersIcon,
 } from "@/components/home/icons";
 import { SectionHeading } from "@/components/home/section-heading";
-import type { HomePageData } from "@/lib/strapi";
+import type { HomePageData } from "@/lib/types";
 
 const icons = [LightbulbIcon, LeafIcon, ShieldIcon, UsersIcon];
 

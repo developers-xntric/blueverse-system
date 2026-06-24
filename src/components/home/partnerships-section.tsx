@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 
 import { SectionHeading } from "@/components/home/section-heading";
-import type { HomePageData } from "@/lib/strapi";
+import type { HomePageData } from "@/lib/types";
 
 type PartnershipsSectionProps = {
   data: HomePageData;

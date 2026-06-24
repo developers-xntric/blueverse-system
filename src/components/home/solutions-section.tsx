@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/home/button";
 import { CarIcon, ChartIcon, WavesIcon } from "@/components/home/icons";
 import { SectionHeading } from "@/components/home/section-heading";
-import type { HomePageData } from "@/lib/strapi";
+import type { HomePageData } from "@/lib/types";
 
 const icons = [WavesIcon, CarIcon, ChartIcon];
 

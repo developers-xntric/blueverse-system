@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-import type { EsgPlatformPageData } from "@/lib/strapi";
+import type { EsgPlatformPageData } from "@/lib/types";
 
 type EsgPlatformPageProps = {
   data: EsgPlatformPageData;

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { ArrowUpRightIcon } from "@/components/home/icons";
 import { Button } from "@/components/home/button";
 import { SectionHeading } from "@/components/home/section-heading";
-import type { HomePageData } from "@/lib/strapi";
+import type { HomePageData } from "@/lib/types";
 
 type IndustriesSectionProps = {
   data: HomePageData;

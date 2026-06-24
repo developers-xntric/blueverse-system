@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/home/button";
-import type { NavbarData } from "@/lib/strapi";
+import type { NavbarData } from "@/lib/types";
 
 type NavbarProps = {
   data: NavbarData;

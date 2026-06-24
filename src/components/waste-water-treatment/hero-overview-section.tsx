@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { MobileCarousel } from "@/components/waste-water-treatment/mobile-carousel";
-import type { WasteWaterTreatmentPageData } from "@/lib/strapi";
+import type { WasteWaterTreatmentPageData } from "@/lib/types";
 
 type HeroOverviewSectionProps = {
   data: WasteWaterTreatmentPageData;

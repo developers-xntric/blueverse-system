@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
-import type { VehicleWashingPageData } from "@/lib/strapi";
+import type { VehicleWashingPageData } from "@/lib/types";
 
 type VehicleWashingPageProps = {
   data: VehicleWashingPageData;

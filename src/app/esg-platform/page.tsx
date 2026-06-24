@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { EsgPlatformPage } from "@/components/esg-platform/esg-platform-page";
-import { getEsgPlatformPage } from "@/lib/strapi";
+import { getEsgPlatformPage } from "@/lib/data";
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getEsgPlatformPage();

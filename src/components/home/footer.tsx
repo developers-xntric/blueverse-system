@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import type { FooterData } from "@/lib/strapi";
+import type { FooterData } from "@/lib/types";
 
 type FooterProps = {
   data: FooterData;

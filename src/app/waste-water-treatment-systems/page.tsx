@@ -6,7 +6,7 @@ import {
     EpcFocusAreasSection,
     HeroOverviewSection
 } from "@/components/waste-water-treatment";
-import { getWasteWaterTreatmentPage } from "@/lib/strapi";
+import { getWasteWaterTreatmentPage } from "@/lib/data";
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getWasteWaterTreatmentPage();

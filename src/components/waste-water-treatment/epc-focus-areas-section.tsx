@@ -1,4 +1,4 @@
-import type { WasteWaterTreatmentPageData } from "@/lib/strapi";
+import type { WasteWaterTreatmentPageData } from "@/lib/types";
 
 type EpcFocusAreasSectionProps = {
   data: WasteWaterTreatmentPageData;
