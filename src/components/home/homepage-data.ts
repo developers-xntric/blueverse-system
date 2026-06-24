@@ -89,7 +89,7 @@ export const challenges = [
     title: "Industrial Water Waste",
     points: [
       "Traditional vehicle washing uses 120-180 litres of water per wash.",
-      "Industrial washing generates high-COD/TSS effluent",
+      "Industries generate high COD/TSS effluent",
     ],
   },
   {
@@ -113,7 +113,7 @@ export const solutions = [
     title: "Water Treatment Systems",
     description:
       "Smart water treatment systems designed to purify, recycle, and optimize water for sustainable operations.",
-    image: "/solution-2.png",
+    image: "/figma-assets/new-1.png",
     href: "/waste-water-treatment-systems",
   },
   {
@@ -150,7 +150,7 @@ export const industries = [
   },
   {
     title: "Vehicle Wash",
-    image: "/indus-2.png",
+    image: "/figma-assets/new-2.png",
     points: [
       "Automated wash tunnels with water recycling",
       "WaaS (Wash-as-a-Service) subscription model",
@@ -339,7 +339,7 @@ export const deploymentHighlights = [
   "15+ operational Vehicle Washing centres across India and UAE",
   "8 MLD+ wastewater treatment plants deployed or undergoing deployment",
   "50 MLD+ order pipeline for wastewater treatment capacity",
-  "UAE's first and most sustainable car care centre - Al -uoz -Duba",
+  "UAE's first and most sustainable car care centre - Al Quoz, Dubai",
   "Targeting 100+ BlueVerse centres by 2027",
 ] as const;
 

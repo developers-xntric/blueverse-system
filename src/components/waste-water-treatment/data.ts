@@ -90,7 +90,7 @@ export const scaleCards = [
   {
     code: "S01",
     title: "Small scale",
-    image: "/waste-water-treatment-systems/scale-s01.png",
+    image: "/waste-water-treatment-systems/electrox-1.png",
     footprint: "50 sq.ft",
     stp: "20 KLD",
     etp: "10 KLD",
@@ -98,7 +98,7 @@ export const scaleCards = [
   {
     code: "S02",
     title: "Mid scale",
-    image: "/waste-water-treatment-systems/scale-s02.png",
+    image: "/waste-water-treatment-systems/electrox-2.png",
     footprint: "50 sq.ft",
     stp: "75 KLD",
     etp: "40–60 KLD",
@@ -106,7 +106,7 @@ export const scaleCards = [
   {
     code: "L01",
     title: "Large scale",
-    image: "/waste-water-treatment-systems/scale-l01.png",
+    image: "/waste-water-treatment-systems/electrox-3.png",
     footprint: "75 sq.ft",
     stp: "250 KLD",
     etp: "80–150 KLD",
@@ -114,7 +114,7 @@ export const scaleCards = [
   {
     code: "L02",
     title: "Flagship · Commercial",
-    image: "/waste-water-treatment-systems/scale-l02.png",
+    image: "/waste-water-treatment-systems/electrox-4.png",
     footprint: "100 sq.ft",
     stp: "800–1000 KLD",
     etp: "100–600 KLD",
