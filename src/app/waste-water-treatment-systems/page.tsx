@@ -6,20 +6,26 @@ import {
     EpcFocusAreasSection,
     HeroOverviewSection
 } from "@/components/waste-water-treatment";
+import { getWasteWaterTreatmentPage } from "@/lib/strapi";
 
-export const metadata: Metadata = {
-  title: "Waste Water Treatment Systems | BlueVerse",
-  description:
-    "Pixel-perfect BlueVerse waste water treatment systems page",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const data = await getWasteWaterTreatmentPage();
 
-export default function WasteWaterTreatmentSystemsPage() {
+  return {
+    title: data.seo?.title || "Waste Water Treatment Systems | BlueVerse",
+    description: data.seo?.description || "BlueVerse waste water treatment systems page.",
+  };
+}
+
+export default async function WasteWaterTreatmentSystemsPage() {
+  const data = await getWasteWaterTreatmentPage();
+
   return (
     <main className="w-full bg-white">
-      <HeroOverviewSection />
-      <EpcFocusAreasSection />
-      <ElectroxSection />
-      <BuiltForEveryScaleSection />
+      <HeroOverviewSection data={data} />
+      <EpcFocusAreasSection data={data} />
+      <ElectroxSection data={data} />
+      <BuiltForEveryScaleSection data={data} />
     </main>
   );
 }

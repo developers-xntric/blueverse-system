@@ -1,27 +1,32 @@
 import Image from "next/image";
 
-import { CheckIcon } from "@/components/home/icons";
-import { deploymentHighlights } from "@/components/home/homepage-data";
 import { SectionHeading } from "@/components/home/section-heading";
+import type { HomePageData } from "@/lib/strapi";
 
-export function DeploymentSection() {
+type DeploymentSectionProps = {
+  data: HomePageData;
+};
+
+export function DeploymentSection({ data }: DeploymentSectionProps) {
   return (
     <section className=" py-6 md:py-[45px]">
       <div className="homepage-shell rounded-[18px] ">
         <div className="rounded-[20px] bg-[#E8F4FD] flex flex-col justify-center items-center px-4 md:px-6 py-8 md:px-[51px] md:py-[55px]">
-          <SectionHeading eyebrow="" title="Deployment Highlights" centered />
+          <SectionHeading eyebrow="" title={data.deploymentSection.title} centered />
           <div className="mt-10 grid gap-6  xl:grid-cols-[530px_1fr] xl:items-center">
             <div className="justify-self-center">
-              <Image
-                src="/figma-assets/dep.png"
-                alt="BlueVerse dashboard on a laptop"
-                width={730}
-                height={551}
-                className="h-auto w-full max-w-[630px]"
-              />
+              {data.deploymentSection.image ? (
+                <Image
+                  src={data.deploymentSection.image.url}
+                  alt={data.deploymentSection.image.alt || data.deploymentSection.title}
+                  width={730}
+                  height={551}
+                  className="h-auto w-full max-w-[630px]"
+                />
+              ) : null}
             </div>
             <ul className="space-y-6">
-              {deploymentHighlights.map((highlight) => (
+              {data.deploymentHighlights.map((highlight) => (
                 <li
                   key={highlight}
                   className="flex items-start gap-3 md:gap-4 text-[14px] font-bold leading-[1.4] text-brand-navy md:text-[18px]"

@@ -3,29 +3,41 @@
 import { useState } from "react";
 import Image from "next/image";
 
-import { partners } from "@/components/home/homepage-data";
 import { SectionHeading } from "@/components/home/section-heading";
+import type { HomePageData } from "@/lib/strapi";
 
-export function PartnershipsSection() {
+type PartnershipsSectionProps = {
+  data: HomePageData;
+};
+
+export function PartnershipsSection({ data }: PartnershipsSectionProps) {
   const [showDescriptions, setShowDescriptions] = useState(false);
 
   return (
     <section className="bg-gradient-to-br from-[#2162AF] to-[#0A3D6B] py-12 md:py-[30px]">
       <div className="homepage-shell">
-        <SectionHeading eyebrow="" title="Partnerships" centered light />
+        <SectionHeading
+          eyebrow={data.partnersSection.eyebrow || ""}
+          title={data.partnersSection.title}
+          description={data.partnersSection.description}
+          centered
+          light
+        />
         <div className="mt-10 grid gap-10 xl:grid-cols-4 xl:gap-0">
-          {partners.map((partner) => (
+          {data.partners.map((partner) => (
             <article
               key={partner.name}
               className="xl:border-l xl:border-white/20 xl:px-6 xl:first:border-l-0 xl:first:pl-0 xl:last:pr-0"
             >
               <div className="relative mb-6 h-[80px] w-[200px]">
-                <Image
-                  src={partner.logo}
-                  alt={partner.name}
-                  fill
-                  className="object-contain object-left"
-                />
+                {partner.logo ? (
+                  <Image
+                    src={partner.logo.url}
+                    alt={partner.logo.alt || partner.name}
+                    fill
+                    className="object-contain object-left"
+                  />
+                ) : null}
               </div>
               <p className="font-heading text-[22px] font-bold uppercase tracking-[0.04em] text-white">
                 {partner.name}

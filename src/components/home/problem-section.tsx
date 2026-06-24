@@ -1,23 +1,24 @@
 import Image from "next/image";
 
-import { challenges } from "@/components/home/homepage-data";
 import { SectionHeading } from "@/components/home/section-heading";
 import { Button } from "@/components/home/button";
+import type { HomePageData } from "@/lib/strapi";
 
-const icons = ["/1.png", "/2.png", "/3.png", "/5.png"];
+type ProblemSectionProps = {
+  data: HomePageData;
+};
 
-export function ProblemSection() {
+export function ProblemSection({ data }: ProblemSectionProps) {
   return (
     <section className="bg-white py-12 md:py-[50px]">
       <div className="homepage-shell">
         <SectionHeading
-          eyebrow="The Problem We Solve"
-          title="Challenges Driving the Need for Change"
+          eyebrow={data.problemSection.header.eyebrow || ""}
+          title={data.problemSection.header.title}
+          description={data.problemSection.header.description}
         />
         <div className="mt-7 md:mt-10 grid gap-8 md:grid-cols-2 xl:grid-cols-4 xl:gap-0">
-          {challenges.map((challenge, index) => {
-            const Icon = icons[index];
-
+          {data.challenges.map((challenge) => {
             return (
               <article
                 key={challenge.title}
@@ -25,13 +26,15 @@ export function ProblemSection() {
               >
                 <div className="flex items-center gap-4">
                   <div className="flex size-[45px] items-center justify-center rounded-[10px] bg-brand-ice text-brand-navy">
-                    <Image
-                      src={Icon}
-                      alt={challenge.title}
-                      width={2000}
-                      height={2000}
-                      className="object-contain w-8 h-8"
-                    />
+                    {challenge.icon ? (
+                      <Image
+                        src={challenge.icon.url}
+                        alt={challenge.icon.alt || challenge.title}
+                        width={40}
+                        height={40}
+                        className="h-8 w-8 object-contain"
+                      />
+                    ) : null}
                   </div>
                   <h3 className="font-heading md:text-[20px] leading-[1.1] font-bold text-brand-navy">
                     {challenge.title}
@@ -56,16 +59,18 @@ export function ProblemSection() {
         </div>
         <div className="mt-10 flex flex-col gap-5 rounded-[18px] bg-brand-blue px-6 py-7 md:mt-[30px] md:flex-row md:items-center md:justify-between md:px-[30px] md:py-[26px]">
           <p className="max-w-[820px] font-heading text-[22px] leading-[1.05] font-semibold text-white md:text-[29px]">
-            Together, we can reduce water waste and build a more sustainable
-            future
+            {data.problemSection.ctaText}
           </p>
-          <Button
-            variant="secondary"
-            size="compact"
-            className="whitespace-nowrap"
-          >
-            Let&apos;s Solve Water Challenges Together
-          </Button>
+          {data.problemSection.cta ? (
+            <Button
+              href={data.problemSection.cta.href}
+              variant="secondary"
+              size="compact"
+              className="whitespace-nowrap"
+            >
+              {data.problemSection.cta.label}
+            </Button>
+          ) : null}
         </div>
       </div>
     </section>

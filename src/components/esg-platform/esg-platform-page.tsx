@@ -3,27 +3,11 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const whatItTracks = [
-  "Water saved (litres/day, month, year)",
-  "Water reused (% recovery rate per facility)",
-  "Carbon avoided (kg CO₂e equivalent)",
-  "Energy consumption per KLD treated",
-  "Chemical reduction vs conventional baseline",
-  "Scope 1, 2, 3 water metrics (GHG Protocol aligned)",
-];
+import type { EsgPlatformPageData } from "@/lib/strapi";
 
-const capabilities = [
-  "Real-time dashboard accessible by web and mobile",
-  "Multi-site aggregation view all facilities in one view",
-  "Export-ready reports for ESG disclosures (UAE SCA, Saudi Tadawul, TCFD, GRI)",
-  "Alert system for discharge limit breaches",
-  "IoT integration with INDRA Spectrum and BlueVerse washing equipment",
-];
-
-const pricingModel = [
-  "SaaS subscription (annual or multi-year)",
-  "Bundled into system deployments at no additional charge",
-];
+type EsgPlatformPageProps = {
+  data: EsgPlatformPageData;
+};
 
 function SectionCard({
   icon,
@@ -57,10 +41,10 @@ function SectionCard({
   );
 }
 
-function Hero() {
+function Hero({ data }: EsgPlatformPageProps) {
   return (
     <section className="bg-white">
-      <div className="mx-auto grid w-[90%] 2xl:max-w-360 items-center gap-8 py-8 md:py-15.5 lg:grid-cols-[1fr_810px]">
+      <div className="mx-auto grid w-[90%] max-w-360 items-center gap-8 py-8 md:py-15.5 lg:grid-cols-[1fr_810px]">
         <motion.div
           initial={{ opacity: 0, x: -18 }}
           animate={{ opacity: 1, x: 0 }}
@@ -68,16 +52,13 @@ function Hero() {
           className="max-w-202.5"
         >
           <p className="bg-linear-to-b bg-clip-text font-heading text-[19px] font-semibold uppercase leading-5.25 text-transparent from-[#1191d0] from-[23.381%] to-[#1f62af]">
-            ESG Intelligence Platform
+            {data.hero.subtitle}
           </p>
-          <h1 className="mt-2.5 max-w-212 font-heading text-[24px] font-bold text-brand-navy md:text-[40px] leading-tight">
-            Technology-led Sustainability
-            for a Resource-Conscious
-            World
+          <h1 className="mt-2.5 max-w-212 font-heading text-[24px] font-bold leading-tight text-brand-navy md:text-[40px]">
+            {data.hero.title}
           </h1>
           <p className="mt-6.75 max-w-202.5 text-[16px] text-brand-muted">
-            The BlueVerse ESG Intelligence platform gives facility managers, sustainability officers, and corporate boards
-            real-time visibility into water and carbon metrics formatted for regulatory compliance and global ESG frameworks.
+            {data.hero.description}
           </p>
         </motion.div>
         <motion.div
@@ -86,35 +67,37 @@ function Hero() {
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.05 }}
           className="relative h-70 w-full lg:h-125.25"
         >
-          <Image
-            src="/esg-assets/hero.png"
-            alt="BlueVerse ESG dashboard"
-            fill
-            priority
-            sizes="(max-width: 1024px) 90vw, 810px"
-            className="object-contain"
-          />
+          {data.hero.heroImage ? (
+            <Image
+              src={data.hero.heroImage.url}
+              alt={data.hero.heroImage.alt || data.hero.title}
+              fill
+              priority
+              sizes="(max-width: 1024px) 90vw, 810px"
+              className="object-contain"
+            />
+          ) : null}
         </motion.div>
       </div>
     </section>
   );
 }
 
-
-export function EsgPlatformPage() {
+export function EsgPlatformPage({ data }: EsgPlatformPageProps) {
   return (
     <div className="bg-white text-black">
       <main>
-        <Hero />
+        <Hero data={data} />
         <section className="border-t border-transparent pb-8 md:pb-22.5">
           <div className="mx-auto grid w-[90%] max-w-360 gap-5 lg:grid-cols-3">
-            <SectionCard icon="/esg-assets/card-1.png" title="What It Tracks" items={whatItTracks} />
-            <SectionCard icon="/esg-assets/card-2.png" title="Platform Capabilities" items={capabilities} />
-            <SectionCard icon="/esg-assets/card-3.png" title="Pricing Model" items={pricingModel} />
+            {data.cards.map((card) =>
+              card.icon ? (
+                <SectionCard key={card.title} icon={card.icon.url} title={card.title} items={card.items} />
+              ) : null,
+            )}
           </div>
         </section>
       </main>
-   
     </div>
   );
 }

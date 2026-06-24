@@ -1,15 +1,19 @@
-import { epcFocusAreas } from "@/components/waste-water-treatment/data";
+import type { WasteWaterTreatmentPageData } from "@/lib/strapi";
 
-export function EpcFocusAreasSection() {
+type EpcFocusAreasSectionProps = {
+  data: WasteWaterTreatmentPageData;
+};
+
+export function EpcFocusAreasSection({ data }: EpcFocusAreasSectionProps) {
   return (
     <section id="epc-focus-areas" className="mx-auto w-[90%] bg-white pb-10 md:pb-12 md:py-12 2xl:max-w-360">
       <div className="mx-auto">
         <h2 className="text-center font-heading text-[24px] leading-[1.05] font-bold text-brand-navy md:text-[40px]">
-          Focus Areas
+          {data.epcSection.title}
         </h2>
 
         <div className="mt-12.5 grid gap-7.5 xl:grid-cols-2">
-          {epcFocusAreas.map((area) => (
+          {data.epcFocusAreas.map((area) => (
             <article
               key={area.title}
               className="rounded-2xl border border-black/20 bg-black/2 px-5 py-5 sm:px-7 md:px-10"
@@ -37,14 +41,16 @@ export function EpcFocusAreasSection() {
 
         <div className="mt-12.5 flex flex-col gap-5 rounded-[18px] border border-black/20 px-5 py-5 md:flex-row md:items-center md:justify-between md:px-5 md:py-5">
           <p className="font-heading text-[24px] leading-[1.12] font-bold text-brand-navy text-balance sm:text-[28px] md:pr-6 xl:text-[24px] xl:leading-[1.16]">
-            Delivering end-to-end water infrastructure solutions from design and procurement to construction and deployment.
+            {data.epcSection.ctaText}
           </p>
-          <a
-            className="w-full cursor-pointer rounded-[5px] border border-white bg-[#1191d0] py-3 text-center font-heading text-[16px] font-medium text-white hover:bg-[#1191d0]/90 md:w-82.5 md:shrink-0"
-            href="/#contact"
-          >
-            Build With BlueVerse
-          </a>
+          {data.epcSection.cta ? (
+            <a
+              className="w-full cursor-pointer rounded-[5px] border border-white bg-[#1191d0] py-3 text-center font-heading text-[16px] font-medium text-white hover:bg-[#1191d0]/90 md:w-82.5 md:shrink-0"
+              href={data.epcSection.cta.href}
+            >
+              {data.epcSection.cta.label}
+            </a>
+          ) : null}
         </div>
       </div>
     </section>
