@@ -83,7 +83,7 @@ export function HeroSection({ data }: HeroSectionProps) {
       </div>
       <div className="homepage-shell py-8 md:py-[35px]">
         <div className="grid gap-6 xl:grid-cols-2">
-          {data.heroPartners.map((partner) => (
+          {data.heroPartners.map((partner, index) => (
             <article
               key={partner.title}
               className="rounded-[12px] border border-white/65 bg-white/[0.03] px-4 md:px-6 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] "
@@ -91,16 +91,31 @@ export function HeroSection({ data }: HeroSectionProps) {
               <div className="flex flex-col items-center  gap-4 md:flex-row ">
                 <div className="shrink-0">
                   {partner.logo ? (
-                    <Image
-                      src={partner.logo.url}
-                      alt={partner.logo.alt || partner.title}
-                      width={129}
-                      height={110}
-                      className="h-auto w-[90px] md:w-[90px]"
-                      priority
-                    />
+                    <div className="flex">
+                      <Image
+                        src={partner.logo.url}
+                        alt={partner.logo.alt || partner.title}
+                        width={129}
+                        height={110}
+                        className="h-auto w-[90px] md:w-[100px]"
+                        priority
+                      />
+
+                      {index === 1 && (
+                        <Image
+                          src="/figma-assets/top-6.png"
+                          alt={partner.logo.alt || partner.title}
+                          width={129}
+                          height={110}
+                          className="h-auto w-[90px] md:w-[100px]"
+                          priority
+                        />
+                      )}
+                    </div>
                   ) : (
-                    <span className="font-heading text-lg font-semibold text-white">{partner.title}</span>
+                    <span className="font-heading text-lg font-semibold text-white">
+                      {partner.title}
+                    </span>
                   )}
                 </div>
                 <div className="flex-1">
