@@ -52,7 +52,7 @@ export function HeroOverviewSection() {
                 className="rounded-[20px] border border-[#dbdbdb] bg-white px-6 py-7 text-center"
               >
                 <div className="mx-auto flex size-20 items-center justify-center rounded-full bg-brand-ice-strong">
-                  <Image src={stat.icon} alt="" width={66} height={67} className="w-12" />
+                  <Image src={stat.icon} alt="" width={66} height={67} className="w-12" priority />
                 </div>
                 <p className="mt-5 font-heading text-[26px] leading-none font-bold text-brand-navy">
                   {stat.value}
@@ -72,7 +72,7 @@ export function HeroOverviewSection() {
               className="rounded-[20px] border border-[#dbdbdb] bg-white px-6 py-7 text-center sm:px-7.5"
             >
               <div className="mx-auto flex size-20 items-center justify-center rounded-full bg-brand-ice-strong">
-                <Image src={stat.icon} alt="" width={66} height={67} className="w-12" />
+                <Image src={stat.icon} alt="" width={66} height={67} className="w-12" priority />
               </div>
               <p className="mt-5 font-heading text-[26px] leading-none font-bold text-brand-navy">
                 {stat.value}

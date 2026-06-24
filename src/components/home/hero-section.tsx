@@ -18,6 +18,7 @@ function AcceleratorMark() {
         width={2000}
         height={2000}
         className=" w-[80px] md:w-[90px]"
+        priority
       />
 
       <Image
@@ -26,6 +27,7 @@ function AcceleratorMark() {
         width={2000}
         height={2000}
         className=" w-[80px] md:w-[90px]"
+        priority
       />
     </div>
   );
@@ -88,6 +90,7 @@ export function HeroSection() {
                         width={logo.width}
                         height={logo.height}
                         className="h-auto max-h-[60px] md:max-h-[70px] w-auto max-w-[100px] md:max-w-[170px] object-contain"
+                        priority
                       />
                     </div>
                   ),
@@ -113,6 +116,7 @@ export function HeroSection() {
                       width={129}
                       height={110}
                       className="h-auto w-[90px] md:w-[90px]"
+                      priority
                     />
                   ) : (
                     <>
