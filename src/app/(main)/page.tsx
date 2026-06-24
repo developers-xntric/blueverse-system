@@ -8,19 +8,22 @@ import {
   ProblemSection,
   SolutionsSection,
 } from "@/components/home";
+import { getContactForm, getHomePage } from "@/lib/strapi";
 
-export default function Home() {
+export default async function Home() {
+  const [pageData, contactForm] = await Promise.all([getHomePage(), getContactForm()]);
+
   return (
     <>
-      <HeroSection />
+      <HeroSection data={pageData} />
       <main>
-        <ProblemSection />
-        <SolutionsSection />
-        <IndustriesSection />
-        <AboutSection />
-        <PartnershipsSection />
-        <DeploymentSection />
-        <ContactSection />
+        <ProblemSection data={pageData} />
+        <SolutionsSection data={pageData} />
+        <IndustriesSection data={pageData} />
+        <AboutSection data={pageData} />
+        <PartnershipsSection data={pageData} />
+        <DeploymentSection data={pageData} />
+        <ContactSection data={contactForm} />
       </main>
     </>
   );

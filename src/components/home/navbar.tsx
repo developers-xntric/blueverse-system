@@ -3,11 +3,16 @@
 import { useState } from "react";
 
 import Image from "next/image";
+import Link from "next/link";
 
 import { Button } from "@/components/home/button";
-import { navLinks } from "@/components/home/homepage-data";
+import type { NavbarData } from "@/lib/strapi";
 
-export function Navbar() {
+type NavbarProps = {
+  data: NavbarData;
+};
+
+export function Navbar({ data }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const closeMenu = () => setIsMenuOpen(false);
@@ -15,19 +20,23 @@ export function Navbar() {
   return (
     <div className="sticky top-0 z-50 border-b border-white/10 bg-[#2162AF]">
       <div className="homepage-shell flex min-h-[84px] items-center justify-between gap-6 py-4 xl:min-h-[98px] xl:py-0">
-        <a href="/" className="shrink-0" onClick={closeMenu}>
-          <Image
-            src="/figma-assets/hero-logo.png"
-            alt="BlueVerse"
-            width={195}
-            height={50}
-            className="h-auto w-[150px] md:w-[180px] 2xl:w-[195px]"
-            priority
-          />
-        </a>
+        <Link href="/" className="shrink-0" onClick={closeMenu}>
+          {data.logo ? (
+            <Image
+              src={data.logo.url}
+              alt={data.logo.alt || data.logoAlt}
+              width={195}
+              height={50}
+              className="h-auto w-[150px] md:w-[180px] 2xl:w-[195px]"
+              priority
+            />
+          ) : (
+            <span className="font-heading text-xl font-bold text-white">{data.logoAlt}</span>
+          )}
+        </Link>
         <nav aria-label="Primary" className="hidden xl:block">
           <ul className="flex items-center gap-8 text-[13px] 2xl:text-[15px] font-medium text-white">
-            {navLinks.map((link) => (
+            {data.navLinks.map((link) => (
               <li key={link.label}>
                 <a href={link.href} className="hover:text-white/75">
                   {link.label}
@@ -37,9 +46,7 @@ export function Navbar() {
           </ul>
         </nav>
         <div className="hidden shrink-0 xl:block">
-          <Button size="compact">
-            Talk To Our Team
-          </Button>
+          {data.cta ? <Button href={data.cta.href} size="compact">{data.cta.label}</Button> : null}
         </div>
         <button
           type="button"
@@ -78,7 +85,7 @@ export function Navbar() {
             className="homepage-shell flex flex-col gap-6 py-6"
           >
             <ul className="flex flex-col gap-4 text-[16px] font-medium text-white">
-              {navLinks.map((link) => (
+              {data.navLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
@@ -90,13 +97,16 @@ export function Navbar() {
                 </li>
               ))}
             </ul>
-            <Button
-              className="w-full"
-              size="compact"
-              onClick={closeMenu}
-            >
-              Talk To Our Team
-            </Button>
+            {data.cta ? (
+              <Button
+                className="w-full"
+                href={data.cta.href}
+                size="compact"
+                onClick={closeMenu}
+              >
+                {data.cta.label}
+              </Button>
+            ) : null}
           </nav>
         </div>
       ) : null}

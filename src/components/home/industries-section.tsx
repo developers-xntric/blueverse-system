@@ -5,13 +5,17 @@ import Image from "next/image";
 
 import { ArrowUpRightIcon } from "@/components/home/icons";
 import { Button } from "@/components/home/button";
-import { industries } from "@/components/home/homepage-data";
 import { SectionHeading } from "@/components/home/section-heading";
+import type { HomePageData } from "@/lib/strapi";
 
-export function IndustriesSection() {
+type IndustriesSectionProps = {
+  data: HomePageData;
+};
+
+export function IndustriesSection({ data }: IndustriesSectionProps) {
   const [activeIndustry, setActiveIndustry] = useState<number | null>(null);
   const selectedIndustry =
-    activeIndustry === null ? null : industries[activeIndustry];
+    activeIndustry === null ? null : data.industries[activeIndustry];
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [activeDot, setActiveDot] = useState(0);
@@ -32,12 +36,12 @@ export function IndustriesSection() {
       const cardWidth = el.querySelector("button")?.offsetWidth ?? 280;
       const gap = 24;
       const index = Math.round(el.scrollLeft / (cardWidth + gap));
-      setActiveDot(Math.min(index, industries.length - 1));
+      setActiveDot(Math.min(index, data.industries.length - 1));
     };
 
     el.addEventListener("scroll", updateDot);
     return () => el.removeEventListener("scroll", updateDot);
-  }, [activeIndustry, isMobile]);
+  }, [activeIndustry, data.industries.length, isMobile]);
 
   useEffect(() => {
     if (activeIndustry !== null || !isMobile) return;
@@ -63,14 +67,15 @@ export function IndustriesSection() {
     <section id="industries" className="bg-white py-14">
       <div className="homepage-shell">
         <SectionHeading
-          eyebrow="Who We Serve"
-          title="Industries We Transform"
+          eyebrow={data.industriesSection.header.eyebrow || ""}
+          title={data.industriesSection.header.title}
+          description={data.industriesSection.header.description}
           centered
         />
         {selectedIndustry ? (
           <div className="mt-10">
             <div className="flex overflow-x-auto flex-nowrap gap-2 md:grid md:gap-4 md:grid-cols-3 xl:grid-cols-6">
-              {industries.map((industry, index) => (
+              {data.industries.map((industry, index) => (
                 <button
                   key={industry.title}
                   type="button"
@@ -87,17 +92,19 @@ export function IndustriesSection() {
             </div>
             <div className="mt-6 grid gap-6 md:gap-12 xl:grid-cols-[1.07fr_.93fr]">
               <article className="relative overflow-hidden rounded-[10px] md:rounded-[20px]">
-                <Image
-                  src={selectedIndustry.image}
-                  alt={selectedIndustry.title}
-                  width={676}
-                  height={656}
-                  className=" min-h-[250px] md:min-h-[500px] max-h-[520px] w-full object-cover"
-                />
+                {selectedIndustry.image ? (
+                  <Image
+                    src={selectedIndustry.image.url}
+                    alt={selectedIndustry.image.alt || selectedIndustry.title}
+                    width={676}
+                    height={656}
+                    className=" min-h-[250px] md:min-h-[500px] max-h-[520px] w-full object-cover"
+                  />
+                ) : null}
               </article>
               <div className="flex flex-col items-start justify-between bg-transparent ">
                 <div>
-                  <SectionHeading eyebrow="Industries" title="" />
+                  <SectionHeading eyebrow={data.industriesSection.detailEyebrow || ""} title="" />
                   <h3 className="font-heading text-[22px] md:text-[30px] leading-[1.1] font-bold text-[#062B4F] ">
                     {selectedIndustry.title}
                   </h3>
@@ -105,18 +112,20 @@ export function IndustriesSection() {
                     {selectedIndustry.description}
                   </p>
                 </div>
-                <div className="mt-6">
-                  <Button size="compact" onClick={() => setActiveIndustry(null)}>
-                    Let&apos;s Talk Sustainable Growth
-                  </Button>
-                </div>
+                {data.industriesSection.detailCta ? (
+                  <div className="mt-6">
+                    <Button href={data.industriesSection.detailCta.href} size="compact">
+                      {data.industriesSection.detailCta.label}
+                    </Button>
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>
         ) : (
           <>
             <div ref={carouselRef} className="mt-10 flex overflow-x-auto snap-x snap-mandatory gap-[24px] scrollbar-hide md:grid xl:grid-cols-3 xl:gap-[25px] md:gap-[24px]">
-              {industries.map((industry, index) => (
+              {data.industries.map((industry, index) => (
                 <button
                   key={industry.title}
                   type="button"
@@ -124,13 +133,15 @@ export function IndustriesSection() {
                   className="min-w-[280px] snap-start md:min-w-0 grid grid-rows-2 overflow-hidden rounded-[10px] md:rounded-[20px] border border-brand-card-line bg-white text-left transition-colors duration-200 hover:border-brand-sky"
                 >
                   <div className="relative overflow-hidden">
-                    <Image
-                      src={industry.image}
-                      alt={industry.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1280px) 100vw, 531px"
-                    />
+                    {industry.image ? (
+                      <Image
+                        src={industry.image.url}
+                        alt={industry.image.alt || industry.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1280px) 100vw, 531px"
+                      />
+                    ) : null}
                   </div>
                   <div className="flex flex-col justify-center p-4 md:p-6">
                     <div className="flex items-start justify-between gap-4">
@@ -158,7 +169,7 @@ export function IndustriesSection() {
             </div>
             {isMobile && (
               <div className="mt-6 flex items-center justify-center gap-2">
-                {industries.map((_, i) => (
+                {data.industries.map((_, i) => (
                   <button
                     key={i}
                     type="button"

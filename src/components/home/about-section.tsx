@@ -9,22 +9,32 @@ import {
   ShieldIcon,
   UsersIcon,
 } from "@/components/home/icons";
-import { aboutPanels, aboutTabs } from "@/components/home/homepage-data";
 import { SectionHeading } from "@/components/home/section-heading";
+import type { HomePageData } from "@/lib/strapi";
 
 const icons = [LightbulbIcon, LeafIcon, ShieldIcon, UsersIcon];
 
-export function AboutSection() {
+type AboutSectionProps = {
+  data: HomePageData;
+};
+
+export function AboutSection({ data }: AboutSectionProps) {
+  const aboutTabs = data.aboutTabs.map((tab) => tab.name);
   const [activeTab, setActiveTab] =
-    useState<(typeof aboutTabs)[number]>("Our Values");
-  const activePanel = aboutPanels[activeTab];
+    useState(aboutTabs[0] ?? "");
+  const activePanel = data.aboutTabs.find((tab) => tab.name === activeTab)?.panel;
+
+  if (!activePanel) {
+    return null;
+  }
 
   return (
     <section id="about" className=" py-12 bg-[#E8F4FD] md:py-[60px]">
       <div className="homepage-shell">
         <SectionHeading
-          eyebrow="About BlueVerse"
-          title="Building Tomorrow's Infrastructure, Today"
+          eyebrow={data.aboutSection.eyebrow || ""}
+          title={data.aboutSection.title}
+          description={data.aboutSection.description}
           centered
         />
         <div className="mt-8 md:grid flex  flex-wrap gap-2 md:gap-4 md:grid-cols-3 max-w-[99%] mx-auto">
@@ -45,13 +55,15 @@ export function AboutSection() {
         </div>
         <div className="mt-6 grid gap-6 xl:grid-cols-[1.07fr_.93fr]">
           <article className="relative overflow-hidden rounded-[10px]">
-            <Image
-              src={activePanel.image}
-              alt={activePanel.overlayTitle}
-              width={676}
-              height={656}
-              className="max-h-[600px] min-h-[350px] md:min-h-[650px] 2xl:min-h-[620px] w-full object-cover rounded-[10px]"
-            />
+            {activePanel.image ? (
+              <Image
+                src={activePanel.image.url}
+                alt={activePanel.image.alt || activePanel.overlayTitle || activeTab}
+                width={676}
+                height={656}
+                className="max-h-[600px] min-h-[350px] md:min-h-[650px] 2xl:min-h-[620px] w-full object-cover rounded-[10px]"
+              />
+            ) : null}
             <div className="absolute inset-x-2 bottom-[5%] rounded-[10px] bg-[linear-gradient(90deg,rgba(255,255,255,0.45),rgba(255,255,255,0.18))] p-3 backdrop-blur-[6px] md:inset-x-[14px] 2xl:bottom-[14px] md:p-4">
               <h3 className=" text-[22px] md:text-[28px] leading-[1.1] text-brand-navy">
                 {activePanel.overlayTitle}
@@ -60,16 +72,16 @@ export function AboutSection() {
                 {activePanel.overlayDescription}
               </p>
               <a
-                href="#contact"
+                href={activePanel.overlayCta?.href || "#contact"}
                 className="mt-4 inline-block font-sans text-[18px] font-medium text-brand-navy underline underline-offset-4"
               >
-                Get Started
+                {activePanel.overlayCta?.label || "Get Started"}
               </a>
             </div>
           </article>
           {activeTab === "Our Values" && (
             <div className="grid gap-4 md:gap-6 md:grid-cols-2">
-              {aboutPanels["Our Values"].cards.map((item, index) => {
+              {activePanel.cards.map((item, index) => {
                 const Icon = icons[index];
 
                 return (
@@ -78,7 +90,17 @@ export function AboutSection() {
                     className="rounded-[10px] md:rounded-[18px] border border-brand-card-line bg-[#e3eff8] p-4  md:p-[22px] flex flex-col items-start justify-between"
                   >
                     <div className="flex size-[40px] md:size-[58px] items-center justify-center rounded-[10px] md:rounded-[18px] bg-brand-sky text-white">
-                      <Icon className="size-[24px] md:size-[30px]" />
+                      {item.icon ? (
+                        <Image
+                          src={item.icon.url}
+                          alt={item.icon.alt || item.title}
+                          width={30}
+                          height={30}
+                          className="size-[24px] object-contain md:size-[30px]"
+                        />
+                      ) : (
+                        <Icon className="size-[24px] md:size-[30px]" />
+                      )}
                     </div>
                     <div>
                       <h3 className="mt-7 md:mt-10 font-heading text-[20px] leading-[1.1] font-bold text-black">
@@ -97,10 +119,10 @@ export function AboutSection() {
           {activeTab === "Our Mission" && (
             <div className="flex flex-col bg-[#e3eff8] p-4 ">
               <h3 className="font-heading text-[30px] leading-[1.1] font-bold text-[#062B4F]">
-                {aboutPanels["Our Mission"].heading}
+                {activePanel.heading}
               </h3>
               <div className="mt-3 space-y-2">
-                {aboutPanels["Our Mission"].missionParagraphs.map((para, i) => (
+                {activePanel.missionParagraphs.map((para, i) => (
                   <p key={i} className="text-[15px] leading-[1.7] text-black/85">
                     {para}
                   </p>
@@ -112,7 +134,7 @@ export function AboutSection() {
           {activeTab === "Our Journey" && (
             <div className="relative border border-black/10 p-3 rounded-[10px] ">
               <div className="absolute left-1/2 top-[5%] h-[90%] w-[2px] -translate-x-1/2 bg-black/15" />
-              {aboutPanels["Our Journey"].timeline.map((item, index) => {
+              {activePanel.timeline.map((item, index) => {
                 const isLeft = index % 2 === 0;
 
                 return (
