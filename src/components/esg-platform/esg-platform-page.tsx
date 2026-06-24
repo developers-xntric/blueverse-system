@@ -40,7 +40,7 @@ function SectionCard({
       className="rounded-[19.382px] border border-[#dbdbdb] bg-white px-7.5 py-10 shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
     >
       <div className="flex items-center gap-3.75">
-        <span className="flex shrink-0 items-center justify-center rounded-[19.382px] bg-[#e8f4fd]">
+        <span className="flex shrink-0 items-center justify-center rounded-[19.382px] bg-[#e8f4fd] p-2">
           <Image src={icon} alt="" width={25.57} height={26} className="size-[25.567px]" />
         </span>
         <h3 className="font-heading text-[24.227px] font-bold leading-[33.918px] text-brand-navy">{title}</h3>
