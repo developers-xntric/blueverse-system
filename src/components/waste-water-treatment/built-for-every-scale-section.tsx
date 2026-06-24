@@ -41,7 +41,7 @@ export function BuiltForEveryScaleSection() {
                     className="h-auto w-full object-contain"
                   />
                 </div>
-                <div className="grid grid-cols-3 gap-2 px-3 py-5">
+                <div className="grid grid-cols-3 gap-2 px-3 py-5 divide-x divide-[#cfcbcb] [&>*:not(:second-child)]:pl-3">
                   <ScaleMeta label="Footprint" value={card.footprint} />
                   <ScaleMeta label="STP capacity" value={card.stp} />
                   <ScaleMeta label="ETP capacity" value={card.etp} />
@@ -72,7 +72,7 @@ export function BuiltForEveryScaleSection() {
                   className="h-auto w-full object-contain"
                 />
               </div>
-              <div className="grid grid-cols-1 gap-3 px-5 py-5 sm:grid-cols-3 sm:gap-0">
+              <div className="grid grid-cols-1 gap-3 px-5 py-5 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-[#e1dbdb] sm:[&>*:not(:first-child)]:pl-3">
                 <ScaleMeta label="Footprint" value={card.footprint} />
                 <ScaleMeta label="STP capacity" value={card.stp} />
                 <ScaleMeta label="ETP capacity" value={card.etp} />
@@ -89,7 +89,7 @@ export function BuiltForEveryScaleSection() {
                 className="rounded-[19px] border border-[#dbdbdb] bg-white px-5 py-7.5"
               >
                 <div className="flex items-center gap-3.75">
-                  <div className="flex items-center justify-center rounded-2xl bg-brand-ice-strong">
+                  <div className="flex items-center justify-center rounded-2xl p-1.5 bg-brand-ice-strong">
                     <Image src={product.icon} alt="" width={22} height={22} className="h-auto w-7" />
                   </div>
                   <h3 className="font-heading text-[20px] leading-[1.2] font-bold text-brand-navy">

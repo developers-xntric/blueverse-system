@@ -8,7 +8,13 @@ function parseStatValue(value: string): { num: number; suffix: string } {
   return { num: Number(match[1]), suffix: match[2] };
 }
 
-export function AnimatedStat({ value, label }: { value: string; label: string }) {
+export function AnimatedStat({
+  value,
+  label,
+}: {
+  value: string;
+  label: string;
+}) {
   const [displayed, setDisplayed] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -36,7 +42,7 @@ export function AnimatedStat({ value, label }: { value: string; label: string })
           requestAnimationFrame(animate);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     observer.observe(el);
@@ -44,9 +50,9 @@ export function AnimatedStat({ value, label }: { value: string; label: string })
   }, [num, hasAnimated]);
 
   return (
-    <div ref={ref}>
-      <dd className="order-first mb-1 font-heading text-[28px] font-bold leading-none text-white md:text-[30px]">
-        {displayed}{suffix}
+    <div ref={ref} className="">
+      <dd className="order-first mb-1 font-heading text-[28px] font-bold leading-none text-white md:text-[30px] flex gap-1 items-center justify-center">
+        {displayed} <span>{suffix}</span>
       </dd>
       <dt className="font-heading text-[14px] uppercase text-white/95 md:text-[16px]">
         {label}

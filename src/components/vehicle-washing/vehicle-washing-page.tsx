@@ -248,12 +248,11 @@ function WashTypes() {
     <MotionSection id="wash-types" className="border-b border-[#dfdfdf] py-8 md:py-17.5">
       <div className="mx-auto flex 2xl:max-w-360 w-[90%] flex-col gap-7.5">
         <SectionTitle>Wash Types Available</SectionTitle>
-        <div ref={carouselRef} className="flex overflow-x-auto snap-x snap-mandatory gap-5 scrollbar-hide md:grid md:grid-cols-2 xl:grid-cols-4">
+        <div ref={carouselRef} className="flex overflow-x-auto snap-x snap-mandatory gap-5 scrollbar-hide md:grid md:grid-cols-2 xl:grid-cols-4 px-4 md:px-0">
           {washTypes.map(([title, description]) => (
             <motion.article
               key={title}
-              whileHover={{ y: -5, borderColor: "rgba(6,43,79,0.7)" }}
-              className="flex min-h-[273.372px] flex-col items-center gap-5 rounded-[19.382px] border-[1.21px] border-[rgba(6,43,79,0.4)] bg-white px-4 md:px-7.5 py-6 md:py-10 text-center"
+              className="flex min-h-[273.372px] snap-start min-w-[calc(100%-10px)] md:min-w-0 flex-col items-center gap-5 rounded-[19.382px] border-[1.21px] border-[rgba(6,43,79,0.4)] bg-white px-4 md:px-7.5 py-6 md:py-10 text-center"
             >
               <Image src="/vehicle-assets/wash-type.svg" alt="" width={48.454} height={48.454} className="size-[48.454px]" />
               <div className="flex flex-col items-center gap-3.75">

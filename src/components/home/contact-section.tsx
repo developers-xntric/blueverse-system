@@ -57,7 +57,7 @@ export function ContactSection() {
           description=""
           centered
         />
-        <p className="text-[#4A5565] mx-auto mt-3  text-[16px] leading-[1.4] md:text-[22px]">Whether you have a project in mind, a question about our services, or want to explore a partnership our team is ready to help.</p>
+        <p className="text-[#4A5565] mx-auto mt-3  text-[16px] leading-[1.4] md:text-[22px] text-center">Whether you have a project in mind, a question about our services, or want to explore a partnership our team is ready to help.</p>
         <div className="mt-8 grid gap-[18px] xl:grid-cols-[621px_1fr]">
           <div className="grid gap-[18px]">
             <article className="rounded-[10px] md:rounded-[19px] bg-white h-full pb-10 md:pb-0 pt-4 md:pt-8 px-4 md:px-8 shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
