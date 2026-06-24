@@ -50,7 +50,7 @@ export function AboutSection() {
               alt={activePanel.overlayTitle}
               width={676}
               height={656}
-              className="max-h-[600px] min-h-[350px] md:min-h-[620px] w-full object-cover rounded-[10px]"
+              className="max-h-[600px] min-h-[350px] md:min-h-[650px] 2xl:min-h-[620px] w-full object-cover rounded-[10px]"
             />
             <div className="absolute inset-x-2 bottom-[5%] rounded-[10px] bg-[linear-gradient(90deg,rgba(255,255,255,0.45),rgba(255,255,255,0.18))] p-3 backdrop-blur-[6px] md:inset-x-[14px] 2xl:bottom-[14px] md:p-4">
               <h3 className=" text-[22px] md:text-[28px] leading-[1.1] text-brand-navy">
@@ -95,7 +95,7 @@ export function AboutSection() {
           )}
 
           {activeTab === "Our Mission" && (
-            <div className="flex flex-col bg-[#e3eff8] ">
+            <div className="flex flex-col bg-[#e3eff8] p-4 ">
               <h3 className="font-heading text-[30px] leading-[1.1] font-bold text-[#062B4F]">
                 {aboutPanels["Our Mission"].heading}
               </h3>
@@ -118,13 +118,13 @@ export function AboutSection() {
                 return (
                   <div
                     key={item.year}
-                    className={`relative flex items-start pb-8 last:pb-0 ${
+                    className={`relative flex items-start pb-4 2xl:pb-8 last:pb-0 ${
                       isLeft ? "flex-row" : "flex-row-reverse"
                     }`}
                   >
                     <div className="flex w-1/2 flex-col justify-start px-4">
                       <div className={`${isLeft ? "text-right" : "text-left" } w-full `}>
-                        <span className="font-heading text-[18px] md:text-[22px] font-bold text-black">
+                        <span className="font-heading text-[18px] md:text-[22px] font-medium text-black">
                           {item.year}
                         </span>
                       </div>
