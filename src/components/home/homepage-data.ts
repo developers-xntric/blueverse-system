@@ -72,8 +72,8 @@ export const heroPartners = [
 
 export const stats = [
   { value: "05+", label: "Years of Experience" },
-  { value: "10K+", label: "CO2 Emissions Reduced" },
-  { value: "5 Billion +", label: "Litres of Water Saved" },
+  { value: "10000+", label: "CO2 Emissions Reduced" },
+  { value: "5000 Million +", label: "Litres of Water Saved" },
   { value: "50 MLD+", label: "Wastewater Order Pipeline" },
 ] as const;
 
