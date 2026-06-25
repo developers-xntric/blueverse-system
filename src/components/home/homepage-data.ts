@@ -117,7 +117,7 @@ export const solutions = [
     href: "/waste-water-treatment-systems",
   },
   {
-    title: "Automated Vehicle Washing",
+    title: "Sustainable Vehicle Washing",
     description:
       "Automated vehicle washing solutions that deliver consistent cleaning performance with efficient water use.",
     image: "/figma-assets/solutions-1.png",

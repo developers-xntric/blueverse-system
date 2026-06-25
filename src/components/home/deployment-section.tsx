@@ -9,9 +9,34 @@ type DeploymentSectionProps = {
 
 export function DeploymentSection({ data }: DeploymentSectionProps) {
   return (
-    <section className=" py-6 md:py-[45px]">
+    <section className=" py-10 md:py-16">
       <div className="homepage-shell rounded-[18px] ">
-        <div className="rounded-[20px] bg-[#E8F4FD] flex flex-col justify-center items-center px-4 md:px-6 py-8 md:px-[51px] md:py-[55px]">
+        <div className="w-full">
+          <p className="text-center font-heading text-[16px] font-semibold uppercase tracking-[0.04em] text-[#062B4F] md:text-[30px]">
+            {data.trustedBrandsLabel}
+          </p>
+          <div className="mt-6 overflow-hidden pb-10 [mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)]">
+            <div className="marquee-track flex gap-[21px]">
+              {[...data.marqueeLogos, ...data.marqueeLogos].map(
+                (logo, index) => (
+                  <div
+                    key={`${logo.name}-${index}`}
+                    className="flex md:h-[90px] w-[160px] md:w-[240px] mx-auto shrink-0 items-center justify-center border-l border-[#62B4F] bg-white px-2"
+                  >
+                    <Image
+                      src={logo.url}
+                      alt={logo.name}
+                      width={170}
+                      height={112}
+                      className={`h-auto max-h-[60px] mx-auto  ${index == 4 || 5 ? "md:max-h-[65px]" : "md:max-h-[80px]"} w-auto max-w-[100px] md:max-w-[170px] object-contain`}
+                    />
+                  </div>
+                ),
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="mt-6 rounded-[20px] bg-[#E8F4FD] flex flex-col justify-center items-center px-4 md:px-6 py-8 md:px-[51px] md:py-[55px]">
           <SectionHeading eyebrow="" title={data.deploymentSection.title} centered />
           <div className="mt-10 grid gap-6  xl:grid-cols-[530px_1fr] xl:items-center">
             <div className="justify-self-center">

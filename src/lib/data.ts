@@ -115,12 +115,12 @@ const homePage: HomePageData = {
   },
   trustedBrandsLabel: "Trusted By Leading Brands",
   marqueeLogos: [
-    { name: "TVS", url: "/figma-assets/marquee-tvs.png", alt: "TVS" },
+    { name: "TVS", url: "/figma-assets/marquee-new-tvs.png", alt: "TVS" },
     { name: "Honda", url: "/figma-assets/marquee-honda.png", alt: "Honda" },
     { name: "Royal Enfield", url: "/figma-assets/marquee-royal-enfield.png", alt: "Royal Enfield" },
-    { name: "IHCL", url: "/figma-assets/marquee-ihcl-1.png", alt: "IHCL" },
+    { name: "IHCL", url: "/figma-assets/marquee-new-ihcl.png", alt: "IHCL" },
     { name: "MG", url: "/figma-assets/marquee-mg.png", alt: "MG" },
-    { name: "Tata", url: "/figma-assets/marquee-tata1.png", alt: "Tata" },
+    { name: "Tata", url: "/figma-assets/marquee-new-tata.png", alt: "Tata" },
   ],
   heroPartners: [
     {
@@ -209,7 +209,7 @@ const homePage: HomePageData = {
       icon: null,
     },
     {
-      title: "Automated Vehicle Washing",
+      title: "Sustainable Vehicle Washing",
       description:
         "Automated vehicle washing solutions that deliver consistent cleaning performance with efficient water use.",
       image: img("/figma-assets/solutions-1.png", "Automated Vehicle Washing"),

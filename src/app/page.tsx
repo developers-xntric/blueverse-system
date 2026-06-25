@@ -10,6 +10,7 @@ import {
 } from "@/components/home";
 import { getContactForm, getHomePage } from "@/lib/data";
 
+
 export default async function Home() {
   const [pageData, contactForm] = await Promise.all([getHomePage(), getContactForm()]);
 

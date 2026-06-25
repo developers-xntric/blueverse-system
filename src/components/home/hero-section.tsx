@@ -27,7 +27,7 @@ export function HeroSection({ data }: HeroSectionProps) {
           {/* MOBILE */}
           <div className="absolute  md:hidden inset-0 bg-black/50" />
         </div>
-        <div className="relative homepage-shell pb-14 pt-16 md:pb-[60px] md:pt-[162px]">
+        <div className="relative homepage-shell pb-14 pt-16 md:pb-[0px] md:pt-[0px] h-screen flex items-center justify-start">
           <div className="max-w-[800px]">
             <h1 className="font-heading text-[35px] md:text-[60px] 2xl:text-[80px] font-bold leading-[1.02] text-white md:leading-[0.97]">
               {data.hero.title}
@@ -52,33 +52,6 @@ export function HeroSection({ data }: HeroSectionProps) {
               ) : null}
             </div>
           </div>
-
-          <div className="mt-16 md:mt-[84px]">
-            <p className="text-center font-heading text-[16px] font-semibold uppercase tracking-[0.04em] text-white md:text-[30px]">
-              {data.trustedBrandsLabel}
-            </p>
-            <div className="mt-6 overflow-hidden">
-              <div className="marquee-track flex gap-[21px]">
-                {[...data.marqueeLogos, ...data.marqueeLogos].map(
-                  (logo, index) => (
-                    <div
-                      key={`${logo.name}-${index}`}
-                      className="flex md:h-[90px] w-[160px] md:w-[257px] shrink-0 items-center justify-center rounded-[11px] border border-white/80 bg-white/5 px-6 backdrop-blur-[18px]"
-                    >
-                      <Image
-                        src={logo.url}
-                        alt={logo.name}
-                        width={170}
-                        height={112}
-                        className="h-auto max-h-[60px] md:max-h-[70px] w-auto max-w-[100px] md:max-w-[170px] object-contain"
-                        priority
-                      />
-                    </div>
-                  ),
-                )}
-              </div>
-            </div>
-          </div>
         </div>
       </div>
       <div className="homepage-shell py-8 md:py-[35px]">
@@ -86,7 +59,7 @@ export function HeroSection({ data }: HeroSectionProps) {
           {data.heroPartners.map((partner, index) => (
             <article
               key={partner.title}
-              className="rounded-[12px] border border-white/65 bg-white/[0.03] px-4 md:px-6 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] "
+              className="rounded-[12px] bg-white/[0.03] px-4 md:px-6 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] "
             >
               <div className="flex flex-col items-center  gap-4 md:flex-row ">
                 <div className="shrink-0">
