@@ -60,7 +60,7 @@ const contactForm: ContactFormData = {
   description:
     "Whether you have a project in mind, a question about our services, or want to explore a partnership our team is ready to help.",
   emailTitle: "Email Address",
-  emailAddress: "info@blueverse.ae",
+  emailAddress: "info@blueverse.tech",
   offices: [
     {
       title: "UAE",
