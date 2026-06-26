@@ -61,7 +61,7 @@ export function AboutSection({ data }: AboutSectionProps) {
                 alt={activePanel.image.alt || activePanel.overlayTitle || activeTab}
                 width={676}
                 height={656}
-                className="max-h-[600px] min-h-[350px] md:min-h-[650px] 2xl:min-h-[620px] w-full object-cover rounded-[10px]"
+                className="max-h-[470px] min-h-[350px] md:min-h-[400px] 2xl:min-h-[390px] w-full object-cover rounded-[10px]"
               />
             ) : null}
             <div className="absolute inset-x-2 bottom-[5%] rounded-[10px] bg-[linear-gradient(90deg,rgba(255,255,255,0.45),rgba(255,255,255,0.18))] p-3 backdrop-blur-[6px] md:inset-x-[14px] 2xl:bottom-[14px] md:p-4">
@@ -87,9 +87,9 @@ export function AboutSection({ data }: AboutSectionProps) {
                 return (
                   <article
                     key={item.title}
-                    className="rounded-[10px] md:rounded-[18px] border border-brand-card-line bg-[#e3eff8] p-4  md:p-[22px] flex flex-col items-start justify-between"
+                    className="rounded-[10px] md:rounded-[18px] border border-brand-card-line bg-[#e3eff8] p-4  md:p-[22px] flex flex-col items-start "
                   >
-                    <div className="flex size-[40px] md:size-[58px] items-center justify-center rounded-[10px] md:rounded-[18px] bg-brand-sky text-white">
+                    <div className="flex size-[40px] md:size-[48px] items-center justify-center rounded-[10px] md:rounded-[18px] bg-brand-sky text-white">
                       {item.icon ? (
                         <Image
                           src={item.icon.url}
@@ -103,7 +103,7 @@ export function AboutSection({ data }: AboutSectionProps) {
                       )}
                     </div>
                     <div>
-                      <h3 className="mt-7 md:mt-10 font-heading text-[20px] leading-[1.1] font-bold text-black">
+                      <h3 className="mt-7  font-heading text-[20px] leading-[1.1] font-bold text-black">
                         {item.title}
                       </h3>
                       <p className="mt-1.5 md:mt-3 text-[15px] leading-[1.45] text-black">

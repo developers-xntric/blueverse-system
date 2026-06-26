@@ -10,6 +10,7 @@ type HeroSectionProps = {
 
 export function HeroSection({ data }: HeroSectionProps) {
   return (
+    <>
     <header id="top" className="bg-brand-blue text-white">
       <div className="relative overflow-hidden">
         <div className="absolute inset-0">
@@ -116,12 +117,15 @@ export function HeroSection({ data }: HeroSectionProps) {
             </article>
           ))}
         </div>
-        <dl className="mt-6 md:mt-4 grid gap-8 text-center grid-cols-2 xl:grid-cols-4">
+        
+      </div>
+      
+    </header>
+    <dl className="mt-6 md:mt-10 px-4 md:px-0 grid gap-8 text-center grid-cols-2 xl:grid-cols-4">
           {data.stats.map((stat) => (
             <AnimatedStat key={stat.label} value={stat.value} label={stat.label} />
           ))}
         </dl>
-      </div>
-    </header>
+        </>
   );
 }
