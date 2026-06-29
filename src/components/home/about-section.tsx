@@ -43,7 +43,7 @@ export function AboutSection({ data }: AboutSectionProps) {
               key={tab}
               type="button"
               onClick={() => setActiveTab(tab)}
-              className={`rounded-[8px] border px-4 py-3 font-heading text-[13px] leading-none md:text-[20px] ${
+              className={`rounded-[8px]  cursor-pointer border px-4 py-3 font-heading text-[13px] leading-none md:text-[20px] ${
                 activeTab === tab
                   ? "border-brand-sky bg-brand-sky text-white"
                   : "border-brand-navy/40 bg-transparent text-brand-navy"
@@ -61,7 +61,7 @@ export function AboutSection({ data }: AboutSectionProps) {
                 alt={activePanel.image.alt || activePanel.overlayTitle || activeTab}
                 width={676}
                 height={656}
-                className="max-h-[470px] min-h-[350px] md:min-h-[400px] 2xl:min-h-[390px] w-full object-cover rounded-[10px]"
+                className={`max-h-[470px] min-h-[350px]  w-full object-cover rounded-[10px] ${activeTab === "Our Journey" ? "md:min-h-[620px] 2xl:min-h-[610px]" : "md:min-h-[400px] 2xl:min-h-[390px]"}`}
               />
             ) : null}
             <div className="absolute inset-x-2 bottom-[5%] rounded-[10px] bg-[linear-gradient(90deg,rgba(255,255,255,0.45),rgba(255,255,255,0.18))] p-3 backdrop-blur-[6px] md:inset-x-[14px] 2xl:bottom-[14px] md:p-4">
