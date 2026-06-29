@@ -143,7 +143,7 @@ export function ContactSection({ data }: ContactSectionProps) {
             <div className="mt-5 md:mt-[15px]">
               <Field label={data.serviceField.label}>
                 <div className="relative">
-                  <select name="service" className="form-field appearance-none pr-12" defaultValue="" required>
+                  <select name="service" className="form-field pr-12" defaultValue="" required>
                     <option value="" disabled>
                       {data.serviceField.placeholder}
                     </option>
@@ -151,9 +151,7 @@ export function ContactSection({ data }: ContactSectionProps) {
                       <option key={option}>{option}</option>
                     ))}
                   </select>
-                  <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-brand-soft">
-                    <span aria-hidden>âŒ„</span>
-                  </span>
+                  
                 </div>
               </Field>
             </div>
