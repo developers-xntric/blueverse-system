@@ -162,14 +162,14 @@ const homePage: HomePageData = {
       icon: img("/1.png", "Water Scarcity"),
       points: [
         "Operating in one of the world's most water-stressed regions",
-        "70-90% wastewater still discharged",
+        "74–83% of India and GCC populations face extremely high water stress.",
       ],
     },
     {
       title: "Industrial Water Waste",
       icon: img("/2.png", "Industrial Water Waste"),
       points: [
-        "Traditional vehicle washing uses 120-180 litres of water per wash.",
+        "70–90% of wastewater is discharged without treatment or reuse",
         "Industries generate high COD/TSS effluent",
       ],
     },
@@ -204,7 +204,7 @@ const homePage: HomePageData = {
       title: "Water Treatment Systems",
       description:
         "Smart water treatment systems designed to purify, recycle, and optimize water for sustainable operations.",
-      image: img("/figma-assets/new-1.png", "Water Treatment Systems"),
+      image: img("/figma-assets/water-systems.png", "Water Treatment Systems"),
       href: "/waste-water-treatment-systems",
       icon: null,
     },

@@ -119,7 +119,7 @@ export const solutions = [
   {
     title: "Sustainable Vehicle Washing",
     description:
-      "Automated vehicle washing solutions that deliver consistent cleaning performance with efficient water use.",
+      "Automated and Sustainable vehicle washing solutions that deliver consistent cleaning performance with efficient water use.",
     image: "/figma-assets/solutions-1.png",
     href: "/vehicle-washing",
   },

@@ -25,7 +25,7 @@ export default async function WasteWaterTreatmentSystemsPage() {
       <HeroOverviewSection data={data} />
       <EpcFocusAreasSection data={data} />
       <ElectroxSection data={data} />
-      <BuiltForEveryScaleSection data={data} />
+      {/* <BuiltForEveryScaleSection data={data} /> */}
     </main>
   );
 }
