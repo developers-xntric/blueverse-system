@@ -31,7 +31,7 @@ export function SolutionsSection({ data }: SolutionsSectionProps) {
                 href={solution.href}
                 className="block rounded-[10px] md:rounded-[20px] bg-white p-3 md:p-[24px] shadow-[0_12px_24px_rgba(6,43,79,0.12)] transition-shadow hover:shadow-[0_16px_32px_rgba(6,43,79,0.18)]"
               >
-                <div className="relative h-[250px] md:h-[295px] overflow-hidden rounded-[12px]">
+                <div className="relative h-[250px] 2xl:h-[295px] overflow-hidden rounded-[12px]">
                   {solution.image ? (
                     <Image
                       src={solution.image.url}

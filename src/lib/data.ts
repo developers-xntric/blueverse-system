@@ -204,7 +204,7 @@ const homePage: HomePageData = {
       title: "Water Treatment Systems",
       description:
         "Smart water treatment systems designed to purify, recycle, and optimize water for sustainable operations.",
-      image: img("/figma-assets/water-systems.png", "Water Treatment Systems"),
+      image: img("/figma-assets/water-systems1.png", "Water Treatment Systems"),
       href: "/waste-water-treatment-systems",
       icon: null,
     },
