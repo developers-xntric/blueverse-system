@@ -32,7 +32,7 @@ export function ProblemSection({ data }: ProblemSectionProps) {
                         alt={challenge.icon.alt || challenge.title}
                         width={40}
                         height={40}
-                        className="h-8 w-8 object-contain"
+                        className="h-7 w-7 object-contain"
                       />
                     ) : null}
                   </div>

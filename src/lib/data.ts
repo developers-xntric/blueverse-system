@@ -145,7 +145,7 @@ const homePage: HomePageData = {
   stats: [
     { value: "05+", label: "Years of Experience", icon: null },
     { value: "10000+", label: "CO2 Emissions Reduced", icon: null },
-    { value: "5000 Million +", label: "Litres of Water Saved", icon: null },
+    { value: "5 Billion +", label: "Litres of Water Saved", icon: null },
     { value: "50 MLD+", label: "Wastewater Order Pipeline", icon: null },
   ],
   problemSection: {
@@ -159,7 +159,7 @@ const homePage: HomePageData = {
   challenges: [
     {
       title: "Water Scarcity",
-      icon: img("/1.png", "Water Scarcity"),
+      icon: img("/3.png", "Water Scarcity"),
       points: [
         "Operating in one of the world's most water-stressed regions",
         "74–83% of India and GCC populations face extremely high water stress.",
@@ -167,7 +167,7 @@ const homePage: HomePageData = {
     },
     {
       title: "Industrial Water Waste",
-      icon: img("/2.png", "Industrial Water Waste"),
+      icon: img("/1.png", "Industrial Water Waste"),
       points: [
         "70–90% of wastewater is discharged without treatment or reuse",
         "Industries generate high COD/TSS effluent",
@@ -175,7 +175,7 @@ const homePage: HomePageData = {
     },
     {
       title: "ESG Compliance",
-      icon: img("/3.png", "ESG Compliance"),
+      icon: img("/2.png", "ESG Compliance"),
       points: [
         "India, UAE, KSA, and Qatar enforcing ESG reporting mandates",
         "Companies lack real-time Scope 1, 2, 3 water metrics",
@@ -211,7 +211,7 @@ const homePage: HomePageData = {
     {
       title: "Sustainable Vehicle Washing",
       description:
-        "Automated vehicle washing solutions that deliver consistent cleaning performance with efficient water use.",
+        "Automated and Sustainable vehicle washing solutions that deliver consistent cleaning performance with efficient water use.",
       image: img("/figma-assets/solutions-1.png", "Automated Vehicle Washing"),
       href: "/vehicle-washing",
       icon: null,
